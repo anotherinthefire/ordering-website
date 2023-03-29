@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.heads{
+    font-family:'Montserrat Alternates';
+    text-align: center;
+    font-size:500%;
+    
+}
+tr,img{
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+   
+    
+}
+.top{
+    padding: 4%;
+}
+.sul{
+    font-family:'Roboto';
+    font-size:28px;
+    font-weight: bold;
+    text-align: center;
+}

@@ -1,0 +1,4 @@
+create includes folder in mainfolder on where the index.php is then paste this codes 
+<?php include("includes/nav.html"); ?>
+
+<?php include("includes/footer.html") ?>
