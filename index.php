@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <?php include("includes/nav.html"); ?>
+    <?php include("includes/nav.php"); ?>
     <?php
     require_once("config.php");
     //retrieve image data from the database

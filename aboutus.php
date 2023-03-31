@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About Us</title>
+    <title>AXGG | About Us</title>
+    <link rel="shortcut icon" href="https://i.ibb.co/dfD3s4M/278104398-126694786613134-4231769107383237629-n-removebg-preview.png" />
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
@@ -14,13 +15,12 @@
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" />
 </head>
+
 <body>
     <?php include("includes/nav.html"); ?>
     <!-- START OF HOME SECTION -->
     <section class="homepic">
-        <section class="" id="home">
-            <img src="https://i.ibb.co/ZKQtnfD/axgg-banner2.png" class="homepic img-fluid" style="min-height:551px;" />
-        </section>
+            <img src="https://i.ibb.co/ZKQtnfD/axgg-banner2.png" class="homepic img-fluid" style="width: 100%;"/>
     </section>
 
     <!-- END OF HOME SECTION -->
@@ -96,7 +96,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
         integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
         crossorigin="anonymous"></script>
-        <?php include("includes/footer.html") ?>
+    <?php include("includes/footer.html") ?>
 </body>
 
 </html>

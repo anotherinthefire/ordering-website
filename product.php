@@ -29,6 +29,7 @@ $sizes = mysqli_fetch_all($result, MYSQLI_ASSOC);
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AXGG | <?php echo $product['prod_name']; ?></title>
+  <link rel="shortcut icon" href="https://i.ibb.co/dfD3s4M/278104398-126694786613134-4231769107383237629-n-removebg-preview.png" />
   <link rel="stylesheet" href="styles/product.css">
   <script type="text/javascript" src="js/product.js"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet">

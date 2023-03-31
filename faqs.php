@@ -5,16 +5,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQs</title>
+    <title>AXGG | FAQs</title>
+    <link rel="shortcut icon" href="https://i.ibb.co/dfD3s4M/278104398-126694786613134-4231769107383237629-n-removebg-preview.png" />
     <link rel="stylesheet" href="styles/faqs.css">
 </head>
 
 <body>
+    <?php include("includes/nav.php"); ?>
     <div class="image-header">
-        <img id="header-img" src="header-img.png" alt="https://th.bing.com/th/id/OIP.AC9frN1qFnn-I2JCycN8fwHaEK?w=302&h=180&c=7&r=0&o=5&pid=1.7">
+        <img id="header-img" src="https://i.ibb.co/ZKQtnfD/axgg-banner2.png" alt="header">
     </div>
     <div class="container">
-       
+
         <div class="faq-main-header">
             FREQUENTLY ASKED QUESTIONS
         </div>
@@ -155,7 +157,7 @@
             </div>
         </div>
     </div>
-
+    <?php include("includes/footer.html") ?>
 </body>
 
 </html>
