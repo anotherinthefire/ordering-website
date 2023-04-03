@@ -8,6 +8,8 @@
     <title>AXGG | FAQs</title>
     <link rel="shortcut icon" href="https://i.ibb.co/dfD3s4M/278104398-126694786613134-4231769107383237629-n-removebg-preview.png" />
     <link rel="stylesheet" href="styles/faqs.css">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
