@@ -12,7 +12,7 @@
 </head>
 
 <body>
-<?php include("includes/nav.html"); ?>
+<?php include("includes/nav.php"); ?>
     <!-- PROD 2 -->
     <?php
     // get the selected category ID from the URL parameter

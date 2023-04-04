@@ -37,6 +37,12 @@
       font-size: 80px;
       color: white;
     }
+    .title{
+      margin-left: auto;
+      margin-right: auto;
+      width: 30%;
+      text-align: center;
+    }
   </style>
 </head>
 
@@ -45,7 +51,7 @@
   <div class="image-header">
     <img id="header-img" src="https://i.ibb.co/ZKQtnfD/axgg-banner2.png" alt="header">
   </div>
-  <h1><b>COLELELECTIONS</b></h1>
+  <h1 class="title"><b>COLELELECTIONS</b></h1>
   <?php
   require_once "config.php";
   // Query categories from database

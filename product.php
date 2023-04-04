@@ -34,11 +34,10 @@ $sizes = mysqli_fetch_all($result, MYSQLI_ASSOC);
   <script type="text/javascript" src="js/product.js"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet">
   <script src="https://use.fontawesome.com/0ff3a44a7b.js"></script>
-
 </head>
 
 <body>
-<?php include("includes/nav.html"); ?>
+<?php include("includes/nav.php"); ?>
   <div class="center-container">
     <div class="container">
       <div class="grid-container">
