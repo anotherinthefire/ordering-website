@@ -16,7 +16,7 @@
     <img src="https://i.ibb.co/CWgyD5n/axegg-removebg-preview.png" style="height:50%; width:30%" />
   </div>
 
-  <form action="connection.php" method="post">
+  <form action="proc/connection.php" method="post">
     <div class="card1 col-md-4 align-items-center position-absolute top-50 start-50 translate-middle">
       <div class="p-5 ms-3 mt-5 text-light">
         <h1 class="font-family: Poppins">Log in</h1>
