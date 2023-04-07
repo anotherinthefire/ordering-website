@@ -54,7 +54,7 @@
   <h1 class="title"><b>COLELELECTIONS</b></h1>
   <?php
   require_once "config.php";
-  // Query categories from database
+
   $sql = "SELECT * FROM category";
   $result = mysqli_query($conn, $sql);
   while ($row = mysqli_fetch_assoc($result)) {
