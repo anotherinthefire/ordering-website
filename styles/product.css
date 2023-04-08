@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;500&family=Roboto:wght@300&display=swap');
 
 
-/* 
+
 @media only screen and (max-width: 1280px) {
   .variant-1 {
-    width: 3rem;
+    width: 3vh;
     float: right;
   }
 }
@@ -12,24 +12,19 @@
 
 @media only screen and (min-width: 600px) {
   .variant-1 {
-    width: 25rem;
+    width: 40rem;
     float: right;
   }
 
   .grid-container {
     margin: 10% 2%;
   }
-} */
+} 
 .center-container{
     padding-top: 10%;
     padding-bottom: 10%;
 }
 
-.variant-1 {
-    width: 25rem;
-    margin-left: 20%;
-    margin-right: 20%;
-  }
   
 .grid-container {
   grid-column: 1/4;

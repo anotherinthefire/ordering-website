@@ -35,9 +35,10 @@
       font-style: normal;
       font-weight: 700;
       font-size: 80px;
-      color: white;
+      color: black;
     }
-    .title{
+
+    .title {
       margin-left: auto;
       margin-right: auto;
       width: 30%;
@@ -58,23 +59,24 @@
   $sql = "SELECT * FROM category";
   $result = mysqli_query($conn, $sql);
   while ($row = mysqli_fetch_assoc($result)) {
-    $cat_id = $row['cat_id'];
-    $cat_name = $row['cat_name'];
+    $category_id = $row['category_id'];
+    $category_name = $row['category'];
 
-    $sql = "SELECT prod_img FROM products WHERE cat_id = $cat_id ORDER BY prod_id DESC LIMIT 1";
+    $sql = "SELECT prod_img FROM products WHERE prod_id IN (SELECT prod_id FROM stock WHERE category_id = $category_id) ORDER BY prod_id DESC LIMIT 1";
     $result2 = mysqli_query($conn, $sql);
     $row2 = mysqli_fetch_assoc($result2);
     $prod_img = $row2['prod_img'];
 
     echo '<div class="container">';
 
-    echo '<a href="products.php?cat_id=' . $cat_id . '" class="btn btn-primary">
-  <img src="images/' . $prod_img . '" class="cat-bg" alt="' . $cat_name . '">
-  <div class="centered"><h5>' . $cat_name . '</h5></div>
-  </a>';
+    echo '<a href="products.php?cat_id=' . $category_id . '" class="btn btn-primary">
+    <img src="' . $prod_img . '" class="cat-bg" alt="' . $category_name . '">
+    <div class="centered"><h5>' . $category_name . '</h5></div>
+    </a>';
     echo '</div>';
   }
   ?>
+
   <?php include("includes/footer.html"); ?>
 </body>
 
