@@ -79,7 +79,7 @@
     </section>
     <!--  -->
     <section class="all-products-btn">
-        <button>View All Products</button>
+        <a href="allproducts.php"><button>View All Products</button></a>
     </section>
     <section class="categories">
         <div class="card">
