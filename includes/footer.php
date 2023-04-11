@@ -5,9 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
-    <link rel="stylesheet" href="includes/styles/footer.css"/>
+    <link rel="stylesheet" href="includes/styles/footer.css" />
     <script src="https://kit.fontawesome.com/69c308bd4c.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="styles/footer.css"/>
+    <link rel="stylesheet" href="includes/styles/footer.css" />
+    <!-- include jQuery library from a CDN -->
 </head>
 <body>
     <footer>
@@ -15,12 +16,9 @@
             <img src="https://i.ibb.co/dfD3s4M/278104398-126694786613134-4231769107383237629-n-removebg-preview.png" class="logo-footer" />
             <div class="row">
                 <div class="row-1">
-                    <a href="index.php">Home</a>
-                    <a href="collections.php">Shop</a>
-                    <a href="sizechart.php">Size Charts</a>
-                    <a href="faqs.php">FAQs</a>
-                    <a href="aboutus.php">About Us</a>
+                    <p>gingerrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr</p>
                 </div>
+                
                 <div class="footer-icon">
                     <a href="https://www.facebook.com/axggpinas/shop_tab">
                         <i class="fa-brands fa-facebook-f fa-2x"></i></a>
@@ -35,6 +33,8 @@
                 </div>
             </div>
         </div>
+        <!-- add a container div for the loaded content -->
+        <div id="content"></div>
         <section class="copyright">&copy;&nbsp;AXGG 2023</section>
     </footer>
 </body>

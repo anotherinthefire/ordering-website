@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AXGG | All Products</title>
-    <link rel="stylesheet" href="styles/allproducts.css?php echo time(); ?>">
+    <link rel="stylesheet" href="./assets/css/allproducts.css?php echo time(); ?>">
 </head>
 <body>
 <?php include("includes/nav.php");?>

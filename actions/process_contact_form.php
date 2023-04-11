@@ -1,9 +1,5 @@
 <?php
 include '../config.php';
-// check connection
-if ($conn->connect_error) {
-	die("Connection failed: " . $conn->connect_error);
-}
 
 // get form data
 $name = $_POST['name'];

@@ -5,12 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AXGG | Size Chart</title>
-    <link rel="stylesheet" href="styles/sizechart.css" />
+    <link rel="stylesheet" href="./assets/css/sizechart.css" />
     <link rel="shortcut icon" href="https://i.ibb.co/dfD3s4M/278104398-126694786613134-4231769107383237629-n-removebg-preview.png" />
 </head>
 
 <body>
-    <?php include 'includes/nav.php'; ?>
     <section>
         <br>
         <br>
@@ -51,13 +50,9 @@
                         IF THE SIZING INFORMATION THIS CHART IS INSUFFICIENT, PLEASE EMAIL US FOR A RECOMMENDATION.
                     </i>
                 </p>
-
-
-
             </div>
         </section>
     </section>
-    <?php include("includes/footer.html"); ?>
 </body>
 
 </html>

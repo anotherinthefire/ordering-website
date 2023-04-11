@@ -1,3 +1,69 @@
+TODO{
+    connect category in home and buttons
+    finalize category
+    check function and docu
+    create header include
+    jquery/ajax category to view product
+    cart
+    checkout
+    profile
+    login/signup veification if already loggedin or not(profile,cart,viewproduct-addtocart)
+    image folder(header/carousel)
+}
+
+    allsia/
+|--actions/
+| |--categories.php
+| |--connection.php
+| |--index-categories.php
+| |--index-products.php
+| |--process_contact_form.php
+|--db/
+| |--//
+| |--allsia.sql
+|--assets/
+| |--css/
+| | |--aboutus.css
+| | |--allproducts.css
+| | |--Collection.css
+| | |--faqs.css
+| | |--login.css
+| | |--privacy.css
+| | |--products.css
+| | |--products.css
+| | |--signup.css
+| | |--sizecahrt.css
+| | |--styles.css
+| |--js/
+| | |--product.js
+|--includes/
+| |--script/
+| | |--nav.js
+| |--styles/
+| | |--footer.css
+| | |--nav.css
+| |--nav.php
+| |--footer.php
+|--pages/
+| |--aboutus.php
+| |--allproducts.php
+| |--collection.php
+| |--faqs.php
+| |--home.php
+| |--index.php
+| |--login.php
+| |--logo-privacy.pnh
+| |--product.php
+| |--products.php
+| |--signup.php
+| |--sizechart.php
+| |--usersignup.php
+|--api/
+| |--products.json
+| |--cart.json
+|--index.php
+|--config.php
+
 <html>
 
 <head>
