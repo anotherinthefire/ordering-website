@@ -132,11 +132,12 @@
     align-items: center;
 }
 .card{
-    height: 501px;
+    height: 40vh;
     margin: 20px;
 }
 .card img{
-    height: 499px;
+    height: 40vh;
+    width: 15vw ;
     border: none;
 }
 .details{

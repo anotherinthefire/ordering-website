@@ -9,6 +9,7 @@ TODO{
     profile
     login/signup veification if already loggedin or not(profile,cart,viewproduct-addtocart)
     image folder(header/carousel)
+    footer buutons
 }
 
     allsia/

@@ -8,12 +8,11 @@
     <link rel="stylesheet" href="./assets/css/allproducts.css?php echo time(); ?>">
 </head>
 <body>
-<?php include("includes/nav.php");?>
 <section class="a-products">
         <br>
         <br>
         <div class="grid-container">
-            <?php require_once "config.php";
+            <?php require_once "../config.php";
             $sql = "SELECT prod_id, prod_name, prod_price, prod_img FROM products";
             $result = $conn->query($sql);
 
@@ -38,6 +37,5 @@
             <!-- PROD 1-->
         </div>
     </section>
-    <?php include("includes/footer.html");?>
 </body>
 </html>

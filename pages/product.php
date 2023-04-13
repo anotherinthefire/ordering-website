@@ -3,7 +3,7 @@
 $prod_id = $_GET['id'];
 
 // Retrieve product information from the database
-require_once("config.php");
+require_once("../config.php");
 
 $sql = "SELECT * FROM products WHERE prod_id = $prod_id";
 $result = $conn->query($sql);
@@ -22,14 +22,13 @@ if ($result->num_rows > 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AXGG | <?php echo $row['prod_name']; ?></title>
     <link rel="shortcut icon" href="https://i.ibb.co/dfD3s4M/278104398-126694786613134-4231769107383237629-n-removebg-preview.png" />
-    <link rel="stylesheet" href="styles/product.css?php echo time(); ?>">
-    <script type="text/javascript" src="js/product.js"></script>
+    <link rel="stylesheet" href="assets/css/product.css">
+    <script type="text/javascript" src="assets/js/product.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet">
     <script src="https://use.fontawesome.com/0ff3a44a7b.js"></script>
   </head>
 
   <body>
-    <?php include("includes/nav.php"); ?>
     <div class="center-container">
       <div class="container">
         <div class="grid-container">
@@ -97,7 +96,7 @@ if ($result->num_rows > 0) {
 
                 <?php
                 $prod_id = $_GET['id'];
-                require_once("config.php");
+                require_once("../config.php");
 
                 $sql = "SELECT * FROM products WHERE prod_id = $prod_id";
                 $result = $conn->query($sql);
@@ -117,6 +116,5 @@ if ($result->num_rows > 0) {
         </div>
       </div>
     </div>
-    <?php include("includes/footer.html") ?>
   </body>
   </html>
