@@ -34,8 +34,8 @@
                         <i class="fa-brands fa-tiktok fa-2x"></i></a>
                 </div>
                 <div class="row-2">
-                    <a href="termsnco.php">Terms and Conditions</a>
-                    <a href="privacy.php">Privacy Policy</a>
+                    <a href="pages/termsnco.php">Terms and Conditions</a>
+                    <a href="pages/privacy.php">Privacy Policy</a>
                 </div>
             </div>
         </div>
