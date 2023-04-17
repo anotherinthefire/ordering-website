@@ -11,6 +11,16 @@ TODO{
     image folder(header/carousel)
     footer buutons
 }
+TODO flow{
+    Terms of Service
+    Profile
+    Cart
+    Checkout
+    fix all content
+    debug
+    forgot password
+    integrate xampp localhost
+}
 
     allsia/
 |--actions/

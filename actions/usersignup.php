@@ -1,5 +1,5 @@
 <?php
-require_once("config.php");
+require_once("../config.php");
 if(isset($_POST['signup'])) {
   // Get values from form
   $first_name = $_POST['first_name'];
@@ -15,6 +15,6 @@ if(isset($_POST['signup'])) {
   $result = mysqli_query($conn, $query);
   
   // Redirect to login page
-  header('Location: login.php');
+  header('Location: includes/login.php');
   exit;
 }

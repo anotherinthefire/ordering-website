@@ -13,11 +13,12 @@ if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $_SESSION["userid"] = $row['userid'];
     $_SESSION["first_name"] = $row['first_name'];
-    header('Location: ../index.php');
+    header('Location: index.php');
     exit(); // Always include an exit after a header redirect to prevent further script execution
 } else {
     $error_message = "Invalid login credentials.";
-    echo "<script>console.log('$error_message');</script>"; // Log error message to console using JavaScript
-    header('Location: ../login.php');
+    $url = "../includes/login.php?error_message=" . urlencode($error_message);
+    header('Location: ' . $url);
     exit(); // Always include an exit after a header redirect to prevent further script execution
 }
+
