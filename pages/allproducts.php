@@ -5,9 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AXGG | All Products</title>
-    <link rel="stylesheet" href="./assets/css/allproducts.css?php echo time(); ?>">
+    <link rel="stylesheet" href="./assets/css/allproducts.css?<?php echo time(); ?>">
 </head>
 <body>
+<header>
+  <div class="image-header">
+    <img id="header-img" src="./images/all-products.jpg" alt="header">
+    <div class="centered">ALL PRODUCTS</div>
+  </div>
+</header>
 <section class="a-products">
         <br>
         <br>

@@ -1,7 +1,3 @@
-<?php
-session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +5,7 @@ session_start();
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title></title>
-  <link rel="stylesheet" href="includes/styles/nav.css" />
+  <link rel="stylesheet" href="includes/styles/nav.css?<?php echo time(); ?>" />
   <!-- JavaScript Bundle with Popper -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -26,21 +22,18 @@ session_start();
         <li><a href="pages/aboutus.php">About Us</a></li>
       </ul>
     </nav>
-    <div class="icons">
-    <?php
-             if(isset($_SESSION['user_id'])){
-                 echo '<a href="pages/cart.php" class="fa-solid fa-cart-shopping fa-2x"></a> ';
-             }else{
-                 echo '<a href="includes/login.php" class="fa-solid fa-cart-shopping fa-2x"></a>';
-             }
-         ?>
-    
-      <?php if (isset($_SESSION['user_id'])) { ?>
-          
-        <a href="pages/profile.php" class="fa-solid fa-user fa-2x"></a>
-      <?php } else { ?>
-        <a href="includes/login.php" class="fa-solid fa-user fa-2x"></a>
-      <?php } ?>
+    <div class="icons"> 
+      <a href="pages/cart.php" class="fa-solid fa-cart-shopping fa-2x"></a>
+      <div class="dropdown">
+        <button class="dropbtn">
+          <a class="fa-solid fa-user fa-2x"></a>
+        </button>
+        <div class="dropdown-content">
+          <a href="#">Profile</a>
+          <a href="#">Orders</a>
+          <a href="#">Logout</a>
+        </div>
+      </div>
     </div>
   </div>
   <script src="includes/script/nav.js"></script>
