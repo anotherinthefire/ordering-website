@@ -1,8 +1,9 @@
 <?php
-session_start();
+include '../config.php';
 
 // Check if the user is logged in
-if (!isset($_SESSION['logged_in'])) {
+if (isset($_SESSION['userid'])) {
+  echo ($_SESSION['userid']);
   header("Location: ../includes/login.php");
   exit();
 }

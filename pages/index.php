@@ -122,18 +122,5 @@
             </a>
         </div>
     </div>
-    <script>
-        $(document).ready(function() {
-            $("a").click(function(e) {
-                e.preventDefault();
-                var page = $(this).attr("href");
-                if (page != '#home') {
-                    $("#content").load(page);
-                }
-                $("a").removeClass("active");
-                $(this).addClass("active");
-            });
-        });
-    </script>
 </body>
 </html>

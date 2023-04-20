@@ -29,7 +29,7 @@
           <a class="fa-solid fa-user fa-2x"></a>
         </button>
         <div class="dropdown-content">
-          <a href="#">Profile</a>
+          <a href="pages/profile.php">Profile</a>
           <a href="#">Orders</a>
           <a href="#">Logout</a>
         </div>

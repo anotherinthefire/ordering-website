@@ -1,6 +1,6 @@
 <?php
 include '../config.php';
-
+session_start();
 $Username = $_POST['username'];
 $Password = $_POST['password'];
 
@@ -13,7 +13,9 @@ if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $_SESSION["userid"] = $row['userid'];
     $_SESSION["first_name"] = $row['first_name'];
-    header('Location: index.php');
+    // header('Location: index.php');
+    print_r($_SESSION['userid']);
+    
     exit(); // Always include an exit after a header redirect to prevent further script execution
 } else {
     $error_message = "Invalid login credentials.";
