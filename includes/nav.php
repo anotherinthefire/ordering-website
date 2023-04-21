@@ -1,3 +1,13 @@
+<?php
+try {
+  include('./config.php');
+}
+//catch exception
+catch(Exception $e) {
+  include('../config.php');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +17,7 @@
   <title></title>
   <link rel="stylesheet" href="includes/styles/nav.css?<?php echo time(); ?>" />
   <!-- JavaScript Bundle with Popper -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -22,20 +32,47 @@
         <li><a href="pages/aboutus.php">About Us</a></li>
       </ul>
     </nav>
-    <div class="icons"> 
-      <a href="pages/cart.php" class="fa-solid fa-cart-shopping fa-2x"></a>
-      <div class="dropdown">
-        <button class="dropbtn">
-          <a class="fa-solid fa-user fa-2x"></a>
-        </button>
-        <div class="dropdown-content">
-          <a href="pages/profile.php">Profile</a>
-          <a href="#">Orders</a>
-          <a href="#">Logout</a>
-        </div>
-      </div>
-    </div>
-  </div>
+   
+          <?php
+            if(isset($_SESSION['user_id']))
+            {
+          ?>
+            <div class="icons"> 
+                <a href="pages/cart.php" class="fa-solid fa-cart-shopping fa-2x"></a>
+              <div class="dropdown">
+                <button class="dropbtn">
+                  <a class="fa-solid fa-user fa-2x"></a>
+              </button>
+                <div class="dropdown-content">
+                  <a href="pages/profile.php">Profile</a>
+                  <a href="#">Orders</a>
+                  <a href="includes/logout.php">Log-out</a>
+                </div>
+              </div>
+            </div>
+          </div>
+         <?php
+            }
+            else{ 
+              
+         ?>     
+            <div class="icons"> 
+                  <a href="pages/cart.php" class="fa-solid fa-cart-shopping fa-2x"></a>
+                <div class="dropdown">
+                  <button class="dropbtn">
+                    <a class="fa-solid fa-user fa-2x"></a>
+                </button>
+                  <div class="dropdown-content">
+                    <!-- <a href="pages/profile.php">Profile</a>
+                    <a href="#">Orders</a> -->
+                    <a href="includes/login.php">Log-in</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <?php
+          }
+          ?>
   <script src="includes/script/nav.js"></script>
 </body>
 </html>

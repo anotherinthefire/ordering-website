@@ -29,7 +29,7 @@
                     echo '<a href="product.php?id=' . $row["prod_id"] . '">';
                     echo '<div class="product_image"><img src="' . $row["prod_img"] . '" style="height:30vh;" alt="new arrivals"></div>';
                     echo '<div class="content">';
-                    echo '<h3>' . $row["prod_name"] . '</h3>';
+                    echo '<h3><b>' . $row["prod_name"] . '</b></h3>';
                     echo '<h2 class="price">₱ ' . $row["prod_price"] . '<small>00</small></h2>';
                     echo '</div>';
                     echo '</a>';

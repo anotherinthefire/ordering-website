@@ -50,12 +50,15 @@
     margin-bottom:1px ;
     text-transform: uppercase;
     letter-spacing: 1px;
+    font-family: 'Montserrat', sans-serif;
 }
 .box .content .price {
     font-size: 14px;
     color: black;
     font-weight: 500;
     letter-spacing: 1px;
+    font-family: 'Montserrat', sans-serif;
+
 }
 .btn {
     color: rgb(190, 190, 190);

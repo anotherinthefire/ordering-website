@@ -1,11 +1,10 @@
 <?php
-include '../config.php';
-
-// Check if the user is logged in
-if (isset($_SESSION['userid'])) {
-  echo ($_SESSION['userid']);
-  header("Location: ../includes/login.php");
-  exit();
+try {
+  include('../config.php');
+}
+//catch exception
+catch(Exception $e) {
+  include('../config.php');
 }
 ?>
 

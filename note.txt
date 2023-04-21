@@ -14,7 +14,7 @@ TODO{
 TODO flow{
     Terms of Service
     Profile
-    Cart
+    Cart    
     Checkout
     fix all content
     debug
@@ -75,6 +75,8 @@ TODO flow{
 |--index.php
 |--config.php
 
+
+-- codes skratch --
 <html>
 
 <head>

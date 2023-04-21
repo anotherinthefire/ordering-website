@@ -13,36 +13,10 @@
 </head>
 
 <body>
-<?php
-session_start();
-include '../config.php';
 
-$error_message = "";
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $UsernameOrEmail = $_POST['username_or_email'];
-    $Password = $_POST['password'];
-
-    $sql = "SELECT * FROM user WHERE (username = '$UsernameOrEmail' OR email = '$UsernameOrEmail') AND password = '$Password'";
-    $result = $conn->query($sql);
-
-    // for login
-    if ($result->num_rows > 0) {
-        // output data of each row
-        $row = $result->fetch_assoc();
-        $_SESSION["userid"] = $row['userid'];
-        $_SESSION["first_name"] = $row['first_name'];
-        header('Location: ../');
-        exit(); // Always include an exit after a header redirect to prevent further script execution
-    } else {
-        $error_message = "Invalid login credentials.";
-    }
-}
-
-?>
   <div class="back1">
   <div id="content">
-  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+  <form action="./actions/connection.php" method="post">
     <div class="card1 col-md-4 align-items-center position-absolute top-50 start-50 translate-middle">
       <div class="p-5 ms-3 mt-5 text-light">
         <h1 class="font-family: Poppins">Log in</h1>

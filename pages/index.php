@@ -1,5 +1,5 @@
-<html>
 
+<html>
 <head>
     <title>Anime X Gaming &#x2223; Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -81,8 +81,7 @@
         <a href="pages/allproducts.php"><button>View All Products</button></a>
     </section>
 
-    <?php
-    include('../config.php');
+    <?php   
     $sql = "SELECT * FROM category LIMIT 3";
     $result = mysqli_query($conn, $sql);
     ?>

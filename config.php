@@ -1,4 +1,5 @@
 <?php
+session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -14,3 +15,4 @@ if (!$conn) {
 // else{
 //     echo("successful");
 // }
+?>

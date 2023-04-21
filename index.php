@@ -1,3 +1,5 @@
+<?php
+?>
 <!-- PHP mailer code here -->
 <!DOCTYPE html>
 <html>

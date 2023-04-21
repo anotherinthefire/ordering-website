@@ -1,5 +1,7 @@
-<html>
+<?php
 
+?>
+<html>
 <head>
     <title>Anime X Gaming &#x2223; Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -84,7 +86,7 @@
     </section>
     <!-- query -->
     <?php
-    include('./config.php');
+    
     $sql = "SELECT * FROM category LIMIT 3";
     $result = mysqli_query($conn, $sql);
     ?>
