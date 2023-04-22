@@ -45,7 +45,7 @@ catch(Exception $e) {
               </button>
                 <div class="dropdown-content">
                   <a href="pages/profile.php">Profile</a>
-                  <a href="#">Orders</a>
+                  <a href="pages/myorders.php">Orders</a>
                   <a href="includes/logout.php">Log-out</a>
                 </div>
               </div>
@@ -57,14 +57,12 @@ catch(Exception $e) {
               
          ?>     
             <div class="icons"> 
-                  <a href="pages/cart.php" class="fa-solid fa-cart-shopping fa-2x"></a>
+                  <a href="includes/login.php" class="fa-solid fa-cart-shopping fa-2x"></a>
                 <div class="dropdown">
                   <button class="dropbtn">
                     <a class="fa-solid fa-user fa-2x"></a>
                 </button>
                   <div class="dropdown-content">
-                    <!-- <a href="pages/profile.php">Profile</a>
-                    <a href="#">Orders</a> -->
                     <a href="includes/login.php">Log-in</a>
                   </div>
                 </div>

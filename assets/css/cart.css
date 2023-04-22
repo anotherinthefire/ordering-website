@@ -1,0 +1,76 @@
+table.pure-table{
+	width: 85%;
+	font-family: 'Montserrat Alternates', sans-serif; 
+	font-size: 25;
+}
+
+p.shop{
+	font-family: 'Montserrat Alternates', sans-serif; 
+}
+
+button.btn-light{
+	color: 5876CE; 
+	font-family: 'Montserrat Alternates', sans-serif; 
+	border: 2px solid black; position:absolute; 
+	right:330px;
+	font-size: 25;
+}
+
+button.btn-Primary{
+	color: ightblue; 
+	font-family: 'Montserrat Alternates', sans-serif; 
+	border: 2px solid black; position:absolute; 
+	right:150px;
+	font-size: 25;
+}
+
+
+tr.item{
+	border:none; 
+	border-bottom:5px solid black;
+	font-family: 'Montserrat Alternates', sans-serif;
+}
+
+h1.shop{
+   text-align: center;
+   font-family: 'Montserrat Alternates', sans-serif;
+}
+
+p.subtotal{
+	position:absolute; 
+	right:150px; 
+	font-family: 'Montserrat Alternates', sans-serif;
+	font-size: 20;
+}
+
+img.picture{
+	padding-right: 0px;
+}
+
+p.Excluding{
+	position:absolute; 
+	right:150px; 
+	font-family: 'Montserrat Alternates', sans-serif;
+	font-size: 20;
+}
+
+tr.Katekyo{
+	border-bottom:5px solid black;
+	font-family: 'Montserrat Alternates', sans-serif;
+}
+
+td.cash{
+	font-family:'Montserrat Alternates', sans-serif;
+}
+
+td.Reborn{
+	float:150px; 
+}
+
+td.Hit{
+	float:150px; 
+}
+
+input[type="checkbox"] {
+    transform: scale(2);
+}

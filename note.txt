@@ -14,11 +14,12 @@ TODO{
 TODO flow{
     Terms of Service
     Profile
-    Cart    
+    Cart(when 0 remove item)
     Checkout
     fix all content
     debug
     forgot password
+    pages database 
     integrate xampp localhost
 }
 

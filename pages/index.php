@@ -4,7 +4,7 @@
     <title>Anime X Gaming &#x2223; Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://kit.fontawesome.com/69c308bd4c.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./assets/css/styles.css?php echo time();" />
+    <link rel="stylesheet" href="./assets/css/styles.css?<?php echo time();?>" />
     <link rel="shortcut icon" href="https://i.ibb.co/dfD3s4M/278104398-126694786613134-4231769107383237629-n-removebg-preview.png" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
     <!-- JavaScript Bundle with Popper -->
@@ -82,6 +82,24 @@
     </section>
 
     <?php   
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "sia";
+    
+    // Create connection
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
+    
+    // Check connection
+    if (!$conn) {
+      die("Connection failed: " . mysqli_connect_error());
+    }
+    // else{
+    //     echo("successful");
+    // }
+    
+    
+    $error_message = "";
     $sql = "SELECT * FROM category LIMIT 3";
     $result = mysqli_query($conn, $sql);
     ?>
