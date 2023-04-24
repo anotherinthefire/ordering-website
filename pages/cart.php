@@ -1,5 +1,15 @@
-<link rel="stylesheet" href="./assets/css/cart.css">
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AXGG | Cart</title>
+    <link rel="stylesheet" href="../assets/css/cart.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous" />
+</head>
+<body>
+    <?php include("../includes/nav-pages.php"); ?>
 <br><br><br><br>
 
 <div style="text-align:center;">
@@ -20,7 +30,7 @@
             <tr class="Katekyo" style="border-bottom-width: 4.667; padding-bottom:10px;">
                 <td style="padding-left: 75px;"><input type="checkbox"></td>
                 <td style="padding-bottom: 30px;padding-top: 30px;">
-                    <img src="./images/kata.jpg">
+                    <img src="../images/kata.jpg">
                 </td>
                 <td class="Hit" style="padding-left: 10px;">
                     <b>Katekyo - Hitman Reborn</b>
@@ -41,7 +51,7 @@
             <tr class="Katekyo" style="border-bottom-width: 4.667; padding-bottom:10px;">
                 <td style="padding-left: 75px;"><input type="checkbox"></td>
                 <td style="padding-bottom: 30px;padding-top: 30px;">
-                    <img src="./images/lam.jpg">
+                    <img src="../images/lam.jpg">
                 </td>
                 <td class="Hit" style="padding-left: 10px;">
                     <b>Katekyo - Hitman Reborn</b>
@@ -66,12 +76,12 @@
             <p class="Excluding"><br>Excluding of taxes and shipping</p>
             <br><br><br>
 
-            <a href="./">
+            <a href="collection.php">
                 <button type="button" class="btn btn-light" style="border:2px solid #0dcaf0;">
                     Continue Shoping
                 </button>
             </a>
-            <a href="./pages/checkout.php">
+            <a href="checkout.php">
                 <button type="button" class="btn btn-Primary" style="
              padding-left: 25px;
              padding-right: 25px;
@@ -83,4 +93,6 @@
             <br><br><br>
 </div>
 <br>
-<script src="./assets/js/cart.js"></script>
+<script src="../assets/js/cart.js"></script>
+</body>
+</html>

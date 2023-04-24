@@ -13,3 +13,5 @@ if ($(".nav-bar").length > 0) {
         checkScroll();
     });
 }
+
+// Get the modal

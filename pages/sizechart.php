@@ -5,11 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AXGG | Size Chart</title>
-    <link rel="stylesheet" href="./assets/css/sizechart.css" />
+    <link rel="stylesheet" href="../assets/css/sizechart.css" />
     <link rel="shortcut icon" href="https://i.ibb.co/dfD3s4M/278104398-126694786613134-4231769107383237629-n-removebg-preview.png" />
 </head>
 
 <body>
+<?php include("../includes/nav-pages.php"); ?>
     <section>
         <br>
         <br>
@@ -21,24 +22,24 @@
             <br>
             <table>
                 <tr>
-                    <img src="images/image 4.png">
+                    <img src="../images/image 4.png">
                 </tr>
                 <br>
 
                 <tr>
-                    <img src="images/image 25.png">
+                    <img src="../images/image 25.png">
                 </tr>
                 <br>
                 <tr>
-                    <img src="images/image 24.png">
+                    <img src="../images/image 24.png">
                 </tr>
                 <br>
                 <tr>
-                    <img src="images/kids.png">
+                    <img src="../images/kids.png">
                 </tr>
                 <br>
                 <tr>
-                    <img src="images/bag.png">
+                    <img src="../images/bag.png">
                 </tr>
             </table>
             <br>

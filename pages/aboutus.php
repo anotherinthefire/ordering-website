@@ -6,11 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AXGG | About Us</title>
     <link rel="shortcut icon" href="https://i.ibb.co/dfD3s4M/278104398-126694786613134-4231769107383237629-n-removebg-preview.png" />
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous" />
     <!-- External Css File -->
-    <link rel="stylesheet" href="./assets/css/aboutus.css" />
+    <link rel="stylesheet" href="../assets/css/aboutus.css" />
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" />
     <!-- alert toast -->
@@ -20,6 +19,7 @@
 </head>
 
 <body>
+<?php include("../includes/nav-pages.php"); ?>
     <!-- START OF HOME SECTION -->
     <section class="homepic">
         <img src="https://i.ibb.co/ZKQtnfD/axgg-banner2.png" class="homepic img-fluid" style="width: 100%;" />

@@ -8,23 +8,19 @@
   <link rel="shortcut icon" href="https://i.ibb.co/dfD3s4M/278104398-126694786613134-4231769107383237629-n-removebg-preview.png" />
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
-  <link rel="stylesheet" href="assets/css/login.css?php echo time();" />
+  <link rel="stylesheet" href="../assets/css/login.css?<?php echo time(); ?>" />
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
-
-  <div class="back1">
-  <div id="content">
-  <form action="./actions/connection.php" method="post">
+  <form action="../actions/connection.php" method="post">
     <div class="card1 col-md-4 align-items-center position-absolute top-50 start-50 translate-middle">
       <div class="p-5 ms-3 mt-5 text-light">
         <h1 class="font-family: Poppins">Log in</h1>
         <p>Please enter your details</p>
-        <?php if(isset($_GET['error_message'])) { ?>
-		<div style="color:red;"><?php echo $_GET['error_message']; ?></div>
-	<?php } ?>
-
+        <?php if (isset($_GET['error_message'])) { ?>
+          <div style="color:red;"><?php echo $_GET['error_message']; ?></div>
+        <?php } ?>
       </div>
 
       <div class="form-floating mb-3 ms-5 me-5">
@@ -54,21 +50,7 @@
       </div>
     </div>
   </form>
-  </div>
-  </div>
-  <script>
-        $(document).ready(function() {
-            $("a").click(function(e) {
-                e.preventDefault();
-                var page = $(this).attr("href");
-                if (page != '#home') {
-                    $("#content").load(page);
-                }
-                $("a").removeClass("active");
-                $(this).addClass("active");
-            });
-        });
-    </script>
+
 </body>
 
 </html>

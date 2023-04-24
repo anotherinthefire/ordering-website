@@ -1,25 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AXGG | FAQs</title>
     <link rel="shortcut icon" href="https://i.ibb.co/dfD3s4M/278104398-126694786613134-4231769107383237629-n-removebg-preview.png" />
-    <link rel="stylesheet" href="./assets/css/faqs.css">
+    <link rel="stylesheet" href="../assets/css/faqs.css">
 </head>
-
 <body>
+<?php include("../includes/nav-pages.php"); ?>
     <div class="image-header">
         <img id="header-img" src="https://i.ibb.co/ZKQtnfD/axgg-banner2.png" alt="header">
     </div>
     <div class="container">
-
         <div class="faq-main-header">
             FREQUENTLY ASKED QUESTIONS
         </div>
-
         <div>
             <div class="faq-header">Account</div>
             <div class="faq-paragraph-box">

@@ -15,6 +15,6 @@ if(isset($_POST['signup'])) {
   $result = mysqli_query($conn, $query);
   
   // Redirect to login page
-  header('Location: includes/login.php');
+  header('Location: ../');
   exit;
 }

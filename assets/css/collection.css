@@ -47,3 +47,81 @@
   padding-top: 5%;
   font-family: "Montserrat Alternates";
 } */
+
+.img-header {
+  position: relative;
+  height: 30vh;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  width: 70vw;
+  overflow: hidden;
+}
+
+#header-img {
+  object-fit: cover;
+  object-position: center;
+  height: 70vh;
+  width: 100%;
+  filter: brightness(50%);
+}
+
+.centertext {
+  position: absolute;
+  top: 38vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Montserrat Alternates";
+  font-style: normal;
+  font-size: 50px;
+  font-weight: 400;
+  color: white;
+}
+
+.container {
+  position: relative;
+  height: 30vh;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  width: 70%;
+  overflow: hidden;
+  
+}
+.cat-bg {
+  object-fit: cover;
+  object-position: center;
+  height: 100%;
+  width: 100%;
+  filter: brightness(50%);
+  transition: transform 8s;
+}
+
+.cat-bg:hover {
+  -ms-transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+  transform: scale(1.5);
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Montserrat Alternates";
+  font-style: normal;
+  font-size: 50px;
+  font-weight: 400;
+  color: white;
+}
+
+.title {
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+  text-align: center;
+  padding-top: 5%;
+  font-family: "Montserrat Alternates";
+}

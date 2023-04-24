@@ -1,6 +1,6 @@
 <?php
 try {
-  include('./config.php');
+  include('../config.php');
 }
 //catch exception
 catch(Exception $e) {
@@ -15,10 +15,8 @@ catch(Exception $e) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title></title>
-  <link rel="stylesheet" href="includes/styles/nav.css?<?php echo time(); ?>" />
-  <!-- JavaScript Bundle with Popper -->
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="../includes/styles/nav.css?<?php echo time(); ?>" />
+  
 </head>
 <body>
   <div class="nav-bar">
@@ -71,6 +69,6 @@ catch(Exception $e) {
             <?php
           }
           ?>
-  <script src="includes/script/nav.js"></script>
+  <script src="../includes/script/nav.js"></script>
 </body>
 </html>
