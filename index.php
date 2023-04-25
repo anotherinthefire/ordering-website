@@ -69,7 +69,7 @@
                         const productBox = document.createElement('div');
                         productBox.classList.add('box');
                         productBox.innerHTML = `
-                        <a href="product.php?id=${product.prod_id}">
+                        <a href="pages/product.php?id=${product.prod_id}">
                             <div class="product_image"><img src="${product.prod_img}" style="height:30vh;" alt="new arrivals"></div>
                             <div class="content">
                                 <h3>${product.prod_name}</h3>
@@ -127,7 +127,7 @@
             </a>
         </div>
     </div>
-    <?php include("includes/footer.php"); ?>
+    <?php include("includes/foot-land.php"); ?>
 </body>
 
 </html>

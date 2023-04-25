@@ -27,6 +27,7 @@
   </div>
   <?php require_once "../actions/categories.php"; ?>
   </div>
+  <?php include("../includes/foot-pages.php"); ?>
 </body>
 
 </html>

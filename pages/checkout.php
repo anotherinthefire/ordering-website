@@ -127,5 +127,6 @@
   <button type="button" class="btn btn-Primary" style="background-color: 5876CE; font-family: 'Montserrat Alternates', sans-serif; border: 2px solid black; position:absolute; right:150px;">Checkout</button>
 
   <br><br><br><br>
+  <?php include("../includes/foot-pages.php"); ?>
 </body>
 </html>

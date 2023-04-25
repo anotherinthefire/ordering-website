@@ -77,6 +77,7 @@ if (isset($_SESSION['user_id'])) {
             </div>
           </div>
         </div>
+        <?php include("../includes/foot-pages.php"); ?>
         <script type="text/javascript">
           // Get the modal
           var modal = document.getElementById("myModal");

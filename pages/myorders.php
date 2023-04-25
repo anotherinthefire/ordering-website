@@ -33,4 +33,5 @@
                     <br> <br> 
                     <br><br><br>
         </div>
+        <?php include("../includes/foot-pages.php"); ?>
     

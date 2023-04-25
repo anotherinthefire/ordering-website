@@ -47,6 +47,7 @@
             <!-- PROD 1-->
         </div>
     </section>
+    <?php include("../includes/foot-pages.php"); ?>
 </body>
 
 </html>

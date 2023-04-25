@@ -93,6 +93,7 @@
             <br><br><br>
 </div>
 <br>
+<?php include("../includes/foot-pages.php"); ?>
 <script src="../assets/js/cart.js"></script>
 </body>
 </html>
