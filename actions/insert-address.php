@@ -3,15 +3,17 @@
 session_start();
 
 // Retrieve the form data using $_POST superglobal
-$region = $_POST['region'] ?? '';
-$province = $_POST['province'] ?? '';
-$city = $_POST['city'] ?? '';
-$barangay = $_POST['barangay'] ?? '';
-$street = $_POST['street'] ?? '';
-$house_no = $_POST['house_no'] ?? '';
-$postal_code = $_POST['postal_code'] ?? '';
-$company = $_POST['company'] ?? '';
-$room = $_POST['room'] ?? '';
+$user_id = $_SESSION['user_id'];
+$region = $_POST['region_text'];
+$province = $_POST['province_text'];
+$city = $_POST['city_text'];
+$barangay_text = $_POST['barangay_text']; 
+$street = $_POST['street'];
+$house_no = $_POST['house_no'];
+$postal_code = $_POST['postal_code'];
+$company = $_POST['company'];
+$room = $_POST['room'];
+$label = $_POST['label'];
 
 // Retrieve user id from session
 $user_id = $_SESSION['user_id'];
@@ -25,8 +27,8 @@ if (!$conn) {
 }
 
 // Prepare the SQL statement for inserting data
-$sql = "INSERT INTO address (user_id, region, province, city, barangay, street, house_no, postal_code, company, room, add_date)
-        VALUES ('$user_id', '$region', '$province', '$city', '$barangay', '$street', '$house_no', '$postal_code', '$company', '$room', NOW())";
+$sql = "INSERT INTO address (user_id, region, province, city, barangay, street, house_no, postal_code, company, room, label, add_date)
+        VALUES ('$user_id', '$region', '$province', '$city', '$barangay_text', '$street', '$house_no', '$postal_code', '$company', '$room', '$label', NOW())";
 
 // Execute the SQL statement
 if (mysqli_query($conn, $sql)) {
