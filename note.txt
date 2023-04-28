@@ -218,3 +218,84 @@ if (isset($_SESSION['user_id'])) {
 ?>
 
 
+//////////////////////////////////////////
+<?php
+// Replace these values with your database credentials
+$host = 'localhost';
+$dbname = 'sia';
+$username = 'root';
+$password = '';
+
+// Start the session
+session_start();
+
+// Retrieve the user ID from the session
+$user_id = $_SESSION['user_id'];
+
+// Set the address ID (replace with your own value)
+$address_id = isset($_POST['address']) ? $_POST['address'] : null;
+
+// Connect to the database
+$conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+
+// Retrieve the addresses for the specified user
+$stmt = $conn->prepare("SELECT * FROM address WHERE user_id = ?");
+$stmt->execute([$user_id]);
+$addresses = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Check if an address ID was selected
+if ($address_id) {
+    // Retrieve the details for the selected address
+    $stmt = $conn->prepare("SELECT * FROM address WHERE user_id = ? AND add_id = ?");
+    $stmt->execute([$user_id, $address_id]);
+    $selected_address = $stmt->fetch(PDO::FETCH_ASSOC);
+} else {
+    $selected_address = null;
+}
+
+// Check if the form was submitted
+if (isset($_POST['submit'])) {
+    // Retrieve the form values
+    $region = $_POST['region'];
+    $province = $_POST['province'];
+    $city = $_POST['city'];
+    $barangay = $_POST['barangay'];
+    $street = $_POST['street'];
+    $house_no = $_POST['house_no'];
+    $postal_code = $_POST['postal_code'];
+    $company = $_POST['company'];
+    $room = $_POST['room'];
+    
+    // Determine whether to insert or update the address
+    if ($selected_address) {
+        // Update the existing address
+        $stmt = $conn->prepare("UPDATE address SET region = ?, province = ?, city = ?, barangay = ?, street = ?, house_no = ?, postal_code = ?, company = ?, room = ? WHERE add_id = ?");
+        $stmt->execute([$region, $province, $city, $barangay, $street, $house_no, $postal_code, $company, $room, $address_id]);
+    } else {
+        // Insert a new address
+        $stmt = $conn->prepare("INSERT INTO address (user_id, region, province, city, barangay, street, house_no, postal_code, company, room) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->execute([$user_id, $region, $province, $city, $barangay, $street, $house_no, $postal_code, $company, $room]);
+        $address_id = $conn->lastInsertId();
+    }
+}
+
+// Generate the HTML for the dropdown
+echo '<form method="POST">';
+echo '<select name="address">';
+foreach ($addresses as $address) {
+    $selected = $address['add_id'] == $address_id ? 'selected' : '';
+    echo '<option value="' . $address['add_id'] . '" ' . $selected . '>' . $address['label'] . '</option>';
+}
+echo '</select>';
+
+// Generate the HTML for the address details textboxes
+echo '<label>Region:</label><input type="text" name="region" value="' . ($selected_address ? $selected_address['region'] : '') . '"><br>';
+echo '<label>Province:</label><input type="text" name="province" value="' . ($selected_address ? $selected_address['province'] : '') . '"><br>';
+echo '<label>City:</label><input type="text" name="city" value="' . ($selected_address ? $selected_address['city'] : '') . '"><br>';
+echo '<label>Barangay:</label><input type="text" name="barangay" value="' . ($selected_address ? $selected_address['barangay'] : '') . '"><br>';
+echo '<label>Street:</label><input type="text" name="street" value="' . ($selected_address ? $selected_address['street'] : '') . '"><br>';
+echo '<label>House No:</label><input type="text" name="house_no" value="' . ($selected_address ? $selected_address['house_no'] : '') . '"><br>';
+echo '<label>Postal Code:</label><input type="text" name="postal_code" value="' . ($selected_address ? $selected_address['postal_code'] : '') . '"><br>';
+echo '<label>Company:</label><input type="text" name="company" value="' . ($selected_address ? $selected_address['company'] : '') . '"><br>';
+echo '<label>Room:</label><input type="text" name="room" value="' . ($selected_address ? $selected_address['room'] : '') . '"><br>';
+echo '<input type="submit" value="get">';

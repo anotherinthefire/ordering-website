@@ -1,10 +1,10 @@
 <?php
 try {
-  include('./config.php');
+  include('config.php');
 }
 //catch exception
 catch (Exception $e) {
-  include('../config.php');
+  include('config.php');
 }
 ?>
 

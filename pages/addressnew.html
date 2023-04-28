@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PSGC API Example</title>
+</head>
+<body>
+    <label for="region">Select a region:</label>
+    <select id="region"></select>
+
+    <label for="province">Select a province:</label>
+    <select id="province"></select>
+
+    <label for="municipality">Select a municipality:</label>
+    <select id="municipality"></select>
+
+    <label for="barangay">Select a barangay:</label>
+    <select id="barangay"></select>
+
+    <label for="street">Enter a street:</label>
+    <input type="text" id="street">
+
+    <script>
+        const regionSelect = document.getElementById('region');
+        const provinceSelect = document.getElementById('province');
+        const municipalitySelect = document.getElementById('municipality');
+        const barangaySelect = document.getElementById('barangay');
+        const streetInput = document.getElementById('street');
+
+        const regionsUrl = 'https://psgc.gitlab.io/api/regions.json';
+        const provincesUrl = 'https://psgc.gitlab.io/api/provinces.json';
+        const municipalitiesUrl = 'https://psgc.gitlab.io/api/municipalities.json';
+        const barangaysUrl = 'https://psgc.gitlab.io/api/barangays.json';
+
+        function populateDropdown(select, data) {
+            select.innerHTML = '';
+            data.forEach(item => {
+                const option = document.createElement('option');
+                option.value = item.code;
+                option.textContent = item.name;
+                select.appendChild(option);
+            });
+        }
+
+        function updateProvinces(regionCode) {
+            const url = `${provincesUrl}?region_code=${regionCode}`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => populateDropdown(provinceSelect, data))
+                .catch(error => console.error(error));
+        }
+
+        function updateMunicipalities(provinceCode) {
+            const url = `${municipalitiesUrl}?province_code=${provinceCode}`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => populateDropdown(municipalitySelect, data))
+                .catch(error => console.error(error));
+        }
+
+        function updateBarangays(municipalityCode) {
+            const url = `${barangaysUrl}?municipality_code=${municipalityCode}`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => populateDropdown(barangaySelect, data))
+                .catch(error => console.error(error));
+        }
+
+        regionSelect.addEventListener('change', (e) => {
+            const regionCode = e.target.value;
+            updateProvinces(regionCode);
+        });
+
+        provinceSelect.addEventListener('change', (e) => {
+            const provinceCode = e.target.value;
+            updateMunicipalities(provinceCode);
+        });
+
+        municipalitySelect.addEventListener('change', (e) => {
+            const municipalityCode = e.target.value;
+            updateBarangays(municipalityCode);
+        });
+
+        barangaySelect.addEventListener('change', (e) => {
+            const barangayCode = e.target.value;
+            console.log('Selected barangay:', barangayCode);
+        });
+
+        streetInput.addEventListener('input', (e) => {
+            const street = e.target.value;
+            console.log('Entered street:', street);
+        });
+
+        // Fetch regions data and populate dropdown
+        fetch(regionsUrl)
+          .then(response => response.json())
+          .then(data => populateDropdown(regionSelect, data))
+          .catch(error => console.error(error));
+    </script>
+</body>
+</html>

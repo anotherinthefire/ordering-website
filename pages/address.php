@@ -30,9 +30,12 @@
             <input type="text" placeholder="Company" name="company">
 
             <input type="text" placeholder="Room" name="room">
+
+            <input type="text" placeholder="Label" name="label" required>
         </div>
         <input type="submit" value="Submit">
     </form>
+
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.js"></script>
     <!-- script type="text/javascript" src="../../jquery.ph-locations.js"></script -->
     <script type="text/javascript" src="https://f001.backblazeb2.com/file/buonzz-assets/jquery.ph-locations.js"></script>

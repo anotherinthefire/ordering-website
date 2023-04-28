@@ -67,39 +67,6 @@
     <br />
     <br />
     <br />
-    <!-- START OF CONTACT SECTION -->
-    <section id="contact">
-        <h1>Keep in Touch</h1>
-        <form action="proc/process_contact_form.php" method="post">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" required></textarea>
-
-            <input type="submit" value="Submit">
-        </form>
-        <!-- check if message was sent successfully and show alert message -->
-        <?php if (isset($_GET['success']) && $_GET['success'] == '1') : ?>
-            <script>
-                $(document).ready(function() {
-                    toastr.success('Message sent successfully!We will contact yoi soon');
-                });
-            </script>
-        <?php elseif (isset($_GET['success']) && $_GET['success'] == '0') : ?>
-            <script>
-                $(document).ready(function() {
-                    toastr.error('Message sending failed. Please try again later.');
-                });
-            </script>
-        <?php endif; ?>
-        <br />
-        <br />
-        <br />
-        <!-- END OF CONTACT SECTION -->
 
         <!-- Bootstrap Javascript Bundle with Popper -->
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

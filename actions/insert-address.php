@@ -26,19 +26,15 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-// Prepare the SQL statement for inserting data
 $sql = "INSERT INTO address (user_id, region, province, city, barangay, street, house_no, postal_code, company, room, label, add_date)
         VALUES ('$user_id', '$region', '$province', '$city', '$barangay_text', '$street', '$house_no', '$postal_code', '$company', '$room', '$label', NOW())";
 
-// Execute the SQL statement
 if (mysqli_query($conn, $sql)) {
-    // Redirect to profile page
     header("Location: ../pages/profile.php");
     exit();
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
 
-// Close database connection
 mysqli_close($conn);
 ?>
