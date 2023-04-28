@@ -6,7 +6,8 @@
 </head>
 
 <body>
-    <h1>Address</h1>
+<?php include("../includes/nav-pages.php"); ?>
+    <h1 style="padding-top:20vh;">Address</h1>
     <form method="post" action="../actions/insert-address.php">
         <div>
             <input type="hidden" id="region_select" name="region_text">
@@ -35,13 +36,12 @@
         </div>
         <input type="submit" value="Submit">
     </form>
-
+    <a href="edit-address.php">edit address</a>
+    <div class="space-bott" style="padding-bottom:20vh;"></div>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.js"></script>
-    <!-- script type="text/javascript" src="../../jquery.ph-locations.js"></script -->
     <script type="text/javascript" src="https://f001.backblazeb2.com/file/buonzz-assets/jquery.ph-locations.js"></script>
     <script type="text/javascript">
         var my_handlers = {
-
             fill_provinces: function() {
                 var region_select = document.getElementById("region_select");
                 var region_text = $("#region option:selected").text();
@@ -73,6 +73,12 @@
                 $('#barangay').ph_locations('fetch_list', [{
                     "city_code": city_code
                 }]);
+            },
+
+            select_barangay: function() {
+                var barangay_select = document.getElementById("barangay_select");
+                var barangay_text = $("#barangay option:selected").text();
+                barangay_select.value = barangay_text;
             }
         };
 
@@ -80,6 +86,73 @@
             $('#region').on('change', my_handlers.fill_provinces);
             $('#province').on('change', my_handlers.fill_cities);
             $('#city').on('change', my_handlers.fill_barangays);
+            $('#barangay').on('change', my_handlers.select_barangay);
+
+            $('#region').ph_locations({
+                'location_type': 'regions'
+            });
+            $('#province').ph_locations({
+                'location_type': 'provinces'
+            });
+            $('#city').ph_locations({
+                'location_type': 'cities'
+            });
+            $('#barangay').ph_locations({
+                'location_type': 'barangays'
+            });
+            $('#region').ph_locations('fetch_list');
+
+            function select_barangay() {
+                var barangay_select = document.getElementById("barangay_select");
+                var barangay_text = $("#barangay option:selected").text();
+                barangay_select.value = barangay_text;
+            }
+        });
+        $(function() {
+            var my_handlers = {
+                fill_provinces: function() {
+                    var region_select = document.getElementById("region_select");
+                    var region_text = $("#region option:selected").text();
+                    region_select.value = region_text;
+                    var region_code = $(this).val();
+                    $('#province').ph_locations('fetch_list', [{
+                        "region_code": region_code
+                    }]);
+                },
+
+                fill_cities: function() {
+                    var province_select = document.getElementById("province_select");
+                    var province_text = $("#province option:selected").text();
+                    province_select.value = province_text;
+
+                    var province_code = $(this).val();
+                    $('#city').ph_locations('fetch_list', [{
+                        "province_code": province_code
+                    }]);
+                },
+
+                fill_barangays: function() {
+                    var city_select = document.getElementById("city_select");
+                    var city_text = $("#city option:selected").text();
+                    city_select.value = city_text;
+
+                    var city_code = $(this).val();
+                    $('#barangay').ph_locations('fetch_list', [{
+                        "city_code": city_code
+                    }]);
+                },
+
+                select_barangay: function() {
+                    var barangay_select = document.getElementById("barangay_select");
+                    var barangay_text = $("#barangay option:selected").text();
+                    barangay_select.value = barangay_text;
+                }
+            };
+
+            $('#region').on('change', my_handlers.fill_provinces);
+            $('#province').on('change', my_handlers.fill_cities);
+            $('#city').on('change', my_handlers.fill_barangays);
+            $('#barangay').on('change', my_handlers.select_barangay);
 
             $('#region').ph_locations({
                 'location_type': 'regions'
@@ -97,6 +170,7 @@
             $('#region').ph_locations('fetch_list');
         });
     </script>
+    <?php include("../includes/foot-pages.php"); ?>
 </body>
 
 </html>
