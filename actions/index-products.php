@@ -1,7 +1,7 @@
 <?php
 require_once "../config.php";
 
-$sql = "SELECT prod_id, prod_name, prod_price, prod_img FROM products LIMIT 28";
+$sql = "SELECT prod_id, prod_name, prod_price, prod_img FROM products ORDER BY prod_id DESC LIMIT 28";
 $result = $conn->query($sql);
 
 $products = array();

@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <?php include("../includes/nav-pages.php"); ?>
+    <?php include "../includes/nav-pages.php"; ?>
     <!-- START OF HOME SECTION -->
     <section class="homepic">
         <section class="" id="home">
@@ -146,20 +146,26 @@
     <!-- FAQ Accordion End -->
 
     <!-- START OF CONTACT SECTION -->
-   <section id="contact">
-        <h1>Keep in Touch</h1>
-        <form action="../actions/process_contact_form.php" method="post">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
+    <section id="contact">
+    <div id="question-section">
+    <p>Any other questions?</p>
+    <button onclick="showForm()">Yes</button>
+    <button onclick="hideForm()">No</button>
+    </div>
+    <form id="contact-form" action="../actions/process_contact_form.php" method="post" style="display:none;">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+        <label for="name">Subject:</label>
+        <input type="text" id="name" name="name" required>
 
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" required></textarea>
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" oninput="countCharacters()" required></textarea>
+        <div id="char-count"></div>
 
-            <input type="submit" value="Submit">
-        </form>
+        <input type="submit" value="Submit">
+    </form>
+
         <!-- check if message was sent successfully and show alert message -->
         <?php if (isset($_GET['success']) && $_GET['success'] == '1') : ?>
             <script>
@@ -177,12 +183,38 @@
         <br />
         <br />
         <br />
-            </section>
-        <!-- END OF CONTACT SECTION -->
+    </section>
+    <!-- END OF CONTACT SECTION -->
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
-    <?php include("../includes/foot-pages.php"); ?>
+    <?php include "../includes/foot-pages.php"; ?>
+    <script>
+        function countCharacters() {
+            var message = document.getElementById("message").value;
+            var count = message.length;
+            var charCount = document.getElementById("char-count");
+            charCount.innerHTML = count + "/500";
+
+            if (count > 500) {
+                charCount.style.color = "red";
+                document.getElementById("message").value = message.slice(0, 500);
+            } else {
+                charCount.style.color = "black";
+            }
+        }
+
+
+        function showForm() {
+            document.getElementById("question-section").style.display = "none";
+            document.getElementById("contact-form").style.display = "block";
+        }
+
+
+        function hideForm() {
+            document.getElementById("question-section").innerHTML = "Thank you for contacting us. If you have any questions in the future, feel free to reach out!";
+        }
+    </script>
 </body>
 
 </html>

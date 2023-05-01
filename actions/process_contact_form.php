@@ -7,7 +7,7 @@ $email = $_POST['email'];
 $message = $_POST['message'];
 
 // prepare and execute SQL query
-$stmt = $conn->prepare("INSERT INTO messages (mess_name, email, message) VALUES (?, ?, ?)");
+$stmt = $conn->prepare("INSERT INTO messages (subject, email, message) VALUES (?, ?, ?)");
 $stmt->bind_param("sss", $name, $email, $message);
 if ($stmt->execute()) {
 	// redirect to aboutus.php with success message

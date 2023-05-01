@@ -19,40 +19,42 @@ if ($result->num_rows > 0) {
   $row = $result->fetch_assoc();
 
   // Add product to cart
-  if (isset($_POST['add_to_cart'])) {
-    // Get product information
-    $prod_name = $row['prod_name'];
-    $prod_price = $row['prod_price'];
-    $color_id = $_POST['color'];
-    $size_id = $_POST['size'];
-    $quantity = $_POST['quantity'];
-    $user_id = $_SESSION['user_id'];
+  // if (isset($_POST['add_to_cart'])) {
+  //   // Get product information
+  //   $prod_name = $row['prod_name'];
+  //   $prod_price = $row['prod_price'];
+  //   $color_id = $_POST['color'];
+  //   $size_id = $_POST['size'];
+  //   $quantity = $_POST['quantity'];
+  //   $user_id = $_SESSION['user_id'];
 
-    // Check if product is already in the cart
-    $sql = "SELECT * FROM cart WHERE user_id = $user_id AND stock_id IN (SELECT stock_id FROM stock WHERE prod_id = $prod_id AND color_id = $color_id AND size_id = $size_id)";
-    $result = $conn->query($sql);
+  //   // Check if product is already in the cart
+  //   $sql = "SELECT * FROM cart WHERE user_id = $user_id AND stock_id IN (SELECT stock_id FROM stock WHERE prod_id = $prod_id AND color_id = $color_id AND size_id = $size_id)";
+  //   $result = $conn->query($sql);
 
-    if ($result->num_rows > 0) {
-      // Update cart quantity
-      $row = $result->fetch_assoc();
-      $cart_id = $row['cart_id'];
-      $new_quantity = $row['quantity'] + $quantity;
-      $sql = "UPDATE cart SET quantity = $new_quantity WHERE cart_id = $cart_id";
-      if ($conn->query($sql) === TRUE) {
-        echo "Product quantity updated successfully.";
-      } else {
-        echo "Error updating product quantity: " . $conn->error;
-      }
-    } else {
-      // Add product to cart
-      $sql = "INSERT INTO cart (user_id, stock_id, quantity) VALUES ($user_id, (SELECT stock_id FROM stock WHERE prod_id = $prod_id AND color_id = $color_id AND size_id = $size_id), $quantity)";
-      if ($conn->query($sql) === TRUE) {
-        echo "Product added to cart successfully.";
-      } else {
-        echo "Error adding product to cart: " . $conn->error;
-      }
-    }
-  }
+  //   if ($result->num_rows > 0) {
+  //     // Update cart quantity
+  //     $row = $result->fetch_assoc();
+      
+  //     $cart_id = $row['cart_id'];
+  //     $stock_id = $row['stock_id'];
+  //     $new_quantity = $row['quantity'] + $quantity;
+  //     $sql = "UPDATE cart SET quantity = $new_quantity WHERE cart_id = $cart_id";
+  //     if ($conn->query($sql) === TRUE) {
+  //       echo "Product quantity updated successfully.";
+  //     } else {
+  //       echo "Error updating product quantity: " . $conn->error;
+  //     }
+  //   } else {
+  //     // Add product to cart
+  //     $sql = "INSERT INTO cart (user_id, stock_id, quantity) VALUES ($user_id, (SELECT stock_id FROM stock WHERE prod_id = $prod_id AND color_id = $color_id AND size_id = $size_id), $quantity)";
+  //     if ($conn->query($sql) === TRUE) {
+  //       echo "Product added to cart successfully.";
+  //     } else {
+  //       echo "Error adding product to cart: " . $conn->error;
+  //     }
+  //   }
+  // }
 
 ?>
 
@@ -94,25 +96,43 @@ if ($result->num_rows > 0) {
                 $result = mysqli_query($conn, $sql);
                 $colors = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-                $sql = "SELECT DISTINCT size.size, stock.size_id FROM stock
+                $sql1 = "SELECT DISTINCT size.size, stock.size_id FROM stock
                         INNER JOIN size ON stock.size_id = size.size_id
                         WHERE stock.prod_id = $prod_id";
-                $result = mysqli_query($conn, $sql);
-                $sizes = mysqli_fetch_all($result, MYSQLI_ASSOC);
-                ?>
+                $result1 = mysqli_query($conn, $sql1);
+                $sizes = mysqli_fetch_all($result1, MYSQLI_ASSOC);
 
+                
+                $query = "SELECT products.prod_id, stock.prod_id, stock.stock_id 
+                FROM products 
+                INNER JOIN stock ON products.prod_id = stock.prod_id 
+                WHERE stock.prod_id = $prod_id";
+                $result = mysqli_query($conn, $query);
+                
+                if(mysqli_num_rows($result) > 0)
+                    {
+                      while($row = mysqli_fetch_array($result))
+                         {  
+                          // print_r($row['stock_id']);
+                         
+                    
+                ?>
+              <form action="../actions/addtocart.php" method="post">
+              <input name="stock_id" hidden value= <?php echo $row['stock_id'];?>>
+              <input name="prod_id" hidden value= <?php echo $row['prod_id'];?>>  
+              
                 <div class="size-color-labels">
                   <label class="label-size" for="#">Size</label>
                   <label class="label-color" for="#">Color</label>
                 </div>
                 <div class="size-and-color">
-                  <select id="second" class="size-select">
+                  <select id="second" class="size-select" name = "size_id">
                     <?php foreach ($sizes as $size) : ?>
                       <option value="<?php echo $size['size_id']; ?>"><?php echo $size['size']; ?></option>
                     <?php endforeach; ?>
                   </select>
 
-                  <select id="second" class="color-select">
+                  <select id="second" name ="color_id" class="color-select">
                     <?php foreach ($colors as $color) : ?>
                       <option value="<?php echo $color['color_id']; ?>"><?php echo $color['color']; ?></option>
                     <?php endforeach; ?>
@@ -121,7 +141,7 @@ if ($result->num_rows > 0) {
 
                 <label class="label-quantity" for="#">Quantity</label>
                 <div class="quantity-container">
-                  <input type="number" id="quantity" class="quantity-field" value="1">
+                  <input type="number" id="quantity" name="quantity" class="quantity-field" value="1">
                   <div class="button-container">
                     <!-- <button id="up" onclick="setQuantity('up');">
                       <i class="fa fa-chevron-up"></i>
@@ -133,11 +153,22 @@ if ($result->num_rows > 0) {
                 </div>
                 <br>
                 <br>
-
-                <a href="#" class="btn">Add to Cart</a>
-                <div class="description">
-
                 <?php
+                if(isset($_SESSION['user_id']))
+                {
+                ?>      
+                <button type="submit" name="submit" class="btn">Add to Cart</button>
+                <?php
+                }else
+                {
+
+                }
+                ?>
+                <div class="description">
+                </form>
+                <?php
+                }
+              }
                 $prod_id = $_GET['id'];
                 // require_once("../config.php");
 
