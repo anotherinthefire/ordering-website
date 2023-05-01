@@ -77,7 +77,7 @@ if ($result->num_rows > 0) {
         <div class="grid-container">
           <div>
             <div class="column-left">
-              <div class="product_image"> <img src="../<?php echo $row['prod_img']; ?>" alt="<?php echo $row['prod_name']; ?>" class="variant-1"> </div>
+              <div class="product_image"> <img src="../../product_images/<?php echo $row['prod_img']; ?>" alt="<?php echo $row['prod_name']; ?>" class="variant-1"> </div>
             </div>
           </div>
           <div>
@@ -121,14 +121,14 @@ if ($result->num_rows > 0) {
 
                 <label class="label-quantity" for="#">Quantity</label>
                 <div class="quantity-container">
-                  <input type="text" id="quantity" class="quantity-field" value="1">
+                  <input type="number" id="quantity" class="quantity-field" value="1">
                   <div class="button-container">
-                    <button id="up" onclick="setQuantity('up');">
+                    <!-- <button id="up" onclick="setQuantity('up');">
                       <i class="fa fa-chevron-up"></i>
                     </button>
                     <button id="down" onclick="setQuantity('down');">
                       <i class="fa fa-chevron-down"></i>
-                    </button>
+                    </button> -->
                   </div>
                 </div>
                 <br>

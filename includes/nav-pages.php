@@ -55,7 +55,8 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 
 ?>
     <div class="icons">
-        <a href="../includes/login.php" class="fa-solid fa-cart-shopping fa-2x"></a>
+        <a class="fa-solid fa-cart-shopping fa-2x"></a>
+        <!-- <a href="../includes/login.php" class="fa-solid fa-cart-shopping fa-2x"></a> -->
         <div class="dropdown">
             <button class="dropbtn">
                 <a class="fa-solid fa-user fa-2x"></a>

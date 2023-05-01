@@ -24,10 +24,10 @@ while ($row = mysqli_fetch_assoc($result)) {
   }
 
   echo '<div class="container">';
-  echo '<a href="../pages/products.php?cat_id=' . $category_id . '" class="btn btn-primary category-link" data-category-id="' . $category_id . '">
-            <img src="../' . $prod_img . '" class="cat-bg" alt="' . $category_name . '" />
+  echo '<a href="../pages/products.php?cat_id=' . $category_id . '" class="bg" data-category-id="' . $category_id . '">
+            <img src="../../product_images/' . $prod_img . '" class="cat-bg" alt="' . $category_name . '" />
             <div class="centered">
-              <h5>' . $category_name . '</h5>
+              <h5 style="font-size:2.7rem;">' . $category_name . '</h5>
             </div>
           </a>';
   echo "</div>";

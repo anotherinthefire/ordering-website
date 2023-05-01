@@ -10,28 +10,27 @@ session_start();
 // Retrieve the user ID from the session
 $user_id = $_SESSION['user_id'];
 
-// Set the address ID (replace with your own value)
+// Set the address ID
 $address_id = isset($_POST['address']) ? $_POST['address'] : null;
 
-// Connect to the database
 $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
 
-// Check if an address ID was selected
+// Check address id
 if (isset($_POST['select_address'])) {
     $address_id = $_POST['address'];
 }
 
 // Check if the 'set as default' button was clicked
 if (isset($_POST['set_default'])) {
-    // Set the value of 'set' column for the selected address to 1
+    // Set the value to 1
     $stmt = $conn->prepare("UPDATE address SET `set` = 1 WHERE user_id = ? AND add_id = ?");
     $stmt->execute([$user_id, $address_id]);
 
-    // Set the value of 'set' column to 0 for all other addresses of the user
+    // Set other address `set` to 0
     $stmt = $conn->prepare("UPDATE address SET `set` = 0 WHERE user_id = ? AND add_id != ?");
     $stmt->execute([$user_id, $address_id]);
 
-    // Retrieve the updated address
+    // Retrieve updated address
     $stmt = $conn->prepare("SELECT * FROM address WHERE user_id = ? AND add_id = ?");
     $stmt->execute([$user_id, $address_id]);
     $selected_address = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -67,11 +66,11 @@ if (isset($_POST['submit'])) {
 
     // Determine whether to insert or update the address
     if ($selected_address) {
-        // Update the existing address
+        // Update existing address
         $stmt = $conn->prepare("UPDATE address SET region = ?, province = ?, city = ?, barangay = ?, street = ?, house_no = ?, postal_code = ?, company = ?, room = ? WHERE add_id = ?");
         $stmt->execute([$region, $province, $city, $barangay, $street, $house_no, $postal_code, $company, $room, $address_id]);
     } else {
-        // Insert a new address
+        // Insert new address
         $stmt = $conn->prepare("INSERT INTO address (user_id, region, province, city, barangay, street, house_no, postal_code, company, room, `floor`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         $stmt->execute([$user_id, $region, $province, $city, $barangay, $street, $house_no, $postal_code, $company, $room, $floor]);
         $address_id = $conn->lastInsertId();
@@ -81,7 +80,6 @@ if (isset($_POST['submit'])) {
 }
 ?>
 
-
 <!DOCTYPE html>
 <html>
 
@@ -90,13 +88,12 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
-    <h1>Address Form</h1>
+<?php include("../includes/nav-pages.php"); ?>
+    <h1 style="padding-top: 20vh;">Address Form</h1>
     <form method="post" action="">
         <select name="address">
             <?php foreach ($addresses as $address) { ?>
-                <option value="<?php echo $address['add_id']; ?>" <?php if ($address['add_id'] == $address_id) {
-                                                                        echo 'selected';
-                                                                    } ?>><?php echo $address['label']; ?></option>
+                <option value="<?php echo $address['add_id']; ?>" <?php if ($address['add_id'] == $address_id) {echo 'selected';} ?>><?php echo $address['label']; ?></option>
             <?php } ?>
         </select>
         <input type="submit" name="select_address" value="Select Address">
@@ -136,9 +133,9 @@ if (isset($_POST['submit'])) {
 
         <input type="submit" name="submit" value="Save Address">
     </form>
-
-
-
+    <a href="add-address.php"> << back</a>
+    <div class="space-bott" style="padding-bottom:20vh;"></div>
+    <?php include("../includes/foot-pages.php"); ?>
 </body>
 
 </html>

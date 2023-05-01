@@ -67,10 +67,10 @@
                         productBox.classList.add('box');
                         productBox.innerHTML = `
                         <a href="pages/product.php?id=${product.prod_id}">
-                            <div class="product_image"><img src="${product.prod_img}" style="height:30vh;" alt="new arrivals"></div>
+                            <div class="product_image"><img src="../product_images/${product.prod_img}" style="height:30vh;" alt="new arrivals"></div>
                             <div class="content">
                                 <h3>${product.prod_name}</h3>
-                                <h2 class="price">₱ ${product.prod_price}<small>00</small></h2>
+                                <h2 class="price">₱ ${product.prod_price}</h2>
                             </div>
                         </a>
                     `;
@@ -104,8 +104,8 @@
             }
         ?>
             <div class="card">
-                <a href="pages/products.php?cat_id=<?php echo $category_id; ?>" class="btn btn-primary category-link" data-category-id="<?php echo $category_id; ?>">
-                    <img src="<?php echo $prod_img; ?>" alt="<?php echo $category_name; ?>">
+                <a href="pages/products.php?cat_id=<?php echo $category_id; ?>" class="" data-category-id="<?php echo $category_id; ?>">
+                    <img src="../product_images/<?php echo $prod_img; ?>" alt="<?php echo $category_name; ?>">
                     <div class="details">
                         <h2><?php echo $category_name; ?></h2>
                         <p>View Category</p>
@@ -114,7 +114,7 @@
             </div>
         <?php } ?>
         <div class="card">
-            <a href="pages/collection.php" class="btn btn-primary>
+            <a href="pages/collection.php" class="">
             <img src=" https://i.ibb.co/Wg85czh/allcollections-pic.png" alt="All Collections">
                 <div class="details">
                     <h2>All Collections</h2>

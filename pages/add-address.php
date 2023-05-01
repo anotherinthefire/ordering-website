@@ -36,7 +36,8 @@
         </div>
         <input type="submit" value="Submit">
     </form>
-    <a href="edit-address.php">edit address</a>
+    <a href="edit-address.php">edit address</a><br>
+    <a href="profile.php"><< back</a>
     <div class="space-bott" style="padding-bottom:20vh;"></div>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.js"></script>
     <script type="text/javascript" src="https://f001.backblazeb2.com/file/buonzz-assets/jquery.ph-locations.js"></script>

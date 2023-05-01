@@ -11,10 +11,10 @@ $stmt = $conn->prepare("INSERT INTO messages (mess_name, email, message) VALUES 
 $stmt->bind_param("sss", $name, $email, $message);
 if ($stmt->execute()) {
 	// redirect to aboutus.php with success message
-	header("Location: ../aboutus.php?success=1");
+	header("Location: ../pages/faqs.php?success=1");
 } else {
 	// redirect to aboutus.php with error message
-	header("Location: ../aboutus.php?success=0");
+	header("Location: ../pages/faqs.php?success=0");
 }
 $stmt->close();
 $conn->close();

@@ -31,7 +31,7 @@
                 while ($row = $result->fetch_assoc()) {
                     echo '<div class="box">';
                     echo '<a href="product.php?id=' . $row["prod_id"] . '">';
-                    echo '<div class="product_image"><img src="../' . $row["prod_img"] . '" style="height:30vh;" alt="new arrivals"></div>';
+                    echo '<div class="product_image"><img src="../../product_images/' . $row["prod_img"] . '" style="height:30vh;" alt="new arrivals"></div>';
                     echo '<div class="content">';
                     echo '<h3><b>' . $row["prod_name"] . '</b></h3>';
                     echo '<h2 class="price">₱ ' . $row["prod_price"] . '<small>00</small></h2>';

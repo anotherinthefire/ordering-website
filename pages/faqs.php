@@ -148,7 +148,7 @@
     <!-- START OF CONTACT SECTION -->
    <section id="contact">
         <h1>Keep in Touch</h1>
-        <form action="proc/process_contact_form.php" method="post">
+        <form action="../actions/process_contact_form.php" method="post">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
 

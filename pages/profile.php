@@ -63,7 +63,7 @@ if (isset($_SESSION['user_id'])) {
             </div>
             <div class="press">
               <button type="button" class="">
-                View Orders
+                <a href="myorders.php">View Orders</a>
               </button>
             </div>
           </div>
