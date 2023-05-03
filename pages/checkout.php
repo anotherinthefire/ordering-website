@@ -42,7 +42,7 @@
           <input type="text" class="form-control" id="address" placeholder="Enter your address" required="">
         </div>
 
-        <div class="row mb-3" style="
+        <div class="row mb-10" style="
     left: auto;
 ">
           <div class="col">
@@ -59,7 +59,7 @@
           </div>
         </div>
 
-        <div class="mb-3">
+        <div class="mb-3 ">
           <label for="phone" class="form-label">Phone</label>
           <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number" required="">
         </div>

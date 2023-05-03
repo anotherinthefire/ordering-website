@@ -10,24 +10,41 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/allproducts.css?<?php echo time(); ?>">
 </head>
+
 <body>
     <?php include("../includes/nav-pages.php"); ?>
+    <?php
+    $order_by = isset($_GET['order_by']) ? $_GET['order_by'] : 'name_asc';
+    $order_name = ($order_by === 'name_desc') ? 'p.prod_name DESC' : 'p.prod_name ASC';
+    $order_price = ($order_by === 'price_desc') ? 'p.prod_price DESC' : 'p.prod_price ASC'; 
+    $sql = "SELECT s.*, p.prod_name, p.prod_price, p.prod_img FROM stock s 
+        INNER JOIN products p ON s.prod_id = p.prod_id 
+        GROUP BY s.prod_id
+        ORDER BY $order_price, $order_name"; 
+    $result = $conn->query($sql);
+    ?>
     <header>
         <div class="image-header">
             <img id="header-img" src="../images/all-products.jpg" alt="header">
             <div class="centered">ALL PRODUCTS</div>
         </div>
     </header>
+    <select onchange="this.options[this.selectedIndex].value && (window.location.href = '?order_by='+this.options[this.selectedIndex].value);">
+        <option value="name_asc" <?php if ($order_by === 'name_asc') echo 'selected'; ?>>Product Name A-Z</option>
+        <option value="name_desc" <?php if ($order_by === 'name_desc') echo 'selected'; ?>>Product Name Z-A</option>
+        <option value="price_desc" <?php if ($order_by === 'price_desc') echo 'selected'; ?>>Price High to Low</option>
+        <option value="price_asc" <?php if ($order_by === 'price_asc') echo 'selected'; ?>>Price Low to High</option>
+    </select>
     <section class="a-products">
         <br>
         <br>
         <div class="grid-container">
-            <?php require_once "../config.php";
-            $sql = "SELECT prod_id, prod_name, prod_price, prod_img FROM products";
-            $result = $conn->query($sql);
+            <?php
 
             // Display the results
-            if ($result->num_rows > 0) {
+            if ($result->num_rows > 0) { ?>
+
+            <?php
                 while ($row = $result->fetch_assoc()) {
                     echo '<div class="box">';
                     echo '<a href="product.php?id=' . $row["prod_id"] . '">';

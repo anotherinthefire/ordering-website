@@ -11,16 +11,24 @@
     <form method="post" action="../actions/insert-address.php">
         <div>
             <input type="hidden" id="region_select" name="region_text">
-            <select id="region" name="region"></select><br>
+            <select id="region" name="region">
+            <option value="empty">----------SELECT REGION----------</option>
+            </select><br>
 
             <input type="hidden" id="province_select" name="province_text">
-            <select id="province" name="province"></select><br>
+            <select id="province" name="province" >
+            <option value="empty">---------SELECT PROVINCE---------</option>
+            </select><br>
 
             <input type="hidden" id="city_select" name="city_text">
-            <select id="city" name="city"></select><br>
+            <select id="city" name="city">
+            <option value="empty">-------------SELECT CITY-------------</option>
+            </select><br>
 
             <input type="hidden" id="barangay_select" name="barangay_text">
-            <select id="barangay" name="barangay"></select><br>
+            <select id="barangay" name="barangay">
+            <option value="empty">---------SELECT BARANGAY---------</option>
+            </select><br>
 
             <input type="text" placeholder="Street" name="street" required>
 

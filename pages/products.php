@@ -19,20 +19,15 @@ LIMIT 1";
 $latest_product_result = $conn->query($latest_product_query);
 $latest_product = $latest_product_result->fetch_assoc();
 
+$order_by = isset($_GET['order_by']) ? $_GET['order_by'] : 'id_desc'; // set default
+$order_name = ($order_by === 'name_desc') ? 'p.prod_name DESC' : 'p.prod_name ASC'; //by name
+$order_price = ($order_by === 'price_desc') ? 'p.prod_price DESC' : 'p.prod_price ASC'; // by price
+$order_id = ($order_by === 'id_asc') ? 'p.prod_id ASC' : 'p.prod_id DESC'; //by product id
 $sql = "SELECT s.*, p.prod_name, p.prod_price, p.prod_img FROM stock s 
-            INNER JOIN products p ON s.prod_id = p.prod_id 
-            WHERE s.category_id = $category_id
-            GROUP BY s.prod_id";
-$result = $conn->query($sql);
-
-$order_by = isset($_GET['order_by']) ? $_GET['order_by'] : 'name_asc'; // set default order
-$order_name = ($order_by === 'name_desc') ? 'p.prod_name DESC' : 'p.prod_name ASC'; // order by name
-$order_price = ($order_by === 'price_desc') ? 'p.prod_price DESC' : 'p.prod_price ASC'; // order by price
-$sql = "SELECT s.*, p.prod_name, p.prod_price, p.prod_img FROM stock s 
-            INNER JOIN products p ON s.prod_id = p.prod_id 
-            WHERE s.category_id = $category_id
-            GROUP BY s.prod_id
-            ORDER BY $order_name, $order_price";
+        INNER JOIN products p ON s.prod_id = p.prod_id 
+        WHERE s.category_id = $category_id
+        GROUP BY s.prod_id
+        ORDER BY $order_id, $order_price, $order_name"; // changed order
 $result = $conn->query($sql);
 ?>
 
@@ -63,6 +58,8 @@ $result = $conn->query($sql);
         <option value="name_desc" <?php if ($order_by === 'name_desc') echo 'selected'; ?>>Product Name Z-A</option>
         <option value="price_desc" <?php if ($order_by === 'price_desc') echo 'selected'; ?>>Price High to Low</option>
         <option value="price_asc" <?php if ($order_by === 'price_asc') echo 'selected'; ?>>Price Low to High</option>
+        <option value="id_desc" <?php if ($order_by === 'id_desc') echo 'selected'; ?>>Newest to Oldest</option>
+        <option value="id_asc" <?php if ($order_by === 'id_asc') echo 'selected'; ?>>Oldest to Newest</option>
     </select>
 
     <div class="grid-container">

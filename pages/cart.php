@@ -74,7 +74,7 @@ catch (Exception $e) {
                             <tr class="Katekyo" style="border-bottom-width: 4.667; padding-bottom:10px;">
                                 <td style="padding-left: 75px;"><input type="checkbox"></td>
                                 <td style="padding-bottom: 30px;padding-top: 30px;">
-                                    <img src="../../product_images/<?php echo $row['prod_img']; ?>" style="width: 300px; height: 300px;">
+                                    <img src="../../product_images/<?php echo $row['prod_img']; ?>" style="width: 200px; height: 200px;">
                                 </td>
                                 <td class="Hit" style="padding-left: 10px;">
                                     <b><?php echo $row['prod_name']; ?></b>
@@ -82,19 +82,23 @@ catch (Exception $e) {
                                     <p>Color(<?php echo $row['color']; ?>)</p>
                                     <p>Price ₱<?php echo $row['productPrice']; ?></p>
                                 </td>
-                                <td style="padding-left: 20px; padding-right: 20px; padding-bottom: 0px;">
-                                    <div id="">₱<?php echo $row['totalPrice']; ?></div>
-                                </td>
+                                
 
                                 <form action="../actions/update.php" method="post">
                                     <td>
-                                        <input type="number" min=1 name="quantity" value="<?php echo $row['quantity']; ?>" id="input" style="width: 104px;">
+                                        <input type="hidden" name="cart_id" value="<?php echo $row['cart_id']; ?>">
+                                        <button type="submit" name="minus" style="background-color:transparent; border:none;">-</button>
+                                        <input type="number" min=1 name="quantity" value="<?php echo $row['quantity']; ?>" id="input"  style="text-align: center; width:7vw;">
+                                        <button type="submit" name="plus" style="background-color:transparent; border:none;">+</button>
+
                                     </td>
-                                    <td>
-                                        <button type="submit" name="submit" class="btn btn-white">✔</button>
-                                        <input type='text' hidden name='cart_id' value="<?php echo $row['cart_id']; ?>">
-                                    </td>
+                                    <?php if ($row['quantity'] == 0) : ?>
+
+                                    <?php endif; ?>
                                 </form>
+                                <td style="padding-left: 20px; padding-right: 20px; padding-bottom: 0px;">
+                                    <div id="">₱<?php echo $row['totalPrice']; ?></div>
+                                </td>
 
                                 <form action="../actions/delete.php" method="post">
                                     <td>
