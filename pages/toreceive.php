@@ -5,15 +5,16 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AXGG | My Orders</title>
+    <title>AXGG | To Receive</title>
     <link rel="shortcut icon" href="https://i.ibb.co/dfD3s4M/278104398-126694786613134-4231769107383237629-n-removebg-preview.png" />
     <style>
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-  .link-no-decoration a {
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+        .link-no-decoration a {
             text-decoration: none;
             color:inherit;
         }
-</style>
+    </style>
 </head>
 
 <body>
@@ -21,7 +22,8 @@
     $user_id = $_SESSION['user_id'];
     include '../config.php';
 
-    function getOrderStatus($status) {
+    function getOrderStatus($status)
+    {
         switch ($status) {
             case 0:
                 return "waiting for confirmation";
@@ -44,8 +46,8 @@
             default:
                 return $status;
         }
-    }    
-    
+    }
+
     // SQL statement to retrieve ordered products and their details
     $sql = "SELECT op.oprod_id, op.ord_id, op.quantity, p.prod_name, p.prod_price, c.color, s.size, p.prod_desc, p.prod_img, o.status
             FROM ordered_products op
@@ -55,8 +57,9 @@
             INNER JOIN color c ON stk.color_id = c.color_id
             INNER JOIN size s ON stk.size_id = s.size_id
             WHERE o.user_id = $user_id 
+            AND o.status = 5
             ORDER BY op.ord_id DESC";
-    
+
     $result = mysqli_query($conn, $sql);
 
     ?>
@@ -68,14 +71,15 @@
         <br /><br /><br />
         <table>
             <tbody>
-            <tr style="font-family: 'Montserrat', sans-serif; " class="link-no-decoration">
-                    <td><b style="padding-left:20px; color: #5876C3;"><a href="myorders.php">ALL</a></b></td>
+                <tr style="font-family: 'Montserrat', sans-serif; " class="link-no-decoration">
+                    <td><b style="padding-left:20px; color: #4F4F4F;"><a href="myorders.php">ALL</a></b></td>
                     <td style="height: 20px; padding-left: 120px; color: #4F4F4F;"><b><a href="topay.php">TO PAY</a></b></td>
                     <td style="padding-left: 50px; color: #4F4F4F;"><b><a href="toship.php">TO SHIP</a></b></td>
-                    <td style="padding-left: 70px; color: #4F4F4F;"><b><a href="toreceive.php">TO RECEIVE</a></b></td>
+                    <td style="padding-left: 70px; color: #5876CE;"><b><a href="toreceive.php">TO RECEIVE</a></b></td>
                     <td></td>
                     <td style="height: 20px; padding-left: 205px; color: #4F4F4F;"><b><a href="completed.php">COMPLETED</a></b></td>
                 </tr>
+
 
                 <?php
                 // Check if any rows were returned
@@ -104,7 +108,7 @@
                             $total_price = 0;
                             echo "<tr>
                             <td colspan='9' style='padding-top:20px; padding-left:20px;  background: #F7F7F7; '>
-                                <strong>Order #" . $current_order_id . " is ". $status ."</strong>
+                                <strong>Order #" . $current_order_id . " is " . $status . "</strong>
                             </td>
                     </tr>";
                         }

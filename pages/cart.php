@@ -1,11 +1,5 @@
 <?php
-try {
-    include('../config.php');
-}
-//catch exception
-catch (Exception $e) {
-    include('../config.php');
-}
+ob_start();
 
 ?>
 <!DOCTYPE html>
@@ -23,7 +17,6 @@ catch (Exception $e) {
 <body>
     <?php include("../includes/nav-pages.php"); ?>
     <br><br><br><br>
-
     <div style="text-align:center;">
         <h1><b class="shop">Shopping Cart</b></h1>
 
@@ -34,8 +27,7 @@ catch (Exception $e) {
             $result = mysqli_query($conn, $sql);
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_array($result)) {
-
-        ?>
+                    ?>
                     <table class="pure-table" style="margin-left: 100px;margin-right: 100px;">
                         <tbody style="border-left-width: 0px;">
                             <tr class="item" style="font-size:20px;">
@@ -50,29 +42,23 @@ catch (Exception $e) {
                 }
             }
         }
-                ?>
-                <?php
-                $total = 0;
-                if (isset($_SESSION['user_id'])) {
-                    // $sql = "SELECT size.size, size.size_id FROM size JOIN stock ON stock.size_id = size.size_id";
-                    // $result = mysqli_query($conn, $sql);
-
-                    $query = "SELECT cart.cart_id, size.size_id, color.color_id, size.size, color.color, quantity, products.prod_img, products.prod_price as productPrice, products.prod_name, (quantity * prod_price) as totalPrice 
-          FROM cart 
-          JOIN stock ON stock.stock_id = cart.stock_id 
-          JOIN products ON products.prod_id = stock.prod_id  
-          JOIN size ON size.size_id = stock.size_id
-          JOIN color ON color.color_id = stock.color_id
-          WHERE user_id =" . $_SESSION["user_id"] . "";
-
-
-                    $result = mysqli_query($conn, $query);
-                    if (mysqli_num_rows($result) > 0) {
-                        while ($row = mysqli_fetch_array($result)) {
-
-                ?>
-                            <tr class="Katekyo" style="border-bottom-width: 4.667; padding-bottom:10px;">
-                                <td style="padding-left: 75px;"><input type="checkbox"></td>
+        //total = 0;
+        if (isset($_SESSION['user_id'])){
+            $query = "SELECT cart.cart_id, size.size_id, color.color_id, size.size, color.color, quantity, products.prod_img, products.prod_price as productPrice, products.prod_name, (quantity * prod_price) as totalPrice 
+                        FROM cart 
+                        JOIN stock ON stock.stock_id = cart.stock_id 
+                        JOIN products ON products.prod_id = stock.prod_id  
+                        JOIN size ON size.size_id = stock.size_id
+                        JOIN color ON color.color_id = stock.color_id
+                        WHERE user_id =" . $_SESSION["user_id"] . "";
+        
+                        $result = mysqli_query($conn, $query);
+                        if (mysqli_num_rows($result) > 0) {
+                            echo'<form id="checkprod" method="post">';
+                            while ($row = mysqli_fetch_array($result)) {
+                                ?>
+                                <tr class="Katekyo" style="border-bottom-width: 4.667; padding-bottom:10px;">
+                                <td style="padding-left: 75px;"><input type="checkbox" name="cart_item[]" value="<?php echo $row['cart_id']; ?>"></td>
                                 <td style="padding-bottom: 30px;padding-top: 30px;">
                                     <img src="../../product_images/<?php echo $row['prod_img']; ?>" style="width: 200px; height: 200px;">
                                 </td>
@@ -82,19 +68,18 @@ catch (Exception $e) {
                                     <p>Color(<?php echo $row['color']; ?>)</p>
                                     <p>Price ₱<?php echo $row['productPrice']; ?></p>
                                 </td>
-                                
-
-                                <form action="../actions/update.php" method="post">
-                                    <td>
-                                        <input type="hidden" name="cart_id" value="<?php echo $row['cart_id']; ?>">
-                                        <button type="submit" name="minus" style="background-color:transparent; border:none;">-</button>
-                                        <input type="number" min=1 name="quantity" value="<?php echo $row['quantity']; ?>" id="input"  style="text-align: center; width:7vw;">
-                                        <button type="submit" name="plus" style="background-color:transparent; border:none;">+</button>
-
-                                    </td>
-                                    <?php if ($row['quantity'] == 0) : ?>
-
-                                    <?php endif; ?>
+                            </form>
+                            <form action="../actions/update.php" method="post">
+                                <td>
+                                    <input type="hidden" name="cart_id" value="<?php echo $row['cart_id']; ?>">
+                                    <button type="submit" name="minus" style="background-color:transparent; border:none;">-</button>
+                                    <input type="number" min=1 name="quantity" value="<?php echo $row['quantity']; ?>" id="input"  style="text-align: center; width:7vw;">
+                                    <button type="submit" name="plus" style="background-color:transparent; border:none;">+</button>
+                                </td>
+                                <?php
+                                if ($row['quantity'] == 0) :
+                                endif;
+                                ?>
                                 </form>
                                 <td style="padding-left: 20px; padding-right: 20px; padding-bottom: 0px;">
                                     <div id="">₱<?php echo $row['totalPrice']; ?></div>
@@ -111,7 +96,25 @@ catch (Exception $e) {
                             </tr>
                 <?php
                         }
-                    }
+                        if (isset($_POST['checkout'])) {
+                            // Check if at least one item is selected
+                            if (!empty($_POST['cart_item'])) {
+                              // Retrieve the selected cart items and store them in the session
+                              $_SESSION['selected_items'] = $_POST['cart_item'];
+                        
+                              // Redirect the user to the checkout page
+                              header('Location: testcheckout.php');
+                              exit();
+                            } else {
+                              // Display an error message if no items are selected for checkout
+                              echo 'Error: No items were selected for checkout.';
+                            }
+                          }
+                        } else {
+                          // Display a message if there are no cart items for the user
+                          echo 'Your cart is empty.';
+                        }
+                    
                 }
                 ?>
                         </tbody>
@@ -146,24 +149,21 @@ catch (Exception $e) {
                                 <button type="button" class="btn btn-light" style="border:2px solid #0dcaf0;">
                                     Continue Shoping
                                 </button>
-                            </a>
-                            <a href="checkout.php">
-                                <button type="button" class="btn btn-Primary" style="padding-left: 25px;padding-right: 25px;border:2px solid transparent;">
-                                    Checkout
-                                </button>
-                            </a>
+                            </a>`1
+                            <input type="submit" name="checkout" value="Checkout" form="checkprod">
                             <br><br><br>
                     <?php
                         }
                     }
                     ?>
-
-    </div>
+        </div>
     <br>
     <script src="../assets/js/cart.js"></script>
 
-    <?php include("../includes/foot-pages.php"); ?>
-
+    <?php
+    include("../includes/foot-pages.php");
+    ob_end_flush();
+    ?>
 
 </body>
 
