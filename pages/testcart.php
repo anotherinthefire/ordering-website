@@ -20,41 +20,36 @@ $sql = "SELECT c.cart_id, s.stock_id, c.quantity
 $result = mysqli_query($conn, $sql);
 
 // Check if there are any cart items for the user
-if (mysqli_num_rows($result) > 0) {
+if (mysqli_num_rows($result) > 0) {//cond start
   // Display the cart items in a table with checkboxes
-  echo '<form method="post" action="">';
+  echo '<form method="post" id="checkprod">';
   echo '<table>';
-  while ($row = mysqli_fetch_assoc($result)) {
+  while ($row = mysqli_fetch_assoc($result)) {//loop start
     echo '<tr>';
     echo '<td><input type="checkbox" name="cart_item[]" value="' . $row['cart_id'] . '"></td>';
     echo '<td>' . $row['stock_id'] . '</td>';
     echo '<td>' . $row['quantity'] . '</td>';
     echo '</tr>';
-  }
+  }//loop end
   echo '</table>';
-  echo '<input type="submit" name="checkout" value="Checkout">';
   echo '</form>';
 
   // Check if the checkout button was clicked
   if (isset($_POST['checkout'])) {
-    // Check if at least one item is selected
     if (!empty($_POST['cart_item'])) {
-      // Retrieve the selected cart items and store them in the session
       $_SESSION['selected_items'] = $_POST['cart_item'];
-
-      // Redirect the user to the checkout page
-      header('Location: testcheckout.php');
+      echo "<script>window.location.href='checkout.php';</script>";
       exit();
     } else {
-      // Display an error message if no items are selected for checkout
+      echo "<script>window.location.href='cart.php';</script>";
       echo 'Error: No items were selected for checkout.';
     }
   }
-} else {
-  // Display a message if there are no cart items for the user
+}//cond end
+ else {
   echo 'Your cart is empty.';
 }
-
+echo '<input type="submit" name="checkout" value="Checkout" form="checkprod">';
 // Close the database connection
 mysqli_close($conn);
 ?>
