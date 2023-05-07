@@ -18,44 +18,6 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
   $row = $result->fetch_assoc();
 
-  // Add product to cart
-  // if (isset($_POST['add_to_cart'])) {
-  //   // Get product information
-  //   $prod_name = $row['prod_name'];
-  //   $prod_price = $row['prod_price'];
-  //   $color_id = $_POST['color'];
-  //   $size_id = $_POST['size'];
-  //   $quantity = $_POST['quantity'];
-  //   $user_id = $_SESSION['user_id'];
-
-  //   // Check if product is already in the cart
-  //   $sql = "SELECT * FROM cart WHERE user_id = $user_id AND stock_id IN (SELECT stock_id FROM stock WHERE prod_id = $prod_id AND color_id = $color_id AND size_id = $size_id)";
-  //   $result = $conn->query($sql);
-
-  //   if ($result->num_rows > 0) {
-  //     // Update cart quantity
-  //     $row = $result->fetch_assoc();
-      
-  //     $cart_id = $row['cart_id'];
-  //     $stock_id = $row['stock_id'];
-  //     $new_quantity = $row['quantity'] + $quantity;
-  //     $sql = "UPDATE cart SET quantity = $new_quantity WHERE cart_id = $cart_id";
-  //     if ($conn->query($sql) === TRUE) {
-  //       echo "Product quantity updated successfully.";
-  //     } else {
-  //       echo "Error updating product quantity: " . $conn->error;
-  //     }
-  //   } else {
-  //     // Add product to cart
-  //     $sql = "INSERT INTO cart (user_id, stock_id, quantity) VALUES ($user_id, (SELECT stock_id FROM stock WHERE prod_id = $prod_id AND color_id = $color_id AND size_id = $size_id), $quantity)";
-  //     if ($conn->query($sql) === TRUE) {
-  //       echo "Product added to cart successfully.";
-  //     } else {
-  //       echo "Error adding product to cart: " . $conn->error;
-  //     }
-  //   }
-  // }
-
 ?>
 
   <!DOCTYPE html>

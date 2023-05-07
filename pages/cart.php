@@ -1,7 +1,5 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -39,36 +37,24 @@
                                 <td style="padding-left: 60px;">Total</td>
                                 <td></td>
                             </tr>
+                            <form id="checkprod" action ="../actions/tocheckout.php" method="post">
                 <?php
-                }
-            
-                if (isset($_POST['checkout'])) {
-                    if (!empty($_POST['cart_item'])) {
-                      $_SESSION['selected_items'] = $_POST['cart_item'];
-                      echo "<script>window.location.href='checkout.php';</script>";
-                      exit();
-                    } else {
-                      echo "<script>window.location.href='cart.php';</script>";
-                      echo 'Error: No items were selected for checkout.';
-                    }
-            }
-        //total = 0;
-        $query = "SELECT cart.cart_id, size.size_id, color.color_id, size.size, color.color, quantity, products.prod_img, products.prod_price as productPrice, products.prod_name, (quantity * prod_price) as totalPrice 
-                            FROM cart 
-                            JOIN stock ON stock.stock_id = cart.stock_id 
-                            JOIN products ON products.prod_id = stock.prod_id  
-                            JOIN size ON size.size_id = stock.size_id
-                            JOIN color ON color.color_id = stock.color_id
-                            WHERE user_id = $user_id";         
-        $result = mysqli_query($conn, $query);
-        if (mysqli_num_rows($result) > 0) {//cond start
-            while ($row = mysqli_fetch_array($result)) {//loop start
-            ?>
-                <form id="checkprod" method="post">
-                    <tr class="Katekyo" style="border-bottom-width: 4.667; padding-bottom:10px;">
-                        <td style="padding-left: 75px;"><input type="checkbox" name="cart_item[]" value="<?php echo $row['cart_id']; ?>"></td>
+                }                         
+                    $query = "SELECT cart.cart_id, size.size_id, color.color_id, size.size, color.color, quantity, products.prod_img, products.prod_price as productPrice, products.prod_name, (quantity * prod_price) as totalPrice 
+                                        FROM cart 
+                                        JOIN stock ON stock.stock_id = cart.stock_id 
+                                        JOIN products ON products.prod_id = stock.prod_id  
+                                        JOIN size ON size.size_id = stock.size_id
+                                        JOIN color ON color.color_id = stock.color_id
+                                        WHERE user_id = $user_id";         
+                    $result = mysqli_query($conn, $query);
+                    if (mysqli_num_rows($result) > 0) {//cond start
+                        while ($row = mysqli_fetch_array($result)) {//loop start
+                        ?>
+                        <tr class="Katekyo" style="border-bottom-width: 4.667; padding-bottom:10px;">
+                        <td style="padding-left: 75px;"> <input type="checkbox" name="cart_item[]" value="<?php echo $row['cart_id']; ?>"></td>
                         <td style="padding-bottom: 30px;padding-top: 30px;">
-                            <img src="../../product_images/<?php echo $row['prod_img']; ?>" style="width: 200px; height: 200px;">
+                        <img src="../../product_images/<?php echo $row['prod_img']; ?>" style="width: 200px; height: 200px;">
                         </td>
                     <td class="Hit" style="padding-left: 10px;">
                         <b><?php echo $row['prod_name']; ?></b>
@@ -76,31 +62,43 @@
                         <p>Color(<?php echo $row['color']; ?>)</p>
                         <p>Price ₱<?php echo $row['productPrice']; ?></p>
                     </td>
-                </form>
                 <!-- next -->
                     <td>
-                <form action="../actions/update.php" method="post">
+                
                         <input type="hidden" name="cart_id" value="<?php echo $row['cart_id']; ?>">
                         <button type="submit" name="minus" style="background-color:transparent; border:none;">-</button>
                         <input type="number" min=1 name="quantity" value="<?php echo $row['quantity']; ?>" id="input"  style="text-align: center; width:7vw;">
                         <button type="submit" name="plus" style="background-color:transparent; border:none;">+</button>
-                </form>
+               
                     </td>
                     <td style="padding-left: 20px; padding-right: 20px; padding-bottom: 0px;">
                     <div id="">₱<?php echo $row['totalPrice']; ?></div>
                     </td><td>
-                <form action="../actions/delete.php" method="post">
-                    <button type="submit" name="submit" class="btn btn-white">X</button>
+                
+                    <button type="submit" name="delete" class="btn btn-white">X</button>
                     <input type='text' hidden name='cart_id' value="<?php echo $row['cart_id']; ?>">
-                </form>
+                
                     </td>
                 </tr>
         <?php
             }//loop end
-        
+            if (isset($_POST['checkout'])) {
+                if (!empty($_POST['cart_item'])) {
+                    // If cart_item is not empty, save it in the session
+                    // and redirect to the checkout page.
+                    $_SESSION['selected_items'] = $_POST['cart_item'];
+                    header("location: ../pages/checkout.php");
+                    exit;
+                } else {
+                    // If cart_item is empty, display an error message
+                    // and redirect to the cart page.
+                    header("location: ../pages/cart.php");
+                    die("Error: No items were selected for checkout.");
+                }
+            }
+            
         }
         ?>
-        
                         </tbody>
                     </table>
                     <br>
@@ -134,8 +132,14 @@
                                     Continue Shoping
                                 </button>
                             </a>
-                            <input type="submit" name="checkout" value="Checkout" form="checkprod">
+                            <button type="submit" name="checkout" value="Checkout" form="checkprod" class="btn btn-Primary" style="
+             padding-left: 25px;
+             padding-right: 25px;
+             border:2px solid transparent;
+             ">Checkout</button>    
+             
                             <br><br><br>
+                </form>
                     <?php
                         }
                     }

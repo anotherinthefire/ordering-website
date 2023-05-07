@@ -5,13 +5,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AXGG | FAQs</title>
+    <title>Anime X Gaming Guild &#x2223; FAQs</title>
 
     <link rel="shortcut icon" href="https://i.ibb.co/dfD3s4M/278104398-126694786613134-4231769107383237629-n-removebg-preview.png" />
-    <link rel="stylesheet" href="./assets/css/faqs.css">
-
+    <link rel="stylesheet" href="../assets/css/faqs.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <style>
+         @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@700&display=swap');
+        /* START CONTACT */
+        h1{
+            text-align: center;
+            font-family: 'Montserrat alternates';
+            
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        input[type=text], textarea {
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: none;
+            box-shadow: 1px 1px 5px grey;
+        }
+        input[type=submit] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type=submit]:hover {
+            background-color: #3e8e41;
+        }
+
+        /* END CONTACT */
+    </style>
 </head>
 
 <body>
@@ -25,7 +59,7 @@
 
     <!-- FAQ Accordion Start -->
     <section id="faq" class="py-5">
-        <h2 class="my-5 text-center">Frequently Asked Questions</h2>
+        <h2 class="my-5 text-center" style="font-family:'Montserrat Alternates';">Frequently Asked Questions</h2>
         <div class="container">
             <div class="accordion w-75 mx-auto" id="accordionExample">
                 <div class="accordion-item">
@@ -146,12 +180,14 @@
     <!-- FAQ Accordion End -->
 
     <!-- START OF CONTACT SECTION -->
+    <center>
     <section id="contact">
     <div id="question-section">
     <p>Any other questions?</p>
-    <button onclick="showForm()">Yes</button>
-    <button onclick="hideForm()">No</button>
+    <button onclick="showForm()" class="btn btn-success">Yes</button>
+    <button onclick="hideForm()" class="btn btn-success">No</button>
     </div>
+    </center>
     <form id="contact-form" action="../actions/process_contact_form.php" method="post" style="display:none;">
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required>
@@ -165,7 +201,22 @@
 
         <input type="submit" value="Submit">
     </form>
-
+    <section id="contact">
+        <form id="contact-form" action="../actions/process_contact_form.php" method="post" style="display:none;">
+        <h1>Keep in Touch</h1>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name"><br>
+      
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" placeholder="Enter your email address"><br>
+      
+            <label for="message">Message</label><br>
+            <textarea id="message" name="message" placeholder="Enter your message" oninput="countCharacters()" required></textarea>
+            <div id="char-count"></div>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    </section>
         <!-- check if message was sent successfully and show alert message -->
         <?php if (isset($_GET['success']) && $_GET['success'] == '1') : ?>
             <script>

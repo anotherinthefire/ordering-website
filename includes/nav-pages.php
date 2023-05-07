@@ -91,7 +91,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
                     </div>
 
                     <div class="text-end mx-5">
-                        <a href="forgot.php" class="text-light">Forgot password?</a>
+                        <a href="includes/forgot.php" class="text-light">Forgot password?</a>
                     </div>
 
                     <div class="d-grid gap-2 mb-2 ms-5 me-5 mt-3">

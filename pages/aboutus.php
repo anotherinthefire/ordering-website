@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AXGG | About Us</title>
+    <title>Anime X Gaming Guild &#x2223; About Us</title>
     <link rel="shortcut icon" href="https://i.ibb.co/dfD3s4M/278104398-126694786613134-4231769107383237629-n-removebg-preview.png" />
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous" />
@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -28,21 +31,20 @@
     <!-- END OF HOME SECTION -->
     <br />
     <!-- START OF ABOUT SECTION -->
-    <section class="about">
+    <section class="about" style="font-family: 'Montserrat Alternates';font-size: 21px;">
         <p id="par">
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-            commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-            occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-            mollit anim id est laborum."
+        <b>Anime X Gaming Guild </b>|
+        Turn one's genuine passion into a street style where you can <b>STAND OUT</b> and <b>FIT IN</b> with the modern generation. AXGG took the initiative to provide collectible pieces dedicated to anime, gaming and J-Pop music.
+
+        The continuous growth of anime culture and gaming influence drives AXGG to recreate casual wear for everyone and express one's passion for anime and gaming.
+
+        <b>Stand Outstand Fit in with AXGG.</b> Made by an anime fan and gamer, for anime fans and gamers.
         </p>
     </section>
     <!-- END OF ABOUT SECTION -->
     <br />
     <!-- START OF MAP AND ADDRESS SECTION -->
-    <section class="maa">
+    <section class="maa" style="font-family: 'Montserrat Alternates';font-size: 20px;">
         <div class="flex-wrapper">
             <div class="left-column">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1366.280631725708!2d120.98708011641786!3d14.40263535797108!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397d372bb4f4cf3%3A0xabb58bbb5e05f3f2!2sAXGG!5e0!3m2!1sen!2sph!4v1679796658538!5m2!1sen!2sph" width="600" height="450" style="border: 0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>

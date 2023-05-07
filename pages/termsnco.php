@@ -1,92 +1,191 @@
 <html>
 
 <head>
-  <title>AXGG</title>
+  <title>Anime X Gaming Guild &#x2223; Terms and Conditions</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://kit.fontawesome.com/69c308bd4c.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="./assets/css/termsnco.css" />
-  <link rel="shortcut icon" href="https://i.ibb.co/dfD3s4M/278104398-126694786613134-4231769107383237629-n-removebg-preview.png" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+  <link rel="stylesheet" href="../assets/css/termsnco.css" />
+  <link rel="shortcut icon"
+    href="https://i.ibb.co/dfD3s4M/278104398-126694786613134-4231769107383237629-n-removebg-preview.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700&display=swap"
+    rel="stylesheet">
   <!-- JavaScript Bundle with Popper -->
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
 </head>
 
 <body>
-  <div class="privacy">
-    <img src="pages/logo-privacy.png" class="logo-privacy" />
+  <?php include("../includes/nav-pages.php"); ?>
+  <div class="termsnco">
+    <img src="logo-privacy.png" class="logo-privacy" />
 
-    <div class="privacy-row">
+    <div class="termsnco-row">
       <div class="column">
-        <h1>Privacy Policy</h1>
+        <h1>Terms and Conditions</h1>
         <br>
-        <p>Welcome to AXGG website. Your trust is important to us. To preserve your trust, we want you to understand the type of
-          identifiable information (Personal Information) we may collect from you, how we use such information and the choices
-          you have regarding our use of this information. We take the protection and proper use of your Personal Information seriously
-          and are committed to protecting your Personal Information in our possession.
-        <p>By using the Site, you agree to the collection, use and disclosure of your Personal Information as described. If you do not
-          agree to the terms of this Privacy Policy, please do not use the Site. We may change this privacy policy from time to time.
-          When we do, we will post the change(s) on our website. We suggest you review our privacy policy regularly to check for changes.</p>
+        <p>Welcome to our Anime X Gaming Guild (AXGG) Online Ordering Website. Please review the following terms and
+          conditions (Terms) before using this Site. Your use of this Site confirms your acceptance of these Terms and
+          your agreement to abide by them. If you do not accept these Terms then please do not use this Site. These
+          Terms may be modified from time to time and applied to all visitors or users of this Site. You should visit
+          this page regularly to learn of any changes. Your use of this Site following any updates confirms your
+          agreement to be bound by the revised Terms.</p>
         <br />
 
-        <h3>Personal Info</h3>
-        <p>We only collect personal information from you (such as name, address, email, telephone number) when you order merchandise from us;
-          contact us; complete a survey about your experience; to fulfill orders; or to communicate with you to respond to questions, or provide
-          you with information about our promotions. This Personal Information may be collected from you during either online or off-line
-          transactions or when you directly contact us.</p>
+        <h3>General Use</h3>
+        <p>You may view and use our Site only for your personal information, shopping, and order, and for no other
+          purpose inconsistent with our business. Whenever you use our Site to purchase our products or use our services
+          (e.g., customer reviews), you agree to respect and follow the Terms of this Site.</p>
         <br />
 
-        <h3>Non-Personal Info</h3>
-        <p>As part of the standard operation of the Site, we may collect certain non-personal information from you, including but not
-          limited to your browser type, operating system, IP address and the domain name from which you accessed the Site. In addition, we may
-          collect information about your browsing behavior, such as the date and time you visit the Site, the areas or pages of the Site that
-          you visit, the amount of time you spend viewing the Site, the number of times you return to the Site and other click-stream data.</p>
+        <h3>Comments and Communication</h3>
+        <p>The design of this Site and all of its materials, including, but not limited to, its software or HTML code,
+          scripts, text, artwork, photographs, images, designs, video, audio, written and other materials that appear as
+          part of this Site (Content) are protected by P.H. trademark and copyright laws and other applicable laws.
+        </p>
+        <p>All Content is provided by Anime X Gaming Guild (AXGG) under a limited license as a service to visitors to
+          the
+          Site, and current and prospective customers, and may be used only for personal use, meaning for the purchase
+          of our merchandise. Anime X Gaming Guild (AXGG) may revoke this limited license at any time for any or no
+          reason.</p>
         <br />
 
-        <h3>Cookies</h3>
-        <p>We may use cookies to collect the non-personal information described above. A cookie is a small text file that may be stored on
-          the hard drive of your computer when you access the Site. We may also use cookies to: (1) provide you with customized content and
-          advertising; (2) monitor Site usage; and (3) conduct research to improve our content and services. You are free to decline cookies,
-          but by doing so, you may not be able to use certain features on the Site or take full advantage of all of our offerings.
-          Check the “Help” menu of your browser to learn how to change your cookie preferences.</p>
+        <h3>Content Ownership</h3>
+        <p>The design of this Site and all of its materials, including, but not limited to, its software or HTML code,
+          scripts, text, artwork, photographs, images, designs, video, audio, written and other materials that appear as
+          part of this Site (Content) are protected by P.H. trademark and copyright laws and other applicable laws.
+          All Content is provided by Anime X Gaming Guild (AXGG) under a limited license as a service to visitors to the
+          Site, and current and prospective customers, and may be used only for personal use, meaning for the purchase
+          of our merchandise. Anime X Gaming Guild (AXGG) may revoke this limited license at any time for any or no
+          reason.</p>
+        <p>
+          All Content is provided by Anime X Gaming Guild (AXGG) under a limited license as a service to visitors to the
+          Site, and current and prospective customers, and may be used only for personal use, meaning for the purchase
+          of our merchandise. Anime X Gaming Guild (AXGG) may revoke this limited license at any time for any or no
+          reason.
+        </p>
+        <p>
+          This limited license is subject to the following restrictions:
+        </p>
+        <ul>
+          <li>You may not access or use the Site for any competitive or commercial purpose.</li>
+          <li>You may not copy, reproduce, publish, transmit, distribute, perform, display, post, modify, create
+            derivative works from, sell, license, allow others to copy, or otherwise exploit this Site, any of the
+            Content, or any related software in any unauthorized manner.</li>
+          <li>You may not market or promote this Site without our prior written authorization.</li>
+        </ul>
+        <p>Unauthorized use of our trademarks, trade names, logos, and trade dress (Trademarks) is prohibited. The
+          Trademarks are protected by P.H. trademark laws. No license to use our Trademarks is granted to you under
+          these Terms or by your use of this Site.</p>
+        <h3>Products</h3>
+        <p>Features, specifications, products, and prices of products and services described on this Site are subject to
+          change at any time without notice. Occasionally there may be typographical errors, inaccuracies or omissions
+          related to product descriptions, pricing, and availability. We make no representation as to the completeness,
+          accuracy, or currentness of any information on this Site.</p>
+        <p>We reserve the following rights, without notice, to:</p>
+        <ul>
+          <li>make changes in information about price, description, or availability,</li>
+          <li>to limit the order quantity of any product,</li>
+          <li>to refuse service to any Customer</li>
+        </ul>
+        <h3>Colors</h3>
+        <p>We will display the colours of our products on the Site as accurately as possible, however, the actual color
+          you see may depend on your device, and we cannot guarantee that your device will accurately display our
+          colors.</p>
+        <h3>Links</h3>
+        <p>Links may be established from this Site to one or more external websites or resources operated by third
+          parties (Third Party Sites). Further, certain Third Party Sites may provide links to our Site. Links to Third
+          Party Sites from our Site is not an endorsement of the Third Party Site or any of their content. Anime X
+          Gaming Guild (AXGG) does not control and is not responsible or liable for any Third Party Sites or any of
+          their content, advertising, products or other materials on or available through such Third Party Sites. Access
+          to Third Party Sites is “at your own risk.” Anime X Gaming Guild (AXGG) has no liability arising out of or
+          related to such websites and/or their content, or for any damages or loss caused, or alleged to be caused by,
+          or in connection with any purchase, use of or reliance on any such content, goods, or services available on or
+          through any such Third Party Site.</p>
+        <h3>Limitation of Liability</h3>
+        <p>PRODUCTS OFFERED FOR SALE THROUGH THIS SITE AND THE TRANSACTIONS CONDUCTED THROUGH IT ARE PROVIDED BY ANIME X
+          GAMING GUILD (AXGG) ON AN “AS IS” BASIS. ANIME X GAMING GUILD (AXGG) MAKES NO REPRESENTATIONS OR WARRANTIES OF
+          ANY KIND, EXPRESS OR IMPLIED, AS TO THE OPERATION OF THE SITE OR THE INFORMATION, CONTENT, MATERIALS OR
+          PRODUCTS INCLUDED ON THIS SITE. ANIME X GAMING GUILD (AXGG)'S TOTAL LIABILITY TO YOU FOR ANY DAMAGES
+          WHATSOEVER SHALL NOT EXCEED THE AGGREGATE AMOUNT OF FEES ACTUALLY PAID BY YOU TO ANIME X GAMING GUILD (AXGG)
+          DURING THE 3 MONTHS IMMEDIATELY PRECEDING THE ACT ALLEGEDLY GIVING RISE TO ANIME X GAMING GUILD (AXGG)'S
+          LIABILITY. IN NO EVENT WILL ANIME X GAMING GUILD (AXGG) BE LIABLE TO ANY PARTY FOR ANY DIRECT, INDIRECT,
+          INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES FOR USE OF THIS SITE OR ANY OTHER LINKED WEBSITE,
+          INCLUDING, WITHOUT LIMITATION, LOST PROFITS OR REVENUES, COSTS OF REPLACEMENT, BUSINESS INTERRUPTIONS, LOSS OF
+          DATA OR DAMAGES RESULTING FROM USE OF OR RELIANCE ON THE INFORMATION PRESENT, EVEN IF ANIME X GAMING GUILD
+          (AXGG) IS EXPRESSLY ADVISED ABOUT THE POSSIBILITY OF SUCH DAMAGES.</p>
       </div>
 
       <div class="column">
-        <h3>Use of Information</h3>
-        <p>We may use the information we collect from and about you for any of the following purposes: (1) to fulfill your requests for
-          products and services; (2) to provide you with targeted offers, surveys, and advertising on the Site; (3) to contact you with
-          information and promotional materials and offers from our company; (4) to contact you when necessary; (5) to review Site usage
-          and operations; (6) to address problems with the Site, our business or our products and services; and (7) to protect the security
-          or integrity of the Site and our business. AXGG may combine the information we collect with other information to improve our products,
-          services, content, and advertising, or to recommend specific items to you.</p>
+        <h3>Disclaimer</h3>
+        <p>This Site and its Content are provided to visitors and users of the Site “AS IS'' and “AS AVAILABLE” and
+          without warranties of any kind, whether express or implied, INCLUDING BUT NOT LIMITED TO, THOSE OF
+          MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, OR NON INFRINGEMENT. You acknowledge, by your use of
+          the Site, that your use is at your sole risk.</p>
         <br>
 
-        <h3>Disclosure of Information</h3>
-        <p>We may transfer or otherwise disclose information collected from and about you to the following entities for the following purposes:
-          (1) to our employees, independent contractors, subsidiaries, affiliates, consultants, business associates, service providers and suppliers,
-          if the disclosure will enable any of these entities to perform a business, professional or technical support function for us;
-          (2) to our employees, independent contractors, service providers and suppliers, to fulfill a product or service request;
-          (3) as necessary if we believe that there has been a violation of the Site Terms of Use or of our rights or the rights of any third party;
-          (4) to respond to judicial process and provide information to law enforcement agencies or in connection with an investigation on matters
-          related to public safety, as permitted by law, or otherwise as required by law; and (5) in the event that our company or substantially all
-          of its assets are acquired, your personal information may be one of the transferred assets.</p>
+        <h3>Pricing Error</h3>
+        <p>If we reject your order because of an error in pricing or other information about the Merchandise, we will
+          notify you at the email address you provided and ask you whether you would like to re-submit your order to
+          purchase the relevant Merchandise once we have corrected the error. If we notify you that we have accepted
+          your order by sending you a shipment confirmation email, you will not be required to pay more than the price
+          that was displayed on our Site at the time that you placed your order.
+        </p>
         <br>
 
-        <h3>Access to Infornation you Provide Us</h3>
-        <p>You may access any Personal Information you provide to us, correct or modify any such Personal Information.</p>
+        <h3>Error in Billing, Payment, or Shipping Information</h3>
+        <p>We reserve the right to deny any order for any reason, including, but not limited to, the following
+          situations:</p>
+        <ul>
+          <li>An incorrect credit card or debit card number, expiration date and/or card security value, or information
+            regarding other payment types;</li>
+          <li>Incorrect billing information (for example, if the billing information you provide is different from
+            information your financial institution has on record);</li>
+          <li>An insufficient or incorrect shipping address (e.g., missing street address, city, state, zip or postal
+            code); or Any suspected fraudulent information.</li>
+        </ul>
         <br>
 
-        <h3>Third Party Websites</h3>
-        <p>The Site may contain links to third-party websites, which may have privacy policies that differ from our own. We are not
-          responsible for the activities and practices that take place on these sites. Accordingly, we recommend that you review the
-          privacy policy posted on any site that you may access through the Site.</p>
-
+        <h3>Accountss</h3>
+        <p>Anime X Gaming Guild (AXGG) reserves the right to refuse service, terminate accounts, or cancel orders in our
+          discretion, including, without limitation, if we believe customer conduct violates applicable law or is
+          harmful to others, or Anime X Gaming Guild (AXGG)'s business interests.</p>
+        <h3>Additional Terms</h3>
+        <p>If you ordered your merchandise through our Site, your use of the Site is also subject to our Site Terms. Any
+          Personal Information provided to Anime X Gaming Guild (AXGG) through the Site is subject to our <a
+            href="privacy.php" style="color:#1e1e1e"> Privacy
+            Policy.</a></p>
+        <h3>Return Policy for Online Purchase</h3>
+        <p>Generally, only defective items or wrong order/s sent by our staff may be exchanged. But reasonable cases
+          like wrong sizing can be an exception to the rule.</p>
+        <p>Any item or product purchased in consignment stores may not be exchanged or returned through the online
+          store. Those purchased in the flagship store may only be exchanged and/or returned also in the flagship store
+          provided that the customer still has the receipt of the said item and that it falls within the 7-day period.
+        </p>
+        <p>For the exchange request to be accepted and granted, the following guidelines and procedures must be
+          followed:</p>
+        <ol>
+          <li>The particular item or product to be returned or exchanged shall be in the same exact condition as it was
+            received by the customer. Tags, codes, and even the packaging of the said item shall be included in its
+            return. Should the item in question be washed, damaged, worn, or in any way or manner not be in its original
+            condition, the return or exchange shall not be granted. (WE DO NOT ISSUE REFUNDS)</li>
+            <li>Only orders obtained within 7 days from the date of purchase may be exchanged. Anime X Gaming Guild (AXGG)™ reserves the right to verify if all the information given by the customer is true and correct. The management won't process the exchange if the customer fails to comply with all the terms and conditions provided below.  
+</li>
+            <li>The shipment of both products or the return of the original order and the item to be exchanged for shall both be at the expense of the customer and the fees shall be shouldered by him or her.</li>
+            <li>Notify our Customer Service representative of the exchange request and state your reason for the said petition (email at axggstore@gmail.com) then browse the website to check the availability of the item you want in replacement of your original order.</li>
+            <li>Take note that the change in size request is still subject to approval. Once approved, you should receive an email from us stating that the size was successfully changed.</li>
+            <li> After approval, our Customer service representative will give our shipping details where they would return their original order, and payment details where they would send the shipping fee.</li>
+            <li>Once the item is received and the payment of fees is confirmed, the replacement and request for the new item shall be processed and shipped right away</li>
+        </ol>
+        <p>Please be advised that online transactions only take place from Monday to Saturday from 9 am until 6 pm</p>
+        <p>If you still have further questions, you may email us at axggstore@gmail.com.</p>
       </div>
     </div>
   </div>
-  <?php include("../includes/foot-pages.php"); ?>
 </body>
 
 </html>

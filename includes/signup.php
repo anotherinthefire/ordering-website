@@ -8,14 +8,14 @@
   <link rel="shortcut icon" href="https://i.ibb.co/dfD3s4M/278104398-126694786613134-4231769107383237629-n-removebg-preview.png" />
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
-  <link rel="stylesheet" href="assets/css/signup.css?<?php echo time(); ?>" />
+  <link rel="stylesheet" href="../assets/css/signup.css?<?php echo time(); ?>" />
 </head>
 
 <body>
   <div class="back1">
   </div>
 
-  <form action="actions/usersignup.php" method="post">
+  <form action="../actions/usersignup.php" method="post">
     <div class="box col-md-4 align-items-center position-absolute top-50 start-50 translate-middle">
       <div class="p-3 ms-5 mt-5 text-light">
         <h1>Sign up</h1>
@@ -64,7 +64,8 @@
           Sign Up
         </button>
       </div>
-
+      
+      
       <div class="col-12">
         <div class="form-check text-light">
           <input class="form-check-input ms-5" type="checkbox" value="" id="invalidCheck" required />
@@ -75,6 +76,13 @@
       </div>
     </div>
   </form>
+  <div class="d-grid gap-2 mb-3 col-10 mx-auto">
+        <a href="../" style="background-color:black;">
+          <button class="btn text-light fw-bold fs-5" >
+          Back
+        </button>
+        </a>
+      </div>
 </body>
 
 </html>

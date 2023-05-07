@@ -62,7 +62,6 @@ if (isset($_POST['submit'])) {
     $postal_code = $_POST['postal_code'];
     $company = $_POST['company'];
     $room = $_POST['room'];
-    $floor = $_POST['floor'];
 
     // Determine whether to insert or update the address
     if ($selected_address) {
@@ -71,8 +70,8 @@ if (isset($_POST['submit'])) {
         $stmt->execute([$region, $province, $city, $barangay, $street, $house_no, $postal_code, $company, $room, $address_id]);
     } else {
         // Insert new address
-        $stmt = $conn->prepare("INSERT INTO address (user_id, region, province, city, barangay, street, house_no, postal_code, company, room, `floor`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->execute([$user_id, $region, $province, $city, $barangay, $street, $house_no, $postal_code, $company, $room, $floor]);
+        $stmt = $conn->prepare("INSERT INTO address (user_id, region, province, city, barangay, street, house_no, postal_code, company, room) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->execute([$user_id, $region, $province, $city, $barangay, $street, $house_no, $postal_code, $company, $room]);
         $address_id = $conn->lastInsertId();
     }
 
@@ -84,57 +83,119 @@ if (isset($_POST['submit'])) {
 <html>
 
 <head>
-    <title>AXGG | Address Form</title>
+    <title>Anime X Gaming Guild &#x2223; Edit Address Form</title>
+    <link rel="shortcut icon" href="https://i.ibb.co/dfD3s4M/278104398-126694786613134-4231769107383237629-n-removebg-preview.png" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700;900&display=swap');
+
+        .whole {
+            margin-bottom: 15%;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .boton {
+            padding: 10px;
+            background-color: #5876CE;
+            color: white;
+            border: none;
+            font-family: 'Roboto';
+            font-weight: bold;
+        }
+
+        .boton:hover {
+            background-color: #404759;
+        }
+
+        form .boton {
+            padding: 10px;
+            background-color: #5876CE;
+            color: white;
+            border: none;
+            font-family: 'Roboto';
+            font-weight: bold;
+        }
+
+        form .boton:hover {
+            background-color: #404759;
+        }
+    </style>
 </head>
 
 <body>
-<?php include("../includes/nav-pages.php"); ?>
-    <h1 style="padding-top: 20vh;">Address Form</h1>
-    <form method="post" action="">
-        <select name="address">
-            <?php foreach ($addresses as $address) { ?>
-                <option value="<?php echo $address['add_id']; ?>" <?php if ($address['add_id'] == $address_id) {echo 'selected';} ?>><?php echo $address['label']; ?></option>
-            <?php } ?>
-        </select>
-        <input type="submit" name="select_address" value="Select Address">
-        <input type="submit" name="set_default" value="Set as Default">
-    </form>
+    <?php include("../includes/nav-pages.php"); ?>
+    <section class="whole">
+        <h1 style="padding-top:15vh; font-family: 'Montserrat Alternates'; font-weight: 600; text-align: center;">Edit Address Form</h1>
 
-    <form method="post" action="">
-        <label for="region">Region:</label>
-        <input type="text" name="region" value="<?php echo isset($selected_address['region']) ? $selected_address['region'] : ''; ?>"><br><br>
+        <center>
+            <form method="post" action="" style="padding: 2%;">
+                <select name="address" style="padding: 10px; border: 1px solid #979797; padding-top: 8.5px; padding-bottom: 10.5px; padding-right: 3%;">
+                    <?php foreach ($addresses as $address) { ?>
+                        <option value="<?php echo $address['add_id']; ?>" <?php if ($address['add_id'] == $address_id) {
+                                                                                echo 'selected';
+                                                                            } ?>><?php echo $address['label']; ?></option>
+                    <?php } ?>
+                </select>
+                <input type="submit" name="select_address" value="SELECT ADDRESS" class="boton">
+                <input type="submit" name="set_default" value="SET AS DEFAULT" class="boton">
+            </form>
+        </center>
 
-        <label for="province">Province:</label>
-        <input type="text" name="province" value="<?php echo isset($selected_address['province']) ? $selected_address['province'] : ''; ?>"><br><br>
+        <form method="post" action="">
+            <center>
+                <div class="form-group col-md-5">
+                    <div class="form-floating mb-3 ms-5 me-5">
+                        <input type="text" class="form-control" id="floatingRegion" placeholder="Region" required name="region" value="<?php echo isset($selected_address['region']) ? $selected_address['region'] : ''; ?>">
+                        <label for="region" style="font-family:'Roboto';">Region</label>
+                    </div>
+                    <div class="form-floating mb-3 ms-5 me-5">
+                        <input type="text" class="form-control" id="floatingProvince" placeholder="Province" required name="province" value="<?php echo isset($selected_address['province']) ? $selected_address['province'] : ''; ?>">
+                        <label for="province" style="font-family:'Roboto';">Province</label>
+                    </div>
+                    <div class="form-floating mb-3 ms-5 me-5">
+                        <input type="text" class="form-control" id="floatingCity" placeholder="City" required name="city" value="<?php echo isset($selected_address['city']) ? $selected_address['city'] : ''; ?>">
+                        <label for="city" style="font-family:'Roboto';">City</label>
+                    </div>
+                    <div class="form-floating mb-3 ms-5 me-5">
+                        <input type="text" class="form-control" id="floatingBarangay" placeholder="Barangay" required name="barangay" value="<?php echo isset($selected_address['barangay']) ? $selected_address['barangay'] : ''; ?>">
+                        <label for="barangay" style="font-family:'Roboto';">Barangay</label>
+                    </div>
+                    <div class="form-floating mb-3 ms-5 me-5">
+                        <input type="text" class="form-control" id="floatingStreet" placeholder="Street" required name="street" value="<?php echo isset($selected_address['street']) ? $selected_address['street'] : ''; ?>">
+                        <label for="street" style="font-family:'Roboto';">Street</label>
+                    </div>
+                    <div class="form-floating mb-3 ms-5 me-5">
+                        <input type="text" class="form-control" id="floatingHouse_no" placeholder="House No." required name="house_no" value="<?php echo isset($selected_address['house_no']) ? $selected_address['house_no'] : ''; ?>">
+                        <label for="house_no" style="font-family:'Roboto';">House No.</label>
+                    </div>
+                    <div class="form-floating mb-3 ms-5 me-5">
+                        <input type="text" class="form-control" id="floatingPostalCode" placeholder="Postal Code" required name="postal_code" value="<?php echo isset($selected_address['postal_code']) ? $selected_address['postal_code'] : ''; ?>">
+                        <label for="postal_code" style="font-family:'Roboto';">Postal Code</label>
+                    </div>
+                    <div class="form-floating mb-3 ms-5 me-5">
+                        <input type="text" class="form-control" id="floatingCompany" placeholder="Company" name="company" value="<?php echo isset($selected_address['company']) ? $selected_address['company'] : ''; ?>">
+                        <label for="company" style="font-family:'Roboto';">Company</label>
+                    </div>
+                    <div class="form-floating mb-3 ms-5 me-5">
+                        <input type="text" class="form-control" id="floatingRoom" placeholder="Room" name="room" value="<?php echo isset($selected_address['room']) ? $selected_address['room'] : ''; ?>">
+                        <label for="room" style="font-family:'Roboto';">Room</label>
+                    </div>
+                    <input type="submit" name="submit" value="SAVE ADDRESS" class="boton">
+                    <a href="add-address.php"><input value="BACK TO ADD ADDRESS" class="boton"></a>
+                    </div>
+        </form>
+        </center>
+        
+    </section>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br><br>
 
-        <label for="city">City:</label>
-        <input type="text" name="city" value="<?php echo isset($selected_address['city']) ? $selected_address['city'] : ''; ?>"><br><br>
-
-        <label for="barangay">Barangay:</label>
-        <input type="text" name="barangay" value="<?php echo isset($selected_address['barangay']) ? $selected_address['barangay'] : ''; ?>"><br><br>
-
-        <label for="street">Street:</label>
-        <input type="text" name="street" value="<?php echo isset($selected_address['street']) ? $selected_address['street'] : ''; ?>"><br><br>
-
-        <label for="house_no">House No.:</label>
-        <input type="text" name="house_no" value="<?php echo isset($selected_address['house_no']) ? $selected_address['house_no'] : ''; ?>"><br><br>
-
-        <label for="postal_code">Postal Code:</label>
-        <input type="text" name="postal_code" value="<?php echo isset($selected_address['postal_code']) ? $selected_address['postal_code'] : ''; ?>"><br><br>
-
-        <label for="company">Company:</label>
-        <input type="text" name="company" value="<?php echo isset($selected_address['company']) ? $selected_address['company'] : ''; ?>"><br><br>
-
-        <label for="room">Room:</label>
-        <input type="text" name="room" value="<?php echo isset($selected_address['room']) ? $selected_address['room'] : ''; ?>"><br><br>
-
-        <label for="floor">Floor:</label>
-        <input type="text" name="floor" value="<?php echo isset($selected_address['floor']) ? $selected_address['floor'] : ''; ?>"><br><br>
-
-        <input type="submit" name="submit" value="Save Address">
-    </form>
-    <a href="add-address.php"> << back</a>
-    <div class="space-bott" style="padding-bottom:20vh;"></div>
     <?php include("../includes/foot-pages.php"); ?>
 </body>
 

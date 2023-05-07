@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@700&display=swap');
+    body{
+    background: linear-gradient(
+      to right,
+      white 0%,
+      white 50%,
+      #D9D9D9 50%,
+      #D9D9D9 100%
+    );
+    margin-top: 1%;
+    margin-left: 15%;
+    margin-right: 15%;
+  }
+  .logo{
+    width: 7%;
+    margin-left: 2%;
+  }
+  .container1{
+    display: flex;
+    font-family: 'Montserrat Alternates';
+    gap: 1%;
+  }
+  .header {
+    font-family: 'Montserrat Alternates';
+    font-size: 28px;
+    margin-left: 4.5%
+  }
+  .return{
+    margin-top: 10%;
+    margin-left: 1%;
+    margin-bottom: 3%
+  }
+  .return a{
+    text-decoration: none;
+    color: #1e1e1e;
+  }
+  .return a:hover{
+    color: #5876CE;
+  }
+  .policies{
+    font-family: 'Roboto';
+    display: flex;
+    gap: 2%;
+    margin-left: 1%;
+  }
+  .policies p:hover{
+    text-decoration: underline;
+  }
+  .left{
+      width: 50%;
+    }
+  .right{
+    width: 50%;
+    margin-left: 2%;
+  }
+  .press {
+          text-align: center;
+          font-family: 'Roboto';
+          font-weight: bold;
+          background-size: 10px;
+          text-decoration-color: black;
+          margin-left: 1%;
+          
+        }
+        .press button{
+          width: 40.3%;
+          background-color: #5876CE;
+          border: none;
+          border-radius: 0;
+          font-size: 16px;
+          padding: 10px;
+        }
+        .press button:hover{
+          width: 40.3%;
+          background-color: #404759;
+          border: none;
+          
+        }
+        .total{
+          text-align: right;
+          margin-top: 2%;
+          margin-left: 63%;
+          display: flex;
+          gap: 30%;
+        }
+        .t-left{
+          text-align: left;
+        }
+        .t-right{
+          text-align: right;
+          font-weight: 100;
+        }
+        .continue{
+          margin-left: 72%;    
+        }
+        .continue a{
+          text-decoration: none;
+          color: white;
+        }
+        .continue button{
+          background-color: #5876CE;
+          color: white; 
+          font-family: 'Montserrat Alternates';
+          border: none;
+        }
+        .continue button:hover{
+          background-color: #404759;
+          color: #A5F297;
+        }
+        .info-card{
+          font-family: 'Roboto';
+          border: 1px solid #979797;
+          border-radius: 5px;
+          width: 70%;
+          padding: 3%;
+          margin-left: 7.5%;
+          font-size: 15px;
+        }
+        .content1{
+          display: flex;
+          justify-content: space-between;
+          height: 2%;
+        }
+        .content2{
+          display: flex;
+          justify-content: space-between;
+          height: 10%
+        }
+        .content1 a{
+          color: #1e1e1e;
+        }
+        .content2 a{
+          color: #1e1e1e;
+        }
+        .ship-card{
+          font-family: 'Montserrat Alternates';
+          font-size: 20px;
+        }
+
+        
