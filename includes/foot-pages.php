@@ -18,7 +18,7 @@
             <img src="https://i.ibb.co/dfD3s4M/278104398-126694786613134-4231769107383237629-n-removebg-preview.png" class="logo-footer" />
             <div class="row">
                 <div class="row-1">
-                    <a href="index.php">Home</a>
+                    <a href="../">Home</a>
                     <a href="collection.php">Shop</a>
                     <a href="sizechart.php">Size Charts</a>
                     <a href="faqs.php">FAQs</a>

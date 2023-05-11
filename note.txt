@@ -1290,3 +1290,248 @@ if (isset($_POST['submit'])) {
 </body>
 
 </html>
+
+
+////////////////////////////////////products//////////////////////////////////////////
+<!DOCTYPE html>
+<html lang="en">
+<?php include("../includes/nav-pages.php");
+
+require_once "../config.php";
+$category_id = $_GET['cat_id'];
+
+// Get the latest product of the selected category
+$latest_product_query = "SELECT s.*, p.prod_name, p.prod_price, p.prod_img, c.category 
+FROM stock s 
+INNER JOIN products p ON s.prod_id = p.prod_id 
+INNER JOIN category c ON s.category_id = c.category_id 
+WHERE s.category_id = $category_id
+GROUP BY s.prod_id
+ORDER BY p.prod_id DESC
+LIMIT 1";
+$latest_product_result = $conn->query($latest_product_query);
+$latest_product = $latest_product_result->fetch_assoc();
+
+$sql = "SELECT s.*, p.prod_name, p.prod_price, p.prod_img FROM stock s 
+            INNER JOIN products p ON s.prod_id = p.prod_id 
+            WHERE s.category_id = $category_id
+            GROUP BY s.prod_id";
+$result = $conn->query($sql);
+
+$order_by = isset($_GET['order_by']) ? $_GET['order_by'] : 'name_asc'; // set default order
+$order_name = ($order_by === 'name_desc') ? 'p.prod_name DESC' : 'p.prod_name ASC'; // order by name
+$order_price = ($order_by === 'price_desc') ? 'p.prod_price DESC' : 'p.prod_price ASC'; // order by price
+$sql = "SELECT s.*, p.prod_name, p.prod_price, p.prod_img FROM stock s 
+            INNER JOIN products p ON s.prod_id = p.prod_id 
+            WHERE s.category_id = $category_id
+            GROUP BY s.prod_id
+            ORDER BY $order_name, $order_price";
+$result = $conn->query($sql);
+?>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime X Gaming Guild &#x2223; Category Products</title>
+    <link rel="shortcut icon" href="https://i.ibb.co/dfD3s4M/278104398-126694786613134-4231769107383237629-n-removebg-preview.png" />
+    <link rel="stylesheet" href="../assets/css/products.css?<?php echo time(); ?>">
+    <style>
+        .sort{
+            text-align: right;
+            margin: 0% 3% 1% 1%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="image-header">
+            <img id="header-img" src="../../product_images/<?php echo $latest_product['prod_img'] ?>" alt="header">
+            <div class="centered"><?php echo $latest_product['category'] ?></div>
+        </div>
+    </header>
+    <div style="margin-top:10vh;">
+
+    </div>
+    <div class="sort">
+    <select onchange="this.options[this.selectedIndex].value && (window.location.href = '?cat_id=<?php echo $category_id ?>&order_by='+this.options[this.selectedIndex].value);">
+        <option value="name_asc" <?php if ($order_by === 'name_asc') echo 'selected'; ?>>Product Name A-Z</option>
+        <option value="name_desc" <?php if ($order_by === 'name_desc') echo 'selected'; ?>>Product Name Z-A</option>
+        <option value="price_desc" <?php if ($order_by === 'price_desc') echo 'selected'; ?>>Price High to Low</option>
+        <option value="price_asc" <?php if ($order_by === 'price_asc') echo 'selected'; ?>>Price Low to High</option>
+    </select>
+    </div>
+    <div class="grid-container">
+        <?php
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo '<div class="box">';
+                echo '<a href="product.php?id=' . $row["prod_id"] . '">';
+                echo '<div class="product_image"><img src="../../product_images/' . $row["prod_img"] . '" style="height:30vh;" alt="new arrivals"></div>';
+                echo '<div class="content">';
+                echo '<h3>' . $row["prod_name"] . '</h3>';
+                echo '<h2 class="price">₱ ' . $row["prod_price"] . '</h2>';
+                echo '</div>';
+                echo '</a>';
+                echo '</div>';
+            }
+        } else {
+            echo "No results found.";
+        }
+        ?>
+    </div>
+    <?php include("../includes/foot-pages.php"); ?>
+</body>
+
+</html>
+
+
+///////////////////////////////////product/////////////////////////////////////////////////////
+<?php
+// Get the product id from the URL parameter
+
+// Get the product id from the URL parameter
+$prod_id = $_GET['id'];
+
+// Retrieve product information from the database
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "sia";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+$sql = "SELECT * FROM products WHERE prod_id = $prod_id";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+  $row = $result->fetch_assoc();
+
+?>
+
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AXGG | <?php echo $row['prod_name']; ?></title>
+    <link rel="shortcut icon" href="https://i.ibb.co/dfD3s4M/278104398-126694786613134-4231769107383237629-n-removebg-preview.png" />
+    <link rel="stylesheet" href="../assets/css/product.css">
+    <script type="text/javascript" src="assets/js/product.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet">
+    <script src="https://use.fontawesome.com/0ff3a44a7b.js"></script>
+  </head>
+  <body>
+  <?php include("../includes/nav-pages.php"); ?>
+    <div class="center-container">
+      <div class="container">
+        <div class="grid-container">
+          <div>
+            <div class="column-left">
+              <div class="product_image"> <img src="../../product_images/<?php echo $row['prod_img']; ?>" alt="<?php echo $row['prod_name']; ?>" class="variant-1"> </div>
+            </div>
+          </div>
+          <div>
+            <div class="column-right">
+              <div class="content">
+                <h3><?php echo $row['prod_name']; ?></h3>
+                <br>
+                <h2 class="price">₱ <?php echo $row['prod_price']; ?></h2>
+
+                <?php
+                $sql = "SELECT DISTINCT color.color, stock.color_id FROM stock
+                        INNER JOIN color ON stock.color_id = color.color_id
+                        WHERE stock.prod_id = $prod_id";
+                $result = mysqli_query($conn, $sql);
+                $colors = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+                $sql1 = "SELECT DISTINCT size.size, stock.size_id FROM stock
+                        INNER JOIN size ON stock.size_id = size.size_id
+                        WHERE stock.prod_id = $prod_id";
+                $result1 = mysqli_query($conn, $sql1);
+                $sizes = mysqli_fetch_all($result1, MYSQLI_ASSOC);
+
+                
+                $query = "SELECT products.prod_id, stock.prod_id, stock.stock_id 
+                FROM products 
+                INNER JOIN stock ON products.prod_id = stock.prod_id 
+                WHERE stock.prod_id = $prod_id";
+                $result = mysqli_query($conn, $query);
+                
+                if(mysqli_num_rows($result) > 0)
+                    {
+                      while($row = mysqli_fetch_array($result))
+                         {  
+                          // print_r($row['stock_id']);
+                         
+                    
+                ?>
+              <form action="../actions/addtocart.php" method="post">
+              <input name="stock_id" hidden value= <?php echo $row['stock_id'];?>>
+              <input name="prod_id" hidden value= <?php echo $row['prod_id'];?>>  
+              
+                <div class="size-color-labels">
+                  <label class="label-size" for="#">Size</label>
+                  <label class="label-color" for="#">Color</label>
+                </div>
+                
+                <div class="size-and-color">
+                  <select id="second" class="size-select" name = "size_id">
+                    <?php foreach ($sizes as $size) : ?>
+                      <option value="<?php echo $size['size_id']; ?>"><?php echo $size['size']; ?></option>
+                    <?php endforeach; ?>
+                  </select>
+
+                  <select id="second" name ="color_id" class="color-select">
+                    <?php foreach ($colors as $color) : ?>
+                      <option value="<?php echo $color['color_id']; ?>"><?php echo $color['color']; ?></option>
+                    <?php endforeach; ?>
+                  </select>
+                </div>
+                <?php 
+              }
+              ?>
+                <label class="label-quantity" for="#">Quantity</label>
+                <div class="quantity-container">
+                  <input type="number" id="quantity" name="quantity" class="quantity-field" value="1">
+                  <div class="button-container">
+                  </div>
+                </div>
+                <br>
+                <br>
+                <?php
+                if(isset($_SESSION['user_id'])){ ?>
+                <button type="submit" name="submit" class="btn">Add to Cart</button>
+                <?php }
+                else{ }
+                ?>
+                <div class="description">
+                </form>
+                <?php }
+                $prod_id = $_GET['id'];
+                // require_once("../config.php");
+
+                $sql = "SELECT * FROM products WHERE prod_id = $prod_id";
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                  $row = $result->fetch_assoc();
+
+                  echo nl2br("$row[prod_desc]");
+                } else {
+                  echo '<p>Product not found.</p>';
+                }
+              } ?>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <?php include("../includes/foot-pages.php"); ?>
+  </body>
+  </html>

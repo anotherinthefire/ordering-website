@@ -22,16 +22,6 @@ $sql = "SELECT s.*, p.prod_name, p.prod_price, p.prod_img FROM stock s
             WHERE s.category_id = $category_id
             GROUP BY s.prod_id";
 $result = $conn->query($sql);
-
-$order_by = isset($_GET['order_by']) ? $_GET['order_by'] : 'name_asc'; // set default order
-$order_name = ($order_by === 'name_desc') ? 'p.prod_name DESC' : 'p.prod_name ASC'; // order by name
-$order_price = ($order_by === 'price_desc') ? 'p.prod_price DESC' : 'p.prod_price ASC'; // order by price
-$sql = "SELECT s.*, p.prod_name, p.prod_price, p.prod_img FROM stock s 
-            INNER JOIN products p ON s.prod_id = p.prod_id 
-            WHERE s.category_id = $category_id
-            GROUP BY s.prod_id
-            ORDER BY $order_name, $order_price";
-$result = $conn->query($sql);
 ?>
 
 <head>
@@ -40,12 +30,7 @@ $result = $conn->query($sql);
     <title>Anime X Gaming Guild &#x2223; Category Products</title>
     <link rel="shortcut icon" href="https://i.ibb.co/dfD3s4M/278104398-126694786613134-4231769107383237629-n-removebg-preview.png" />
     <link rel="stylesheet" href="../assets/css/products.css?<?php echo time(); ?>">
-    <style>
-        .sort{
-            text-align: right;
-            margin: 0% 3% 1% 1%;
-        }
-    </style>
+
 </head>
 
 <body>
@@ -58,14 +43,6 @@ $result = $conn->query($sql);
     </header>
     <div style="margin-top:10vh;">
 
-    </div>
-    <div class="sort">
-    <select onchange="this.options[this.selectedIndex].value && (window.location.href = '?cat_id=<?php echo $category_id ?>&order_by='+this.options[this.selectedIndex].value);">
-        <option value="name_asc" <?php if ($order_by === 'name_asc') echo 'selected'; ?>>Product Name A-Z</option>
-        <option value="name_desc" <?php if ($order_by === 'name_desc') echo 'selected'; ?>>Product Name Z-A</option>
-        <option value="price_desc" <?php if ($order_by === 'price_desc') echo 'selected'; ?>>Price High to Low</option>
-        <option value="price_asc" <?php if ($order_by === 'price_asc') echo 'selected'; ?>>Price Low to High</option>
-    </select>
     </div>
     <div class="grid-container">
         <?php

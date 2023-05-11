@@ -232,9 +232,41 @@
         </div>
 
         <div class="policies">
-        <a href="privacycheckout.php" style="text-decoration: none; color: black;"><p>Refund Policy</p></a>
-        <a href="privacycheckout.php" style="text-decoration: none; color: black;"><p>Privacy policy</p></a>
-        <a href="privacycheckout.php" style="text-decoration: none; color: black;"><p>Terms and Conditions</p></a>
+          <a style="text-decoration: none; color: black;" data-toggle="modal" data-target="#refundPolicyModal">
+            <p>Refund Policy</p>
+          </a>
+          <a style="text-decoration: none; color: black;" data-toggle="modal" data-target="#privacyPolicyModal">
+            <p>Privacy policy</p>
+          </a>
+          <a style="text-decoration: none; color: black;" data-toggle="modal" data-target="#termsAndConditionsModal">
+            <p>Terms and Conditions</p>
+          </a>
+
+          <!-- Modal -->
+
+          <div class="modal fade" id="refundPolicyModal" tabindex="-1" role="dialog" aria-labelledby="refundPolicyModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <?php include('refundpolicy.php'); ?>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="privacyPolicyModal" tabindex="-1" role="dialog" aria-labelledby="privacyPolicyModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <?php include('privacycheckout.php'); ?>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="termsAndConditionsModal" tabindex="-1" role="dialog" aria-labelledby="termsAndConditionsModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <?php include('termsncocheckout.php'); ?>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -341,6 +373,8 @@ https://www.tutorialrepublic.com/codelab.php?topic=bootstrap&file=elegant-succes
 }
 
   </script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 
 </html>

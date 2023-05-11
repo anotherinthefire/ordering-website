@@ -1,83 +1,83 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-body{
-    margin:0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@700&display=swap');
 
-}
-.profile-container{
-    width: 100%;
-    height: 120vh;
-    align-items: center;
-    justify-content: center;
-    font-size: 23px;
-    display: flex;
-}
+        body {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
 
+        }
 
+        .info p {
+          font-family: 'Montserrat Alternates';
+          text-align: justify;
+          font-weight: 700;
+        }
 
-.profile-box{
-    background: #F6F6F6;
-    text-align: left;
-    padding: 100px 80px;
-    width: 700px;
-    height: 700px;
-    position: relative;
+        /* modal insert new */
+        .container {
+          width: 100%;
+          height: 120vh;
+          align-items: center;
+          justify-content: center;
+          font-size: 23px;
+          display: flex;
+        }
 
-}
-.row{
-    font-family: Roboto;
-    width: 50%;
-    padding: 15px;
-    height: 300px;        
-}
-.press{
-    text-align: center;
-    font-family: 'Montserrat Alternates', sans-serif;
-    background-size: 10px;
-    text-decoration-color: black;
-}
+        .profile-box {
+          background: #F6F6F6;
+          padding: 100px 80px;
+          width: 700px;
+          height: 700px;
+          font-family: 'Montserrat Alternates';
+          align-self: center;
+        }
 
-/* modal */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
-  
-  /* Modal Content */
-  .modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    z-index: 100;
-  }
-  
-  /* The Close Button */
-  .close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-  }
+        .row {
+          font-family: 'Roboto';
+          width: 50%;
+          padding: 15px;
+          height: 300px;
+        }
 
-  /* modal insert new */
+        .buttons {
+          padding-top: 4%;
+        }
+
+        .press {
+          text-align: center;
+          font-family: 'Roboto';
+          font-weight: bold;
+          background-size: 10px;
+          text-decoration-color: black;
+          margin-left: 1%;
+
+        }
+
+        .press button {
+          width: 40.3%;
+          background-color: #5876CE;
+          border: none;
+          border-radius: 0;
+          font-size: 16px;
+          padding: 10px;
+        }
+
+        .press button:hover {
+          width: 40.3%;
+          background-color: #404759;
+          border: none;
+
+        }
+
+        .address {
+          color: #1e1e1e;
+          text-decoration: none;
+          font-family: 'Roboto';
+          font-weight: lighter;
+        }
+
+        .address:hover {
+          text-decoration: underline;
+        }
+/* Modal styles */

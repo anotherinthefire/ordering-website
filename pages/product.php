@@ -1,28 +1,21 @@
 <?php
-// Get the product id from the URL parameter
-
-// Get the product id from the URL parameter
-$prod_id = $_GET['id'];
-
-// Retrieve product information from the database
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "sia";
 
-// Create connection
+$prod_id = $_GET['id'];
+
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 $sql = "SELECT * FROM products WHERE prod_id = $prod_id";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
   $row = $result->fetch_assoc();
-
 ?>
 
   <!DOCTYPE html>
   <html lang="en">
-
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,102 +28,67 @@ if ($result->num_rows > 0) {
     <script src="https://use.fontawesome.com/0ff3a44a7b.js"></script>
   </head>
   <body>
-  <?php include("../includes/nav-pages.php"); ?>
+    <?php include("../includes/nav-pages.php"); ?>
+
     <div class="center-container">
       <div class="container">
         <div class="grid-container">
+
+        <!-- product image -->
           <div>
             <div class="column-left">
               <div class="product_image"> <img src="../../product_images/<?php echo $row['prod_img']; ?>" alt="<?php echo $row['prod_name']; ?>" class="variant-1"> </div>
             </div>
           </div>
+
           <div>
             <div class="column-right">
               <div class="content">
+                <!-- product name and price -->
                 <h3><?php echo $row['prod_name']; ?></h3>
                 <br>
                 <h2 class="price">₱ <?php echo $row['prod_price']; ?></h2>
 
                 <?php
-                $sql = "SELECT DISTINCT color.color, stock.color_id FROM stock
-                        INNER JOIN color ON stock.color_id = color.color_id
-                        WHERE stock.prod_id = $prod_id";
+                $sql = "SELECT DISTINCT s.stock_id, sz.size, c.color 
+                FROM stock s 
+                INNER JOIN color c ON s.color_id = c.color_id 
+                INNER JOIN size sz ON s.size_id = sz.size_id 
+                WHERE s.prod_id = $prod_id";
                 $result = mysqli_query($conn, $sql);
-                $colors = mysqli_fetch_all($result, MYSQLI_ASSOC);
-
-                $sql1 = "SELECT DISTINCT size.size, stock.size_id FROM stock
-                        INNER JOIN size ON stock.size_id = size.size_id
-                        WHERE stock.prod_id = $prod_id";
-                $result1 = mysqli_query($conn, $sql1);
-                $sizes = mysqli_fetch_all($result1, MYSQLI_ASSOC);
-
-                
-                $query = "SELECT products.prod_id, stock.prod_id, stock.stock_id 
-                FROM products 
-                INNER JOIN stock ON products.prod_id = stock.prod_id 
-                WHERE stock.prod_id = $prod_id";
-                $result = mysqli_query($conn, $query);
-                
-                if(mysqli_num_rows($result) > 0)
-                    {
-                      while($row = mysqli_fetch_array($result))
-                         {  
-                          // print_r($row['stock_id']);
-                         
-                    
+                $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
+                if (mysqli_num_rows($result) > 0) {
                 ?>
-              <form action="../actions/addtocart.php" method="post">
-              <input name="stock_id" hidden value= <?php echo $row['stock_id'];?>>
-              <input name="prod_id" hidden value= <?php echo $row['prod_id'];?>>  
-              
-                <div class="size-color-labels">
-                  <label class="label-size" for="#">Size</label>
-                  <label class="label-color" for="#">Color</label>
-                </div>
-                <div class="size-and-color">
-                  <select id="second" class="size-select" name = "size_id">
-                    <?php foreach ($sizes as $size) : ?>
-                      <option value="<?php echo $size['size_id']; ?>"><?php echo $size['size']; ?></option>
-                    <?php endforeach; ?>
-                  </select>
-
-                  <select id="second" name ="color_id" class="color-select">
-                    <?php foreach ($colors as $color) : ?>
-                      <option value="<?php echo $color['color_id']; ?>"><?php echo $color['color']; ?></option>
-                    <?php endforeach; ?>
-                  </select>
-                </div>
-
-                <label class="label-quantity" for="#">Quantity</label>
-                <div class="quantity-container">
-                  <input type="number" id="quantity" name="quantity" class="quantity-field" value="1">
-                  <div class="button-container">
-                    <!-- <button id="up" onclick="setQuantity('up');">
-                      <i class="fa fa-chevron-up"></i>
-                    </button>
-                    <button id="down" onclick="setQuantity('down');">
-                      <i class="fa fa-chevron-down"></i>
-                    </button> -->
-                  </div>
-                </div>
-                <br>
-                <br>
-                <?php
-                if(isset($_SESSION['user_id']))
-                {
-                ?>      
-                <button type="submit" name="submit" class="btn">Add to Cart</button>
-                <?php
-                }else
-                {
-
-                }
-                ?>
-                <div class="description">
-                </form>
-                <?php
-                }
-              }
+                
+                  <form action="../actions/addtocart.php" method="post">
+                    <input name="prod_id" hidden value="<?php echo $prod_id; ?>">
+                    <div class="size-color-labels">
+                      <label class="label-size" for="#">Size and Color</label>
+                    </div>
+                    <div class="size-and-color">
+                      <select id="second" class="size-select" name="stock_id">
+                        <?php foreach ($rows as $row) : ?>
+                          <option value="<?php echo $row['stock_id']; ?>"><?php echo $row['size'] . ' - ' . $row['color']; ?></option>
+                        <?php endforeach; ?>
+                      </select>
+                    </div>
+                    <label class="label-quantity" for="#">Quantity</label>
+                    <div class="quantity-container">
+                      <input type="number" id="quantity" name="quantity" class="quantity-field" value="1">
+                      <div class="button-container">
+                      </div>
+                    </div>
+                    <br>
+                    <br>
+                    <?php
+                    if (isset($_SESSION['user_id'])) { ?>
+                      <button type="submit" name="submit" class="btn">Add to Cart</button>
+                    <?php } else {
+                    }
+                    ?>
+                    <div class="description">
+                  </form>
+              <?php }
                 $prod_id = $_GET['id'];
                 // require_once("../config.php");
 
@@ -145,13 +103,14 @@ if ($result->num_rows > 0) {
                 }
               } ?>
 
-                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    </div>
     <?php include("../includes/foot-pages.php"); ?>
   </body>
+
   </html>

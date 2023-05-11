@@ -67,7 +67,7 @@
                 
                         <input type="hidden" name="cart_id" value="<?php echo $row['cart_id']; ?>">
                         <button type="submit" name="minus" style="background-color:transparent; border:none;">-</button>
-                        <input type="number" min=1 name="quantity" value="<?php echo $row['quantity']; ?>" id="input"  style="text-align: center; width:7vw;">
+                        <input type="text" id="quantity" name="quantity" value="<?php echo $row['quantity']; ?>" style="text-align: center; width:7vw;border-color: transparent;" readonly>
                         <button type="submit" name="plus" style="background-color:transparent; border:none;">+</button>
                
                     </td>
