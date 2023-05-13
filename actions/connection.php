@@ -1,48 +1,39 @@
 <?php
 session_start();
-
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "sia";
-
-// Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
-// Check connection
 if (!$conn) {
   die("Connection failed: " . mysqli_connect_error());
 }
-// else{
-//     echo("successful");
-// }
-
 
 $error_message = "";
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {  
-    print_r($_SESSION["user_id"]);
     $UsernameOrEmail = $_POST['username_or_email'];
     $Password = $_POST['password'];
-
-    $sql = "SELECT * FROM user WHERE username = '$UsernameOrEmail' OR email = '$UsernameOrEmail' AND password = '$Password'";
+    $sql = "SELECT * FROM user WHERE username = '$UsernameOrEmail' OR email = '$UsernameOrEmail'";
     $result = $conn->query($sql);
 
-    // for login
-    if ($result->num_rows > 0) 
-    {
-        // output data of each row
-        while($row = $result->fetch_assoc())
-        {
-          $_SESSION["user_id"] = $row['user_id'];
-          $_SESSION["fullname"] = $row['fullname'];
-          header('Location: ../');
-        }       
-    } 
-    else 
-      {
-          $error_message = "Invalid login credentials.";
-      }
-}
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()){
+          $hashed_password = $row['password'];
 
-?>  
+          if (password_verify($Password, $hashed_password)) {
+            $_SESSION["user_id"] = $row['user_id'];
+            header('Location: ../');
+            exit;
+            
+          } else {
+            $error_message = "Invalid password";
+            echo "<script>alert('$error_message'); window.location.replace(document.referrer);</script>";
+          }
+        }       
+    } else {
+        $error_message = "Invalid login credentials.";
+        echo "<script>alert('$error_message'); window.location.replace(document.referrer);</script>";
+    }
+}
+?>

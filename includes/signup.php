@@ -33,8 +33,9 @@
       </div>
 
       <div class="form-floating mb-3 ms-5 me-5">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required />
-        <label for="floatingPassword">Password<label class="text-danger">*</label></label>
+        <input type="password" class="form-control" id="password" placeholder="Password" name="password" required />
+        <label for="password">Password<label class="text-danger">*</label></label>
+        <button type="button" id="togglePassword" class="btn btn-outline-secondary"><i class="bi bi-eye-slash"></i></button>
       </div>
 
       <div class="g-3 d-flex" style="width: 100%;">
@@ -64,25 +65,36 @@
           Sign Up
         </button>
       </div>
-      
-      
+
+
       <div class="col-12">
         <div class="form-check text-light">
           <input class="form-check-input ms-5" type="checkbox" value="" id="invalidCheck" required />
           <label class="form-check-label ms-2 for=" invalidCheck>
             <a href="pages/termsnco.php" style="color: inherit; text-decoration: none;">Agree to terms and conditions</a>
           </label>
+          </form>
         </div>
       </div>
+      <div class="d-grid gap-2 mb-3 col-10 mx-auto">
+    <a href="../" >
+      <button class="btn text-light fw-bold fs-5">
+        < Back
+      </button>
+    </a>
+  </div>
     </div>
-  </form>
-  <div class="d-grid gap-2 mb-3 col-10 mx-auto">
-        <a href="../" style="background-color:black;">
-          <button class="btn text-light fw-bold fs-5" >
-          Back
-        </button>
-        </a>
-      </div>
+  
+  
+  <script>
+  const passwordInput = document.querySelector('#password');
+  const togglePasswordButton = document.querySelector('#togglePassword');
+  togglePasswordButton.addEventListener('click', function () {
+    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordInput.setAttribute('type', type);
+    togglePasswordButton.innerHTML = type === 'password' ? '<i class="bi bi-eye-slash"></i>' : '<i class="bi bi-eye"></i>';
+  });
+</script>
 </body>
 
 </html>

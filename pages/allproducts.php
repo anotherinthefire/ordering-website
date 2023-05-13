@@ -100,7 +100,7 @@
                         echo '<div class="product_image"><img src="../../product_images/' . $row["prod_img"] . '" style="height:30vh;" alt="new arrivals"></div>';
                         echo '<div class="content">';
                         echo '<h3><b>' . $row["prod_name"] . '</b></h3>';
-                        echo '<h2 class="price">₱ ' . $row["prod_price"] . '<small>00</small></h2>';
+                        echo '<h2 class="price">₱ ' . $row["prod_price"] . '</h2>';
                         echo '</div>';
                         echo '</a>';
                         echo '</div>';

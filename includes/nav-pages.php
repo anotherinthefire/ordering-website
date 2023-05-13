@@ -1,6 +1,6 @@
 <?php
 if (session_status() !== PHP_SESSION_ACTIVE) {
-  include('../config.php');
+    include('../config.php');
 }
 ?>
 
@@ -68,49 +68,48 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
     </div>
     </div>
     <div id="myModal" class="modal">
-        <div class="modal-content">
+    <div class="modal-content">
+      <form action="../actions/connection.php" method="post">
+        <div class="card1 col-md-4 align-items-center position-absolute top-50 start-50 translate-middle">
+          <div class="p-5 ms-3 mt-3 text-light">
+            <span class="close">&times;</span>
+            <h1 class="font-family: Poppins">Log in</h1>
+            <p>Please enter your details</p>
+            <?php if (isset($_GET['error_message'])) { ?>
+              <div style="color:red;"><?php echo $_GET['error_message']; ?></div>
+            <?php } ?>
+          </div>
 
-            <form action="../actions/connection.php" method="post">
-                <div class="card1 col-md-4 align-items-center position-absolute top-50 start-50 translate-middle">
-                    <div class="p-5 ms-3 mt-3 text-light">
-                        <span class="close">&times;</span>
-                        <h1 class="font-family: Poppins">Log in</h1>
-                        <p>Please enter your details</p>
-                        <?php if (isset($_GET['error_message'])) { ?>
-                            <div style="color:red;"><?php echo $_GET['error_message']; ?></div>
-                        <?php } ?>
-                    </div>
+          <div class="form-floating mb-3 ms-5 me-5">
+            <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="username_or_email" />
+            <label for="floatingInput">Email or Username</label>
+          </div>
+          <div class="form-floating mb-3 ms-5 me-5">
+            <input type="password" class="form-control" id="passwordInput" placeholder="Password" name="password" />
+            <label for="passwordInput">Password</label>
+            <button type="button" id="passwordToggleBtn" onclick="togglePasswordVisibility()">Show</button>
+          </div>
 
-                    <div class="form-floating mb-3 ms-5 me-5">
-                        <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="username_or_email" />
-                        <label for="floatingInput">Email or Username</label>
-                    </div>
-                    <div class="form-floating mb-3 ms-5 me-5">
-                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" />
-                        <label for="floatingPassword">Password</label>
-                    </div>
+          <div class="text-end mx-5">
+            <a href="../includes/forgot.php" class="text-light">Forgot password?</a>
+          </div>
 
-                    <div class="text-end mx-5">
-                        <a href="includes/forgot.php" class="text-light">Forgot password?</a>
-                    </div>
+          <div class="d-grid gap-2 mb-2 ms-5 me-5 mt-3">
+            <button class="btn text-light fs-5" type="submit" style="background-color: #404759">
+              Sign in
+            </button>
+          </div>
 
-                    <div class="d-grid gap-2 mb-2 ms-5 me-5 mt-3">
-                        <button class="btn text-light fs-5" type="submit" style="background-color: #404759">
-                            Sign in
-                        </button>
-                    </div>
-
-                    <div class="">
-                        <p class="text-light text-center">
-                            Don't have account?
-                            <a href="../includes/signup.php" style="color: #5876ce; text-decoration: none">Create new account</a>
-                        </p>
-                    </div>
-                </div>
-            </form>
+          <div class="">
+            <p class="text-light text-center">
+              Don't have account?
+              <a href="../includes/signup.php" style="color: #5876ce; text-decoration: none">Create new account</a>
+            </p>
+          </div>
         </div>
-
+      </form>
     </div>
+  </div>
 <?php
         }
 ?>
@@ -122,19 +121,19 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 
     // Get the button that opens the modal
     // Get the button that opens the modal
-  var btn = document.getElementById("myBtn");
-  var btn1 = document.getElementById("myBtn1");
+    var btn = document.getElementById("myBtn");
+    var btn1 = document.getElementById("myBtn1");
 
-  // Get the <span> element that closes the modal
-  var span = document.getElementsByClassName("close")[0];
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
 
-  // When the user clicks the button, open the modal 
-  btn.onclick = function() {
-    modal.style.display = "block";
-  }
-  btn1.onclick = function() {
-    modal.style.display = "block";
-  }
+    // When the user clicks the button, open the modal 
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+    btn1.onclick = function() {
+        modal.style.display = "block";
+    }
     // When the user clicks on <span> (x), close the modal
     span.onclick = function() {
         modal.style.display = "none";
@@ -144,6 +143,18 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
+        }
+    }
+
+    function togglePasswordVisibility() {
+        var passwordInput = document.getElementById("passwordInput");
+        var passwordToggleBtn = document.getElementById("passwordToggleBtn");
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            passwordToggleBtn.textContent = "Hide";
+        } else {
+            passwordInput.type = "password";
+            passwordToggleBtn.textContent = "Show";
         }
     }
 </script>

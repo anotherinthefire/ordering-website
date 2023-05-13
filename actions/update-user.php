@@ -1,33 +1,33 @@
 <?php
 session_start();
-// Check if the form is submitted
 if(isset($_POST['submit'])) {
-    // Retrieve form data
     $fullname = $_POST['fullname'];
-    $username = $_POST['username'];
+    $user_name = $_POST['username'];
     $email = $_POST['email'];
     $contact = $_POST['contact'];
     $user_id = $_SESSION['user_id'];
 
-    // Connect to database
-include('../config.php');
-
-    // Check connection
+    include('../config.php');
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
     }
 
-    // Update user information in the database
-    $sql = "UPDATE user SET fullname='$fullname', username='$username', email='$email', contact='$contact' WHERE user_id='$user_id'";
+    $sql_check = "SELECT user_id FROM user WHERE (username='$user_name' OR email='$email') AND user_id != '$user_id'";
+    $result = mysqli_query($conn, $sql_check);
+    if (mysqli_num_rows($result) > 0) {
+        // The username or email is already taken
+        echo '<script>alert("Username or email is already taken"); window.history.back();</script>';
+        exit;
+    }
 
+    $sql = "UPDATE user SET fullname='$fullname', username='$user_name', email='$email', contact='$contact' WHERE user_id='$user_id'";
     if (mysqli_query($conn, $sql)) {
         echo '<script>alert("User information updated successfully"); window.history.back();</script>';
         exit;
     } else {
         echo '<script>alert("There is an error in updating your information"); window.history.back();</script>'. mysqli_error($conn);
-      exit;
+        exit;
     }
-    // Close database connection
     mysqli_close($conn);
 }
 ?>

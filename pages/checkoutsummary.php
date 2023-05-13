@@ -1,5 +1,3 @@
-
-
 <html lang="en">
 
 <head>
@@ -15,27 +13,7 @@
   session_start();
 
   include('../config.php');
-    function updateAddress($conn, $user_id, $address_data) {
-      $sql = "UPDATE address SET 
-        room = '{$address_data['room']}',
-        company = '{$address_data['company']}',
-        house_no = '{$address_data['house_no']}',
-        street = '{$address_data['street']}',
-        barangay = '{$address_data['barangay']}',
-        city = '{$address_data['city']}',
-        province = '{$address_data['province']}',
-        postal_code = '{$address_data['postal_code']}',
-        region = '{$address_data['region']}'
-        WHERE user_id = '{$user_id}' AND `set` = 1";
-    
-      if (mysqli_query($conn, $sql)) {
-          header('Location: checkoutsummary.php');
-        exit();
-      } else {
-          header("Location: checkout.php");
-          exit();
-      }
-    }
+
   $user_id = $_SESSION['user_id'];
 
   $user_query = mysqli_query($conn, "SELECT * FROM user WHERE user_id = '$user_id'");
@@ -44,79 +22,69 @@
   $address_query = mysqli_query($conn, "SELECT * FROM address WHERE user_id = '$user_id' AND `set` = 1");
   $address_data = mysqli_fetch_assoc($address_query);
 
-
+  $user_query = mysqli_query($conn, "SELECT email FROM user WHERE user_id = '$user_id'");
+  $user_dataa = mysqli_fetch_assoc($user_query);
+//phpmailer here
+  $email = $user_dataa['email'];
   //Import PHPMailer classes into the global namespace
   //These must be at the top of your script, not inside a function
   use PHPMailer\PHPMailer\PHPMailer;
   use PHPMailer\PHPMailer\SMTP;
   use PHPMailer\PHPMailer\Exception;
-  
-  
-  
+
+
+
   //Load Composer's autoloader
   require '../vendor/autoload.php';
   if (isset($_POST["submit_order"])) {
-  //Create an instance; passing `true` enables exceptions
-  $mail = new PHPMailer(true);
-  
-  try {
+    //Create an instance; passing `true` enables exceptions
+    $mail = new PHPMailer(true);
+
+    try {
       //Server settings
       //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-      $mail->isSMTP();                                            //Send using SMTP
-      $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
-      $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-      $mail->Username   = 'dummydummy@gmail.com';                     //SMTP username
-      $mail->Password   = 'test pass word test';                              //SMTP password
-      $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-      $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-  
-      //Recipients remove before commit
-      $mail->setFrom('dummydummy@gmail.com', 'AXGG');
-      $mail->addAddress('dummy.receiver@gmail.com', 'AXGG');     //Add a recipient
-      //$mail->addAddress('ellen@example.com');               //Name is optional
-      $mail->addReplyTo('dummydummygmail.com', 'AXGG');
-      //$mail->addCC('cc@example.com');
-      //$mail->addBCC('bcc@example.com');
-  
+//removed something here
+
       //Attachments
       $mail->addAttachment('../assets/mail/logo.png');         //Add attachments
       //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
-  
+
       //Content
       $email_subject = 'Your order has been received and is being reviewed.';
-      $email_body = "Dear customer,
-  
+      $email_body = "Dear customer,  
+      
       Thank you for placing your order with us. We have received it and are currently reviewing it. 
-      
       Please note that we may contact you within the next three business days to confirm your order and discuss any additional details.
-      
-      If you have any questions or concerns, please don't hesitate to contact us at [insert your contact information here]. We appreciate your business and look forward to serving you.
+      If you have any questions or concerns, please don't hesitate to contact us at (axgg.support@gmail.com). We appreciate your business and look forward to serving you.      
       
       Best regards,
       AXGG
+
+      
       ";
-  
+
       $mail->isHTML(true);                                  //Set email format to HTML
       $mail->Subject = $email_subject;
       $mail->Body    = $email_body;
       //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-  
+
       $mail->send();
       echo 'Message has been sent';
-  } catch (Exception $e) {
+    } catch (Exception $e) {
       echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-  }    
-  
+      echo '<script>alert("Message could not be sent. Mailer Error: '.$mail->ErrorInfo.'");</script>';
+    }
+
     $full_name = $user_data["fullname"];
     $contact = $user_data["contact"];
     $mod_ = "LBC";
     $mop = $_POST["mop"];
     $note = $_POST["note"];
-  
+
     //total price
     $selected_items = $_SESSION['selected_items'];
     $total_price = 0; // initialize total price variable
-  
+
     // Construct the SQL query to retrieve the cart items for the user
     $sql = "SELECT c.cart_id, s.stock_id, p.prod_name, p.prod_price, c.quantity, p.prod_price*c.quantity AS subtotal
               FROM cart c
@@ -124,45 +92,42 @@
               JOIN products p ON s.prod_id = p.prod_id
               WHERE c.cart_id IN (" . implode(',', $selected_items) . ")
               AND c.user_id = " . $user_id;
-  
+
     // Execute the query and store the result
     $result = mysqli_query($conn, $sql);
-  
+
     while ($row = mysqli_fetch_assoc($result)) {
       $total_price += $row['subtotal']; // add subtotal to total price
     }
-  
+
     // Insert order data into orders table
     $insert_order_query = "INSERT INTO orders (user_id, add_id, full_name, contact, mod_, mop, total, note) 
                        VALUES ('$user_id', '" . $address_data["add_id"] . "', '$full_name', '$contact', '$mod_', '$mop', '$total_price'+150 ,'$note')";
-  
-  
+
+
     if (mysqli_query($conn, $insert_order_query)) {
       $ord_id = mysqli_insert_id($conn); // Get the order ID
-  
+
       // Insert cart items into ordered_products table
       if (isset($_SESSION['selected_items'])) {
         $selected_items = $_SESSION['selected_items'];
-  
+
         foreach ($selected_items as $cart_id) {
           $cart_query = mysqli_query($conn, "SELECT * FROM cart WHERE cart_id = '$cart_id' AND user_id = '$user_id'");
           $cart_data = mysqli_fetch_assoc($cart_query);
-  
+
           $stock_id = $cart_data["stock_id"];
           $quantity = $cart_data["quantity"];
-  
+
           $insert_ordered_products_query = "INSERT INTO ordered_products (ord_id, stock_id, quantity) VALUES ('$ord_id', '$stock_id', '$quantity')";
           mysqli_query($conn, $insert_ordered_products_query);
         }
-  
+
         mysqli_query($conn, "DELETE FROM cart WHERE user_id = '$user_id'");
-        
+
         unset($_SESSION['selected_items']);
-        
-  
-  
-  
-        header("Location: myorders.php");
+
+        header("Location: ../includes/success-order.php");
         exit();
       } else {
         echo "Error: No items were selected for checkout.";
@@ -203,9 +168,9 @@
           <div class="content1">
             <p style="color:979797; width: 3%">Contact
             <p>
-            <p>l<?php echo $user_data["email"]; ?>
+            <p><?php echo $user_data["email"]; ?>
             <p>
-              <a href="">Change</a>
+              <a href="checkout.php">Change</a>
           </div>
           <hr>
           <div class="content2">
@@ -213,7 +178,7 @@
             <p>
             <p><?php echo $address_data["room"]; ?> <?php echo $address_data["company"]; ?> <?php echo $address_data["house_no"]; ?> <?php echo $address_data["street"]; ?>, <?php echo $address_data["barangay"]; ?>, <?php echo $address_data["city"]; ?>, <?php echo $address_data["province"]; ?>, <?php echo $address_data["postal_code"]; ?>, <?php echo $address_data["region"]; ?>
             <p>
-              <a href="">Change</a>
+              <a href="checkout.php">Change</a>
           </div>
         </div>
         <br>
@@ -223,10 +188,10 @@
           <p class="ms-5">₱150</p>
         </div>
         <div class="mb3 ms-5 me-5">
-        <label for="note" class="form-label" style="font-family:'Roboto';font-weight: bold;">Note</label>
-        <textarea class="form-control" id="notes" name="note" rows="5" oninput="countCharacters()"></textarea>
-        <div id="char-count"></div>
-      </div>
+          <label for="note" class="form-label" style="font-family:'Roboto';font-weight: bold;">Note</label>
+          <textarea class="form-control" id="notes" name="note" rows="5" oninput="countCharacters()"></textarea>
+          <div id="char-count"></div>
+        </div>
         <div class="return">
           <a href="checkout.php">&lt; Return to Information</a>
         </div>
@@ -353,25 +318,24 @@
         </div>
 
         </div>
-      
+
   </form>
   <!-- https://codepen.io/vikram_e22/pen/BQNaBB
 https://www.tutorialrepublic.com/codelab.php?topic=bootstrap&file=elegant-success-modal -->
-<script>
-  function countCharacters() {
-  var message = document.getElementById("notes").value;
-  var count = message.length;
-  var charCount = document.getElementById("char-count");
-  charCount.innerHTML = count + "/500";
+  <script>
+    function countCharacters() {
+      var message = document.getElementById("notes").value;
+      var count = message.length;
+      var charCount = document.getElementById("char-count");
+      charCount.innerHTML = count + "/500";
 
-  if (count > 500) {
-    charCount.style.color = "red";
-    document.getElementById("notes").value = message.slice(0, 500);
-  } else {
-    charCount.style.color = "black";
-  }
-}
-
+      if (count > 500) {
+        charCount.style.color = "red";
+        document.getElementById("notes").value = message.slice(0, 500);
+      } else {
+        charCount.style.color = "black";
+      }
+    }
   </script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>

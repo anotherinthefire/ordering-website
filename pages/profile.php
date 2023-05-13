@@ -7,6 +7,8 @@ catch (Exception $e) {
   include('../config.php');
 }
 
+
+
 if (isset($_SESSION['user_id'])) {
   $user_id = $_SESSION['user_id'];
 
@@ -22,7 +24,10 @@ if (isset($_SESSION['user_id'])) {
     $stmt = $pdo->prepare($sql);
     $stmt->execute(array(':user_id' => $user_id));
     $addresses = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
 ?>
+
     <html>
 
     <head>
@@ -84,7 +89,6 @@ if (isset($_SESSION['user_id'])) {
           background-size: 10px;
           text-decoration-color: black;
           margin-left: 1%;
-
         }
 
         .press button {
@@ -113,8 +117,6 @@ if (isset($_SESSION['user_id'])) {
         .address:hover {
           text-decoration: underline;
         }
-
-
 
         .modal1 {
           display: none;
@@ -163,10 +165,12 @@ if (isset($_SESSION['user_id'])) {
           cursor: pointer;
         }
       </style>
+
     </head>
 
     <body>
       <?php
+
       include '../includes/nav-pages.php';
       ?>
       <div class="container">
@@ -194,56 +198,77 @@ if (isset($_SESSION['user_id'])) {
             <p>You have no shipping addresses.</p>
           <?php } ?>
           <p><a href="add-address.php" class="address"> + Add New Shipping Address</a></p>
-          <span style="font-family:'Roboto';">Email:</span>
-          <?php echo $user['email']; ?>
-          <br>
-          <!-- <span style="font-family:'Roboto';">Password: </span> <b>*******************</b></p> -->
-          <div class="buttons">
-            <div class="press">
-              <button type="button" style="color:#fff; text-decoration:none; font-weight:bold;" id="myBtn1">EDIT PROFILE</button>
-              </button>
-            </div>
-
-            <!-- The Modal -->
-            <div id="myModal1" class="modal1">
-              <div class="modal-content1">
-                <!-- <span class="close1">&times;</span> -->
-                <form method="POST" action="../actions/update-user.php" id="edit">
-                  <h1>EDIT PROFILE </h1>
-                  <div class="form-group mt-3">
-                    <label for="fullname">Full Name:</label>
-                    <input type="text" class="form-control" id="fullname" name="fullname" value="<?php echo $user['fullname']; ?>">
-                  </div>
-
-                  <div class="form-group">
-                    <label for="username">Username:</label>
-                    <input type="text" class="form-control" id="username" name="username" value="<?php echo $user['username'] ?>">
-                  </div>
-
-                  <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" class="form-control" id="email" name="email" value="<?php echo $user['email']; ?>">
-                  </div>
-
-                  <div class="form-group mb-4">
-                    <label for="contact">Contact Number:</label>
-                    <input type="tel" class="form-control" id="contact" name="contact" value="<?php echo $user['contact']; ?>">
-                  </div>
-                </form>
-                <button type="submit" name="submit" class="btn btn-primary" form="edit">Save</button>
-                <button class="close1 btn btn-danger">Cancel</button>
-              </div>
-            </div>
 
 
+          <form method="post" action="">
+            <span style="font-family:'Roboto';">Email:</span>
+            <input type="text" name="email" style="background-color:transparent; border:none;;" value="<?php echo $user['email']; ?>">
             <br>
-            <div class="press">
-              <a href="myorders.php"><button type="button" style="color:#fff; text-decoration:none; font-weight:bold;">VIEW ORDERS</button></a>
-            </div>
-          </div>
-          </div>
+            <span style="font-family:'Roboto';">Status: </span>
+            <b><?php echo $user['status'] == 1 ? 'Verified' : 'Not Verified'; ?></b>
 
+            <div class="buttons">
+              <div class="press">
+                <button type="button" style="color:#fff; text-decoration:none; font-weight:bold;" id="myBtn1">EDIT PROFILE</button>
+                </button>
+              </div>
+
+              <!-- The Modal -->
+              <div id="myModal1" class="modal1">
+                <div class="modal-content1">
+                  <!-- <span class="close1">&times;</span> -->
+                  <form method="POST" action="../actions/update-user.php" id="edit">
+                    <h1>EDIT PROFILE </h1>
+                    <div class="form-group mt-3">
+                      <label for="fullname">Full Name:</label>
+                      <input type="text" class="form-control" id="fullname" name="fullname" value="<?php echo $user['fullname']; ?>">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="username">Username:</label>
+                      <input type="text" class="form-control" id="username" name="username" value="<?php echo $user['username'] ?>">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="email">Email:</label>
+                      <input type="email" class="form-control" id="email" name="email" value="<?php echo $user['email']; ?>">
+                    </div>
+
+                    <div class="form-group mb-4">
+                      <label for="contact">Contact Number:</label>
+                      <input type="tel" class="form-control" id="contact" name="contact" value="<?php echo $user['contact']; ?>">
+                    </div>
+                  </form>
+                  <button type="submit" name="submit" class="btn btn-success" form="edit">Save</button>
+                  <a href="../includes/change-pass.php"><button type="button" class="btn btn-primary ">Change Password</button></a>
+                  <button class="close1 btn btn-light">Cancel</button>
+                </div>
+              </div>
+
+              <br>
+              <div class="press">
+                <a href="myorders.php"><button type="button" style="color:#fff; text-decoration:none; font-weight:bold;">VIEW ORDERS</button></a>
+              </div>
+              <br>
+              <?php
+              // Assuming $status contains the status value
+              if ($user['status'] == 1) {
+
+              } else {
+              ?>
+                <div class="press">
+                  <button type="submit" name="verify" style="color:#fff; text-decoration:none; font-weight:bold;">VERIFY ACCOUNT</button>
+                </div>
+              <?php
+              }
+              ?>
+
+          </form>
+
+          </div>
         </div>
+
+      </div>
       </div>
       </div>
       <?php include '../includes/foot-pages.php'; ?>

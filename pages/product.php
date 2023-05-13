@@ -16,6 +16,7 @@ if ($result->num_rows > 0) {
 
   <!DOCTYPE html>
   <html lang="en">
+
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,6 +28,7 @@ if ($result->num_rows > 0) {
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet">
     <script src="https://use.fontawesome.com/0ff3a44a7b.js"></script>
   </head>
+
   <body>
     <?php include("../includes/nav-pages.php"); ?>
 
@@ -34,7 +36,7 @@ if ($result->num_rows > 0) {
       <div class="container">
         <div class="grid-container">
 
-        <!-- product image -->
+          <!-- product image -->
           <div>
             <div class="column-left">
               <div class="product_image"> <img src="../../product_images/<?php echo $row['prod_img']; ?>" alt="<?php echo $row['prod_name']; ?>" class="variant-1"> </div>
@@ -59,19 +61,35 @@ if ($result->num_rows > 0) {
                 $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
                 if (mysqli_num_rows($result) > 0) {
                 ?>
-                
+
                   <form action="../actions/addtocart.php" method="post">
                     <input name="prod_id" hidden value="<?php echo $prod_id; ?>">
-                    <div class="size-color-labels">
+                    
+                      <?php
+                      $display_dropdown = true;
+                      foreach ($rows as $row) {
+                        if ($row['size'] == 'n/a' && $row['color'] == 'n/a') {
+                          $display_dropdown = false;
+                          break;
+                        }
+                      }
+
+                      if ($display_dropdown) {
+                      ?>
+                      <div class="size-color-labels">
                       <label class="label-size" for="#">Size and Color</label>
                     </div>
                     <div class="size-and-color">
-                      <select id="second" class="size-select" name="stock_id">
-                        <?php foreach ($rows as $row) : ?>
-                          <option value="<?php echo $row['stock_id']; ?>"><?php echo $row['size'] . ' - ' . $row['color']; ?></option>
-                        <?php endforeach; ?>
-                      </select>
+                        <select id="second" class="size-select" name="stock_id">
+                          <?php foreach ($rows as $row) : ?>
+                            <option value="<?php echo $row['stock_id']; ?>"><?php echo $row['size'] . ' - ' . $row['color']; ?></option>
+                          <?php endforeach; ?>
+                        </select>
+                      <?php
+                      }
+                      ?>
                     </div>
+
                     <label class="label-quantity" for="#">Quantity</label>
                     <div class="quantity-container">
                       <input type="number" id="quantity" name="quantity" class="quantity-field" value="1">

@@ -25,7 +25,6 @@
             if (mysqli_num_rows($result) > 0) {
                 $row = mysqli_fetch_assoc($result);
                 $total = $row['Total'];
-            
                     ?>
                     <table class="pure-table" style="margin-left: 100px;margin-right: 100px;">
                         <tbody style="border-left-width: 0px;">
@@ -83,22 +82,30 @@
         <?php
             }//loop end
             if (isset($_POST['checkout'])) {
-                if (!empty($_POST['cart_item'])) {
-                    // If cart_item is not empty, save it in the session
-                    // and redirect to the checkout page.
-                    $_SESSION['selected_items'] = $_POST['cart_item'];
-                    header("location: ../pages/checkout.php");
-                    exit;
-                } else {
-                    // If cart_item is empty, display an error message
-                    // and redirect to the cart page.
-                    header("location: ../pages/cart.php");
-                    die("Error: No items were selected for checkout.");
-                }
-            }
+                // Get user status from database
+                $email = $_SESSION['email'];
+                $sql = "SELECT * FROM user WHERE email='$email'";
+                $result = mysqli_query($conn, $sql);
+                $row = mysqli_fetch_assoc($result);
+                $user_status = $row['status'];
             
-        }
-        ?>
+                if ($user_status == 0) {
+                    echo "<script>alert('Error: You cannot checkout because your account is not verified.')</script>";
+                } else {
+                    if (!empty($_POST['cart_item'])) {
+                        $_SESSION['selected_items'] = $_POST['cart_item'];
+                        header("location: ../pages/checkout.php");
+                        exit;
+                    } else {
+                        echo "<script>alert('Error: No items were selected for checkout.')</script>";
+                    }
+                }
+            }}
+            
+        
+            
+            ?>
+            
                         </tbody>
                     </table>
                     <br>

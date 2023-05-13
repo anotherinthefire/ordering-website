@@ -6,32 +6,45 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anime X Gaming Guild &#x2223; FAQs</title>
+<!-- Toastr CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" integrity="sha512-VT3P5BQDqjS04NHZlq0Q+BoNrxYlGyB+kuBpQc1wWnI+JW9UzvTJ2ph+1Pjw9ZXzUvZQn4jq3MJ9O+x6u0L8ww==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-J6qa4849blE6F1rUdhBQIzJ3sMOBO99U/ixeTpwg37sVZ4LbYBk5DiCEmULY6+z" crossorigin="anonymous"></script>
+
+<!-- Toastr JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js" integrity="sha512-L0AD4QLJYhtgAX/DL8+LzdjGfSPyfjLYNXbx7/uegH+qbg7E9edNp2fRXQq9J3i5ZjUGICsE52CqfUabLpMq+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <link rel="shortcut icon" href="https://i.ibb.co/dfD3s4M/278104398-126694786613134-4231769107383237629-n-removebg-preview.png" />
     <link rel="stylesheet" href="../assets/css/faqs.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <style>
-         @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@700&display=swap');
+
         /* START CONTACT */
-        h1{
+        h1 {
             text-align: center;
             font-family: 'Montserrat alternates';
-            
+
         }
+
         form {
             display: flex;
             flex-direction: column;
             max-width: 500px;
             margin: 0 auto;
         }
-        input[type=text], textarea {
+
+        input[type=text],
+        textarea {
             padding: 10px;
             margin-bottom: 20px;
             border-radius: 5px;
             border: none;
             box-shadow: 1px 1px 5px grey;
         }
+
         input[type=submit] {
             background-color: #4CAF50;
             color: white;
@@ -40,6 +53,7 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
         input[type=submit]:hover {
             background-color: #3e8e41;
         }
@@ -56,7 +70,7 @@
             <img src="https://i.ibb.co/ZKQtnfD/axgg-banner2.png" class="homepic img-fluid">
         </section>
     </section>
-
+    <div class="notification"></div>
     <!-- FAQ Accordion Start -->
     <section id="faq" class="py-5">
         <h2 class="my-5 text-center" style="font-family:'Montserrat Alternates';">Frequently Asked Questions</h2>
@@ -181,12 +195,12 @@
 
     <!-- START OF CONTACT SECTION -->
     <center>
-    <section id="contact">
-    <div id="question-section">
-    <p>Any other questions?</p>
-    <button onclick="showForm()" class="btn btn-success">Yes</button>
-    <button onclick="hideForm()" class="btn btn-success">No</button>
-    </div>
+        <section id="contact">
+            <div id="question-section">
+                <p>Any other questions?</p>
+                <button onclick="showForm()" class="btn btn-success">Yes</button>
+                <button onclick="hideForm()" class="btn btn-success">No</button>
+            </div>
     </center>
     <form id="contact-form" action="../actions/process_contact_form.php" method="post" style="display:none;">
         <label for="email">Email:</label>
@@ -203,13 +217,13 @@
     </form>
     <section id="contact">
         <form id="contact-form" action="../actions/process_contact_form.php" method="post" style="display:none;">
-        <h1>Keep in Touch</h1>
+            <h1>Keep in Touch</h1>
             <label for="name">Name</label>
             <input type="text" id="name" name="name" placeholder="Enter your name"><br>
-      
+
             <label for="email">Email</label>
             <input type="text" id="email" name="email" placeholder="Enter your email address"><br>
-      
+
             <label for="message">Message</label><br>
             <textarea id="message" name="message" placeholder="Enter your message" oninput="countCharacters()" required></textarea>
             <div id="char-count"></div>
@@ -217,23 +231,35 @@
             <input type="submit" value="Submit">
         </form>
     </section>
-        <!-- check if message was sent successfully and show alert message -->
-        <?php if (isset($_GET['success']) && $_GET['success'] == '1') : ?>
-            <script>
-                $(document).ready(function() {
-                    toastr.success('Message sent successfully! We will contact you soon');
-                });
-            </script>
-        <?php elseif (isset($_GET['success']) && $_GET['success'] == '0') : ?>
-            <script>
-                $(document).ready(function() {
-                    toastr.error('Message sending failed. Please try again later.');
-                });
-            </script>
-        <?php endif; ?>
-        <br />
-        <br />
-        <br />
+    
+
+    <!-- check if message was sent successfully and show alert message -->
+    <?php if (isset($_GET['success']) && $_GET['success'] == '1') : ?>
+        <script>
+            $(document).ready(function() {
+                // append success message to notification element
+                $('.notification').append('<div class="alert alert-success">Message sent successfully! We will contact you soon</div>');
+
+                // show toastr notification
+                toastr.success('Message sent successfully! We will contact you soon');
+            });
+        </script>
+    <?php elseif (isset($_GET['success']) && $_GET['success'] == '0') : ?>
+        <script>
+            $(document).ready(function() {
+                // append error message to notification element
+                $('.notification').append('<div class="alert alert-danger">Message sending failed. Please try again later.</div>');
+
+                // show toastr notification
+                toastr.error('Message sending failed. Please try again later.');
+            });
+        </script>
+    <?php endif; ?>
+
+
+    <br />
+    <br />
+    <br />
     </section>
     <!-- END OF CONTACT SECTION -->
 
@@ -254,7 +280,6 @@
                 charCount.style.color = "black";
             }
         }
-
 
         function showForm() {
             document.getElementById("question-section").style.display = "none";

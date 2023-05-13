@@ -65,11 +65,11 @@ catch (Exception $e) {
     <a class="fa-solid fa-cart-shopping fa-2x" id="myBtn1"></a>
 
     <div class="dropdown">
-      
-    <button class="dropbtn">
+
+      <button class="dropbtn">
         <a class="fa-solid fa-user fa-2x"></a>
       </button>
-      
+
       <div class="dropdown-content">
         <a id="myBtn">Log-in</a>
       </div>
@@ -96,8 +96,9 @@ catch (Exception $e) {
             <label for="floatingInput">Email or Username</label>
           </div>
           <div class="form-floating mb-3 ms-5 me-5">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" />
-            <label for="floatingPassword">Password</label>
+            <input type="password" class="form-control" id="passwordInput" placeholder="Password" name="password" />
+            <label for="passwordInput">Password</label>
+            <button type="button" id="passwordToggleBtn" onclick="togglePasswordVisibility()">Show</button>
           </div>
 
           <div class="text-end mx-5">
@@ -153,6 +154,18 @@ catch (Exception $e) {
   window.onclick = function(event) {
     if (event.target == modal) {
       modal.style.display = "none";
+    }
+  }
+
+  function togglePasswordVisibility() {
+    var passwordInput = document.getElementById("passwordInput");
+    var passwordToggleBtn = document.getElementById("passwordToggleBtn");
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+      passwordToggleBtn.textContent = "Hide";
+    } else {
+      passwordInput.type = "password";
+      passwordToggleBtn.textContent = "Show";
     }
   }
 </script>
