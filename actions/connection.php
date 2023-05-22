@@ -20,14 +20,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()){
           $hashed_password = $row['password'];
+          $user_status = $row['status'];
 
           if (password_verify($Password, $hashed_password)) {
-            $_SESSION["user_id"] = $row['user_id'];
-            header('Location: ../');
-            exit;
-            
+            if ($user_status == 0 || $user_status == 1) {
+              $_SESSION["user_id"] = $row['user_id'];
+              header('Location: ../');
+              exit;
+            } else {
+              $error_message = "Login failed. User status is either banned or not found.";
+              echo "<script>alert('$error_message'); window.location.replace(document.referrer);</script>";
+            }
           } else {
-            $error_message = "Invalid password";
+            $error_message = "Invalid password.";
             echo "<script>alert('$error_message'); window.location.replace(document.referrer);</script>";
           }
         }       

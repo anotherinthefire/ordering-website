@@ -9,6 +9,14 @@ catch (Exception $e) {
 
 
 
+//Load Composer's autoloader
+require '../vendor/autoload.php';
+if (isset($_POST['verify'])) {
+
+  //php mailer here
+}
+
+
 if (isset($_SESSION['user_id'])) {
   $user_id = $_SESSION['user_id'];
 
@@ -171,7 +179,9 @@ if (isset($_SESSION['user_id'])) {
     <body>
       <?php
 
+
       include '../includes/nav-pages.php';
+
       ?>
       <div class="container">
         <div class="profile-box">
@@ -212,12 +222,42 @@ if (isset($_SESSION['user_id'])) {
                 <button type="button" style="color:#fff; text-decoration:none; font-weight:bold;" id="myBtn1">EDIT PROFILE</button>
                 </button>
               </div>
+              <?php
+              if (isset($_POST['submit'])) {
+                $fullname = $_POST['fullname'];
+                $user_name = $_POST['username'];
+                $email = $_POST['email'];
+                $contact = $_POST['contact'];
+                $user_id = $_SESSION['user_id'];
 
+                include('../config.php');
+                if (!$conn) {
+                  die("Connection failed: " . mysqli_connect_error());
+                }
+
+                $sql_check = "SELECT user_id FROM user WHERE (username='$user_name' OR email='$email') AND user_id != '$user_id'";
+                $result = mysqli_query($conn, $sql_check);
+                if (mysqli_num_rows($result) > 0) {
+                  // The username or email is already taken
+                  echo '<script>alert("Username or email is already taken"); window.location.href = "";</script>';
+                  exit;
+                }
+
+                $sql = "UPDATE user SET fullname='$fullname', username='$user_name', email='$email', contact='$contact' WHERE user_id='$user_id'";
+                if (mysqli_query($conn, $sql)) {
+                  echo '<script>alert("User information updated successfully");window.location.href = ""; </script>';
+                  exit;
+                } else {
+                  echo '<script>alert("There is an error in updating your information");window.location.href = ""; </script>' . mysqli_error($conn);
+                  exit;
+                }
+              }
+              ?>
               <!-- The Modal -->
               <div id="myModal1" class="modal1">
                 <div class="modal-content1">
                   <!-- <span class="close1">&times;</span> -->
-                  <form method="POST" action="../actions/update-user.php" id="edit">
+                  <form method="POST" action="" id="edit">
                     <h1>EDIT PROFILE </h1>
                     <div class="form-group mt-3">
                       <label for="fullname">Full Name:</label>
@@ -238,8 +278,9 @@ if (isset($_SESSION['user_id'])) {
                       <label for="contact">Contact Number:</label>
                       <input type="tel" class="form-control" id="contact" name="contact" value="<?php echo $user['contact']; ?>">
                     </div>
+                    <button type="submit" name="submit" class="btn btn-success">Save</button>
                   </form>
-                  <button type="submit" name="submit" class="btn btn-success" form="edit">Save</button>
+
                   <a href="../includes/change-pass.php"><button type="button" class="btn btn-primary ">Change Password</button></a>
                   <button class="close1 btn btn-light">Cancel</button>
                 </div>
@@ -253,7 +294,6 @@ if (isset($_SESSION['user_id'])) {
               <?php
               // Assuming $status contains the status value
               if ($user['status'] == 1) {
-
               } else {
               ?>
                 <div class="press">
@@ -262,7 +302,6 @@ if (isset($_SESSION['user_id'])) {
               <?php
               }
               ?>
-
           </form>
 
           </div>

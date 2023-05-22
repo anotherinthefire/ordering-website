@@ -25,55 +25,11 @@
   $user_query = mysqli_query($conn, "SELECT email FROM user WHERE user_id = '$user_id'");
   $user_dataa = mysqli_fetch_assoc($user_query);
 //phpmailer here
-  $email = $user_dataa['email'];
-  //Import PHPMailer classes into the global namespace
-  //These must be at the top of your script, not inside a function
-  use PHPMailer\PHPMailer\PHPMailer;
-  use PHPMailer\PHPMailer\SMTP;
-  use PHPMailer\PHPMailer\Exception;
-
-
-
-  //Load Composer's autoloader
-  require '../vendor/autoload.php';
-  if (isset($_POST["submit_order"])) {
-    //Create an instance; passing `true` enables exceptions
-    $mail = new PHPMailer(true);
-
-    try {
-      //Server settings
-      //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-//removed something here
-
-      //Attachments
-      $mail->addAttachment('../assets/mail/logo.png');         //Add attachments
-      //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
-
-      //Content
-      $email_subject = 'Your order has been received and is being reviewed.';
-      $email_body = "Dear customer,  
-      
-      Thank you for placing your order with us. We have received it and are currently reviewing it. 
-      Please note that we may contact you within the next three business days to confirm your order and discuss any additional details.
-      If you have any questions or concerns, please don't hesitate to contact us at (axgg.support@gmail.com). We appreciate your business and look forward to serving you.      
-      
-      Best regards,
-      AXGG
-
-      
-      ";
-
-      $mail->isHTML(true);                                  //Set email format to HTML
-      $mail->Subject = $email_subject;
-      $mail->Body    = $email_body;
-      //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-
-      $mail->send();
-      echo 'Message has been sent';
-    } catch (Exception $e) {
-      echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-      echo '<script>alert("Message could not be sent. Mailer Error: '.$mail->ErrorInfo.'");</script>';
-    }
+$email = $user_dataa['email'];
+//Import PHPMailer classes into the global namespace
+//These must be at the top of your script, not inside a function
+if (isset($_POST["submit_order"])) {
+  //smtp here
 
     $full_name = $user_data["fullname"];
     $contact = $user_data["contact"];
@@ -168,7 +124,7 @@
           <div class="content1">
             <p style="color:979797; width: 3%">Contact
             <p>
-            <p><?php echo $user_data["email"]; ?>
+            <p><?php echo $user_data["contact"]; ?>
             <p>
               <a href="checkout.php">Change</a>
           </div>

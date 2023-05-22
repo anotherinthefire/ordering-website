@@ -30,9 +30,8 @@
         }
 
         form {
-            display: flex;
-            flex-direction: column;
-            max-width: 500px;
+            
+            max-width: 40%;
             margin: 0 auto;
         }
 
@@ -43,6 +42,7 @@
             border-radius: 5px;
             border: none;
             box-shadow: 1px 1px 5px grey;
+            width: 100%;
         }
 
         input[type=submit] {
@@ -58,6 +58,11 @@
             background-color: #3e8e41;
         }
 
+        .notification{
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+        }
         /* END CONTACT */
     </style>
 </head>
@@ -70,7 +75,7 @@
             <img src="https://i.ibb.co/ZKQtnfD/axgg-banner2.png" class="homepic img-fluid">
         </section>
     </section>
-    <div class="notification"></div>
+    
     <!-- FAQ Accordion Start -->
     <section id="faq" class="py-5">
         <h2 class="my-5 text-center" style="font-family:'Montserrat Alternates';">Frequently Asked Questions</h2>
@@ -192,7 +197,7 @@
         </div>
     </section>
     <!-- FAQ Accordion End -->
-
+    <div class="notification"></div>
     <!-- START OF CONTACT SECTION -->
     <center>
         <section id="contact">
@@ -203,34 +208,20 @@
             </div>
     </center>
     <form id="contact-form" action="../actions/process_contact_form.php" method="post" style="display:none;">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-
-        <label for="name">Subject:</label>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required style="width:100%;">
+<br>
+        <label for="name">Subject:</label><br>
         <input type="text" id="name" name="name" required>
+        <br>
 
-        <label for="message">Message:</label>
+        <label for="message">Message:</label><br>
         <textarea id="message" name="message" oninput="countCharacters()" required></textarea>
         <div id="char-count"></div>
 
         <input type="submit" value="Submit">
     </form>
-    <section id="contact">
-        <form id="contact-form" action="../actions/process_contact_form.php" method="post" style="display:none;">
-            <h1>Keep in Touch</h1>
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Enter your name"><br>
-
-            <label for="email">Email</label>
-            <input type="text" id="email" name="email" placeholder="Enter your email address"><br>
-
-            <label for="message">Message</label><br>
-            <textarea id="message" name="message" placeholder="Enter your message" oninput="countCharacters()" required></textarea>
-            <div id="char-count"></div>
-            <br>
-            <input type="submit" value="Submit">
-        </form>
-    </section>
+    
     
 
     <!-- check if message was sent successfully and show alert message -->

@@ -46,7 +46,7 @@
                   </div>
                   <div class="form-group col-md-2">
                     <label for="inputPassword4">House No.</label>
-                    <input type="houseno" class="form-control" id="inputPassword4" name="house_no">
+                    <input type="number" class="form-control" id="inputPassword4" name="house_no">
                   </div>
                   <div class="form-group col-md-1">
                     <label for="inputPassword4">Postal Code</label>

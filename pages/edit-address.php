@@ -34,6 +34,8 @@ if (isset($_POST['set_default'])) {
     $stmt = $conn->prepare("SELECT * FROM address WHERE user_id = ? AND add_id = ?");
     $stmt->execute([$user_id, $address_id]);
     $selected_address = $stmt->fetch(PDO::FETCH_ASSOC);
+    echo '<script>alert("New address default set"); window.location.href = "profile.php";</script>';
+    exit;
 }
 
 

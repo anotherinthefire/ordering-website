@@ -62,51 +62,71 @@ if ($result->num_rows > 0) {
                 if (mysqli_num_rows($result) > 0) {
                 ?>
 
-                  <form action="../actions/addtocart.php" method="post">
+<form action="../actions/addtocart.php" method="post">
                     <input name="prod_id" hidden value="<?php echo $prod_id; ?>">
-                    
-                      <?php
-                      $display_dropdown = true;
-                      foreach ($rows as $row) {
-                        if ($row['size'] == 'n/a' && $row['color'] == 'n/a') {
-                          $display_dropdown = false;
-                          break;
-                        }
-                      }
+                  <?php
+                  $display_dropdown = true;
+                  $display_size = false;
+                  $display_color = false;
 
-                      if ($display_dropdown) {
-                      ?>
-                      <div class="size-color-labels">
-                      <label class="label-size" for="#">Size and Color</label>
-                    </div>
-                    <div class="size-and-color">
-                        <select id="second" class="size-select" name="stock_id">
-                          <?php foreach ($rows as $row) : ?>
-                            <option value="<?php echo $row['stock_id']; ?>"><?php echo $row['size'] . ' - ' . $row['color']; ?></option>
-                          <?php endforeach; ?>
-                        </select>
-                      <?php
-                      }
-                      ?>
-                    </div>
-
-                    <label class="label-quantity" for="#">Quantity</label>
-                    <div class="quantity-container">
-                      <input type="number" id="quantity" name="quantity" class="quantity-field" value="1">
-                      <div class="button-container">
-                      </div>
-                    </div>
-                    <br>
-                    <br>
-                    <?php
-                    if (isset($_SESSION['user_id'])) { ?>
-                      <button type="submit" name="submit" class="btn">Add to Cart</button>
-                    <?php } else {
+                  foreach ($rows as $row) {
+                    if ($row['size'] == 'n/a' && $row['color'] == 'n/a') {
+                      $display_dropdown = false;
+                      break;
+                    } elseif ($row['size'] != 'n/a' && $row['color'] == 'n/a') {
+                      $display_size = true;
+                    } elseif ($row['size'] == 'n/a' && $row['color'] != 'n/a') {
+                      $display_color = true;
                     }
-                    ?>
-                    <div class="description">
-                  </form>
-              <?php }
+                  }
+                  ?>
+
+                  <div class="size-color-labels">
+                    <label class="label-size" for="#">Size and Color</label>
+                  </div>
+
+                  <?php if ($display_dropdown) : ?>
+                    <div class="size-and-color">
+                      <select id="second" class="size-select" name="stock_id">
+                        <?php foreach ($rows as $row) : ?>
+                          <option value="<?php echo $row['stock_id']; ?>">
+                            <?php
+                            if ($row['size'] != 'n/a' && $row['color'] != 'n/a') {
+                              echo $row['size'] . ' - ' . $row['color'];
+                            } elseif ($row['size'] == 'n/a' && $display_color) {
+                              echo $row['color'];
+                            } elseif ($row['color'] == 'n/a' && $display_size) {
+                              echo $row['size'];
+                            }
+                            ?>
+                          </option>
+                        <?php endforeach; ?>
+                      </select>
+                    </div>
+                  <?php else : ?>
+                    <input type="hidden" name="stock_id" value="<?php echo $row['stock_id']; ?>" />
+                  <?php endif; ?>
+
+
+              </div>
+
+              <label class="label-quantity" for="#">Quantity</label>
+              <div class="quantity-container">
+                <input type="number" id="quantity" name="quantity" class="quantity-field" value="1">
+                <div class="button-container">
+                </div>
+              </div>
+              <br>
+              <br>
+              <?php
+                  if (isset($_SESSION['user_id'])) { ?>
+                <button type="submit" name="submit" class="btn">Add to Cart</button>
+              <?php } else {
+                  }
+              ?>
+              <div class="description">
+                </form>
+            <?php }
                 $prod_id = $_GET['id'];
                 // require_once("../config.php");
 
