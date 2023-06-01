@@ -2,16 +2,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@900&display=swap');
 
 /*Body of the mainpage*/
-.a-products{
+.a-products {
     width: 100%;
     margin-top: 4%;
     margin-bottom: 3%;
     text-align: center;
 }
-.a-products h1{
+
+.a-products h1 {
     font-family: 'Montserrat Alternates';
     font-weight: bold 900;
 }
+
 /* 
 *
 * dito q lagay design sa box
@@ -26,14 +28,17 @@
     overflow: hidden;
     padding-top: 5%;
 }
-.box a{
+
+.box a {
     text-decoration: none;
     color: white;
 }
+
 .box .product_image img {
     transition: 0.5s;
-    margin-bottom:-10px ;
+    margin-bottom: -10px;
 }
+
 .box .product_image img:hover {
     box-shadow: 5px 5px 15px 5px rgba(5, 5, 5, 0.3);
 }
@@ -48,23 +53,27 @@
     flex-direction: column;
     z-index: 1;
 }
+
 .box .content h3 {
     font-size: 13px;
     color: black;
     font-weight: 500;
-    margin-bottom:1px ;
+    margin-bottom: 1px;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
+
 .box .content .price {
     font-size: 14px;
     color: black;
     font-weight: 500;
     letter-spacing: 1px;
 }
+
 .btn {
     color: rgb(190, 190, 190);
 }
+
 .box :hover .content .btn {
     align-self: center;
     position: absolute;
@@ -83,7 +92,7 @@
 
 .box :hover .content .btn {
     top: 0;
-    opacity:1;
+    opacity: 1;
 }
 
 /* GRID 1 */
@@ -96,19 +105,20 @@
     padding: 10px;
     justify-content: center;
     flex-wrap: wrap;
-  }
-  
-  .grid-container > div {
+}
+
+.grid-container>div {
     background-color: rgba(255, 255, 255, 0.8);
     text-align: center;
     padding: 2px 0;
     font-size: 30px;
-  }
+}
 
-.all-products-btn{
+.all-products-btn {
     text-align: center;
 }
-.all-products-btn button{
+
+.all-products-btn button {
     width: 9%;
     height: 6%;
     background-color: #5876CE;
@@ -117,13 +127,14 @@
     font-size: 14px;
     font-family: 'Roboto', sans-serif;
 }
-.all-products-btn button:hover{ 
+
+.all-products-btn button:hover {
     background-color: #404759;
     box-shadow: 5px 5px 15px 5px rgba(5, 5, 5, 0.3);
-	transition: 0.5s all;
+    transition: 0.5s all;
 }
 
-.categories{
+.categories {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -131,46 +142,52 @@
     margin-top: 4%;
     align-items: center;
 }
-.card{
+
+.card {
     height: 40vh;
     margin: 20px;
 }
-.card img{
+
+.card img {
     height: 40vh;
-    width: 15vw ;
+    width: 15vw;
     border: none;
 }
-.details{
+
+.details {
     z-index: 1;
-	position: absolute;
-	top: 0;
-	right: 0;
-	color: #fff;
-	width: 100%;
-	height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #fff;
+    width: 100%;
+    height: 100%;
 }
-.details h2{
+
+.details h2 {
     font-family: 'Montserrat Alternates';
     font-weight: 300;
-    line-height: 10px;
-    margin-top: 128%;
+    line-height: 26px;
+    margin-top: 30vh;
     margin-left: 12px;
     font-size: 30px;
 }
-.details p{
+
+.details p {
     font-family: 'Roboto';
     font-style: normal;
     margin-left: 12px;
     font-size: 15px;
 }
-.details:hover{
-    color:#A5F297;
+
+.details:hover {
+    color: #A5F297;
     transition: 500ms;
     background-color: #1E1E1Ec2;
     height: 100%;
     box-shadow: 5px 5px 15px 5px rgba(5, 5, 5, 0.3);
 }
 
-.carousel-item{
-    height:100vh;
+.carousel-item {
+    height: 100vh;
 }
